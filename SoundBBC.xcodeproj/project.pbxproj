@@ -3,27 +3,47 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2309CDD4245081E800620475 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CDD3245081E800620475 /* AppDelegate.swift */; };
-		2309CDD6245081E800620475 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CDD5245081E800620475 /* SceneDelegate.swift */; };
-		2309CDD8245081E800620475 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CDD7245081E800620475 /* ViewController.swift */; };
-		2309CDDB245081E800620475 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2309CDD9245081E800620475 /* Main.storyboard */; };
 		2309CDDD245081ED00620475 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2309CDDC245081ED00620475 /* Assets.xcassets */; };
 		2309CDE0245081ED00620475 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2309CDDE245081ED00620475 /* LaunchScreen.storyboard */; };
+		2309CDED245083A300620475 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CDEC245083A300620475 /* BaseCoordinator.swift */; };
+		2309CDEF245084D700620475 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CDEE245084D700620475 /* AppCoordinator.swift */; };
+		2309CDF12450856B00620475 /* TabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CDF02450856B00620475 /* TabbarCoordinator.swift */; };
+		2309CDF524508A2600620475 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CDF424508A2600620475 /* TabbarController.swift */; };
+		2309CDFB24508C7200620475 /* ListenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CDF924508C7200620475 /* ListenViewController.swift */; };
+		2309CDFC24508C7200620475 /* ListenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2309CDFA24508C7200620475 /* ListenViewController.xib */; };
+		2309CDFF24508D1400620475 /* MySoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CDFD24508D1400620475 /* MySoundViewController.swift */; };
+		2309CE0024508D1400620475 /* MySoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2309CDFE24508D1400620475 /* MySoundViewController.xib */; };
+		2309CE022450998900620475 /* ListenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CE012450998900620475 /* ListenCoordinator.swift */; };
+		2309CE04245099D400620475 /* MySoundCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CE03245099D400620475 /* MySoundCoordinator.swift */; };
+		2309CE0624509A0B00620475 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CE0524509A0B00620475 /* SearchCoordinator.swift */; };
+		5339A251A57DF94DD8D43682 /* Pods_SoundBBC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B85F7AF4E13965A683CB656 /* Pods_SoundBBC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2309CDD0245081E800620475 /* SoundBBC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundBBC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2309CDD3245081E800620475 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2309CDD5245081E800620475 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2309CDD7245081E800620475 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2309CDDA245081E800620475 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2309CDDC245081ED00620475 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2309CDDF245081ED00620475 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2309CDE1245081ED00620475 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2309CDEC245083A300620475 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		2309CDEE245084D700620475 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		2309CDF02450856B00620475 /* TabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCoordinator.swift; sourceTree = "<group>"; };
+		2309CDF424508A2600620475 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		2309CDF924508C7200620475 /* ListenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenViewController.swift; sourceTree = "<group>"; };
+		2309CDFA24508C7200620475 /* ListenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenViewController.xib; sourceTree = "<group>"; };
+		2309CDFD24508D1400620475 /* MySoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySoundViewController.swift; sourceTree = "<group>"; };
+		2309CDFE24508D1400620475 /* MySoundViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MySoundViewController.xib; sourceTree = "<group>"; };
+		2309CE012450998900620475 /* ListenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenCoordinator.swift; sourceTree = "<group>"; };
+		2309CE03245099D400620475 /* MySoundCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySoundCoordinator.swift; sourceTree = "<group>"; };
+		2309CE0524509A0B00620475 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		2B85F7AF4E13965A683CB656 /* Pods_SoundBBC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoundBBC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3861E8562E46EE65FFA92F18 /* Pods-SoundBBC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundBBC.debug.xcconfig"; path = "Target Support Files/Pods-SoundBBC/Pods-SoundBBC.debug.xcconfig"; sourceTree = "<group>"; };
+		C72ADD3035029FC6DFAEFA48 /* Pods-SoundBBC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundBBC.release.xcconfig"; path = "Target Support Files/Pods-SoundBBC/Pods-SoundBBC.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5339A251A57DF94DD8D43682 /* Pods_SoundBBC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +63,8 @@
 			children = (
 				2309CDD2245081E800620475 /* SoundBBC */,
 				2309CDD1245081E800620475 /* Products */,
+				26F961249A9323F7E1E183B5 /* Pods */,
+				74EDF12024828F5E3F490B5D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +79,120 @@
 		2309CDD2245081E800620475 /* SoundBBC */ = {
 			isa = PBXGroup;
 			children = (
+				2309CDEB2450838500620475 /* Coordinators */,
+				2309CDEA2450835900620475 /* Supporting Files */,
+				2309CDE92450834E00620475 /* UIComponents */,
+				2309CDE82450834900620475 /* Services */,
+				2309CDE72450833D00620475 /* AppModules */,
 				2309CDD3245081E800620475 /* AppDelegate.swift */,
-				2309CDD5245081E800620475 /* SceneDelegate.swift */,
-				2309CDD7245081E800620475 /* ViewController.swift */,
-				2309CDD9245081E800620475 /* Main.storyboard */,
 				2309CDDC245081ED00620475 /* Assets.xcassets */,
 				2309CDDE245081ED00620475 /* LaunchScreen.storyboard */,
 				2309CDE1245081ED00620475 /* Info.plist */,
 			);
 			path = SoundBBC;
+			sourceTree = "<group>";
+		};
+		2309CDE72450833D00620475 /* AppModules */ = {
+			isa = PBXGroup;
+			children = (
+				2309CDF824508BCF00620475 /* Search */,
+				2309CDF724508BC700620475 /* MySounds */,
+				2309CDF624508AEA00620475 /* Listens */,
+				2309CDF3245087ED00620475 /* TabbarController */,
+				2309CDF2245087D700620475 /* Splash */,
+			);
+			path = AppModules;
+			sourceTree = "<group>";
+		};
+		2309CDE82450834900620475 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2309CDE92450834E00620475 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		2309CDEA2450835900620475 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2309CDEB2450838500620475 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				2309CDEC245083A300620475 /* BaseCoordinator.swift */,
+				2309CDEE245084D700620475 /* AppCoordinator.swift */,
+				2309CDF02450856B00620475 /* TabbarCoordinator.swift */,
+				2309CE012450998900620475 /* ListenCoordinator.swift */,
+				2309CE03245099D400620475 /* MySoundCoordinator.swift */,
+				2309CE0524509A0B00620475 /* SearchCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		2309CDF2245087D700620475 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		2309CDF3245087ED00620475 /* TabbarController */ = {
+			isa = PBXGroup;
+			children = (
+				2309CDF424508A2600620475 /* TabbarController.swift */,
+			);
+			path = TabbarController;
+			sourceTree = "<group>";
+		};
+		2309CDF624508AEA00620475 /* Listens */ = {
+			isa = PBXGroup;
+			children = (
+				2309CDF924508C7200620475 /* ListenViewController.swift */,
+				2309CDFA24508C7200620475 /* ListenViewController.xib */,
+			);
+			path = Listens;
+			sourceTree = "<group>";
+		};
+		2309CDF724508BC700620475 /* MySounds */ = {
+			isa = PBXGroup;
+			children = (
+				2309CDFD24508D1400620475 /* MySoundViewController.swift */,
+				2309CDFE24508D1400620475 /* MySoundViewController.xib */,
+			);
+			path = MySounds;
+			sourceTree = "<group>";
+		};
+		2309CDF824508BCF00620475 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		26F961249A9323F7E1E183B5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3861E8562E46EE65FFA92F18 /* Pods-SoundBBC.debug.xcconfig */,
+				C72ADD3035029FC6DFAEFA48 /* Pods-SoundBBC.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		74EDF12024828F5E3F490B5D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B85F7AF4E13965A683CB656 /* Pods_SoundBBC.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +202,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2309CDE4245081ED00620475 /* Build configuration list for PBXNativeTarget "SoundBBC" */;
 			buildPhases = (
+				3A680D3A8CEF77E69B275DDF /* [CP] Check Pods Manifest.lock */,
 				2309CDCC245081E800620475 /* Sources */,
 				2309CDCD245081E800620475 /* Frameworks */,
 				2309CDCE245081E800620475 /* Resources */,
+				48006A9802FC0A1E400731E4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,36 +255,78 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2309CE0024508D1400620475 /* MySoundViewController.xib in Resources */,
+				2309CDFC24508C7200620475 /* ListenViewController.xib in Resources */,
 				2309CDE0245081ED00620475 /* LaunchScreen.storyboard in Resources */,
 				2309CDDD245081ED00620475 /* Assets.xcassets in Resources */,
-				2309CDDB245081E800620475 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A680D3A8CEF77E69B275DDF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SoundBBC-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		48006A9802FC0A1E400731E4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SoundBBC/Pods-SoundBBC-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SoundBBC/Pods-SoundBBC-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SoundBBC/Pods-SoundBBC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2309CDCC245081E800620475 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2309CDD8245081E800620475 /* ViewController.swift in Sources */,
+				2309CDEF245084D700620475 /* AppCoordinator.swift in Sources */,
 				2309CDD4245081E800620475 /* AppDelegate.swift in Sources */,
-				2309CDD6245081E800620475 /* SceneDelegate.swift in Sources */,
+				2309CDFF24508D1400620475 /* MySoundViewController.swift in Sources */,
+				2309CDF12450856B00620475 /* TabbarCoordinator.swift in Sources */,
+				2309CDF524508A2600620475 /* TabbarController.swift in Sources */,
+				2309CE022450998900620475 /* ListenCoordinator.swift in Sources */,
+				2309CE0624509A0B00620475 /* SearchCoordinator.swift in Sources */,
+				2309CDED245083A300620475 /* BaseCoordinator.swift in Sources */,
+				2309CE04245099D400620475 /* MySoundCoordinator.swift in Sources */,
+				2309CDFB24508C7200620475 /* ListenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2309CDD9245081E800620475 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2309CDDA245081E800620475 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2309CDDE245081ED00620475 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,37 +454,41 @@
 		};
 		2309CDE5245081ED00620475 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3861E8562E46EE65FFA92F18 /* Pods-SoundBBC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C4XF7U982N;
 				INFOPLIST_FILE = SoundBBC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nhatquangz.SoundBBC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nhatquangz.soundbbc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		2309CDE6245081ED00620475 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C72ADD3035029FC6DFAEFA48 /* Pods-SoundBBC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C4XF7U982N;
 				INFOPLIST_FILE = SoundBBC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nhatquangz.SoundBBC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nhatquangz.soundbbc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
