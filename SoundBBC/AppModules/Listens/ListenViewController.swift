@@ -22,7 +22,8 @@ class ListenViewController: UIViewController {
 // MARK: - Setup
 extension ListenViewController {
 	func setup() {
-		self.view.backgroundColor = .red
+		self.title = "Listen"
+		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: AppDefinition.Font.reithSerifMedium.size(20)]
 	}
 }
 

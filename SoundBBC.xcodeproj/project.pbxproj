@@ -21,6 +21,11 @@
 		2309CE022450998900620475 /* ListenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CE012450998900620475 /* ListenCoordinator.swift */; };
 		2309CE04245099D400620475 /* MySoundCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CE03245099D400620475 /* MySoundCoordinator.swift */; };
 		2309CE0624509A0B00620475 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CE0524509A0B00620475 /* SearchCoordinator.swift */; };
+		2309CE092450F3E500620475 /* BBCReithSerif_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2309CE082450F3E500620475 /* BBCReithSerif_Rg.ttf */; };
+		2309CE0C2450F4AD00620475 /* AppDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CE0B2450F4AD00620475 /* AppDefinition.swift */; };
+		2309CE0E2450F7CF00620475 /* BBCReithSans_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2309CE0D2450F7CF00620475 /* BBCReithSans_Rg.ttf */; };
+		2309CE112450F94900620475 /* BBCReithSans_Md.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2309CE0F2450F94900620475 /* BBCReithSans_Md.ttf */; };
+		2309CE122450F94900620475 /* BBCReithSerif_Md.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2309CE102450F94900620475 /* BBCReithSerif_Md.ttf */; };
 		5339A251A57DF94DD8D43682 /* Pods_SoundBBC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B85F7AF4E13965A683CB656 /* Pods_SoundBBC.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +46,11 @@
 		2309CE012450998900620475 /* ListenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenCoordinator.swift; sourceTree = "<group>"; };
 		2309CE03245099D400620475 /* MySoundCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySoundCoordinator.swift; sourceTree = "<group>"; };
 		2309CE0524509A0B00620475 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		2309CE082450F3E500620475 /* BBCReithSerif_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BBCReithSerif_Rg.ttf; sourceTree = "<group>"; };
+		2309CE0B2450F4AD00620475 /* AppDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefinition.swift; sourceTree = "<group>"; };
+		2309CE0D2450F7CF00620475 /* BBCReithSans_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BBCReithSans_Rg.ttf; sourceTree = "<group>"; };
+		2309CE0F2450F94900620475 /* BBCReithSans_Md.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BBCReithSans_Md.ttf; sourceTree = "<group>"; };
+		2309CE102450F94900620475 /* BBCReithSerif_Md.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BBCReithSerif_Md.ttf; sourceTree = "<group>"; };
 		2B85F7AF4E13965A683CB656 /* Pods_SoundBBC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoundBBC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3861E8562E46EE65FFA92F18 /* Pods-SoundBBC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundBBC.debug.xcconfig"; path = "Target Support Files/Pods-SoundBBC/Pods-SoundBBC.debug.xcconfig"; sourceTree = "<group>"; };
 		C72ADD3035029FC6DFAEFA48 /* Pods-SoundBBC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundBBC.release.xcconfig"; path = "Target Support Files/Pods-SoundBBC/Pods-SoundBBC.release.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +131,8 @@
 		2309CDEA2450835900620475 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2309CE0A2450F45100620475 /* Utilities */,
+				2309CE072450F3BC00620475 /* Fonts */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -176,6 +188,25 @@
 			children = (
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		2309CE072450F3BC00620475 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2309CE0F2450F94900620475 /* BBCReithSans_Md.ttf */,
+				2309CE102450F94900620475 /* BBCReithSerif_Md.ttf */,
+				2309CE0D2450F7CF00620475 /* BBCReithSans_Rg.ttf */,
+				2309CE082450F3E500620475 /* BBCReithSerif_Rg.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		2309CE0A2450F45100620475 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2309CE0B2450F4AD00620475 /* AppDefinition.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		26F961249A9323F7E1E183B5 /* Pods */ = {
@@ -255,9 +286,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2309CE092450F3E500620475 /* BBCReithSerif_Rg.ttf in Resources */,
 				2309CE0024508D1400620475 /* MySoundViewController.xib in Resources */,
 				2309CDFC24508C7200620475 /* ListenViewController.xib in Resources */,
+				2309CE0E2450F7CF00620475 /* BBCReithSans_Rg.ttf in Resources */,
+				2309CE122450F94900620475 /* BBCReithSerif_Md.ttf in Resources */,
 				2309CDE0245081ED00620475 /* LaunchScreen.storyboard in Resources */,
+				2309CE112450F94900620475 /* BBCReithSans_Md.ttf in Resources */,
 				2309CDDD245081ED00620475 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2309CDEF245084D700620475 /* AppCoordinator.swift in Sources */,
+				2309CE0C2450F4AD00620475 /* AppDefinition.swift in Sources */,
 				2309CDD4245081E800620475 /* AppDelegate.swift in Sources */,
 				2309CDFF24508D1400620475 /* MySoundViewController.swift in Sources */,
 				2309CDF12450856B00620475 /* TabbarCoordinator.swift in Sources */,
