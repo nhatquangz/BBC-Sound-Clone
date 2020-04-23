@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 
 class AppDefinition: NSObject {
-	
+	/**
+	Custom font
+	**/
 	enum Font: String {
 		case reithSerif = "BBCReithSerif-Regular"
 		case reithSans = "BBCReithSans-Regular"
@@ -20,6 +22,14 @@ class AppDefinition: NSObject {
 		func size(_ size: CGFloat) -> UIFont {
 			return UIFont(name: self.rawValue, size: size) ?? UIFont.systemFont(ofSize: size)
 		}
+	}
+	
+	
+	/**
+	Definition of color
+	**/
+	enum Color {
+		static var main = UIColor(hexString: "#1cb955")
 	}
 	
 }

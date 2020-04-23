@@ -26,6 +26,9 @@
 		2309CE0E2450F7CF00620475 /* BBCReithSans_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2309CE0D2450F7CF00620475 /* BBCReithSans_Rg.ttf */; };
 		2309CE112450F94900620475 /* BBCReithSans_Md.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2309CE0F2450F94900620475 /* BBCReithSans_Md.ttf */; };
 		2309CE122450F94900620475 /* BBCReithSerif_Md.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2309CE102450F94900620475 /* BBCReithSerif_Md.ttf */; };
+		2309CE182450FEF600620475 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2309CE172450FEF600620475 /* ColorExtensions.swift */; };
+		239D62612451FD5B00239B90 /* PlayableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D625F2451FD5B00239B90 /* PlayableItemView.swift */; };
+		239D62622451FD5B00239B90 /* PlayableItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 239D62602451FD5B00239B90 /* PlayableItemView.xib */; };
 		5339A251A57DF94DD8D43682 /* Pods_SoundBBC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B85F7AF4E13965A683CB656 /* Pods_SoundBBC.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +54,9 @@
 		2309CE0D2450F7CF00620475 /* BBCReithSans_Rg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BBCReithSans_Rg.ttf; sourceTree = "<group>"; };
 		2309CE0F2450F94900620475 /* BBCReithSans_Md.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BBCReithSans_Md.ttf; sourceTree = "<group>"; };
 		2309CE102450F94900620475 /* BBCReithSerif_Md.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BBCReithSerif_Md.ttf; sourceTree = "<group>"; };
+		2309CE172450FEF600620475 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		239D625F2451FD5B00239B90 /* PlayableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayableItemView.swift; sourceTree = "<group>"; };
+		239D62602451FD5B00239B90 /* PlayableItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayableItemView.xib; sourceTree = "<group>"; };
 		2B85F7AF4E13965A683CB656 /* Pods_SoundBBC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoundBBC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3861E8562E46EE65FFA92F18 /* Pods-SoundBBC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundBBC.debug.xcconfig"; path = "Target Support Files/Pods-SoundBBC/Pods-SoundBBC.debug.xcconfig"; sourceTree = "<group>"; };
 		C72ADD3035029FC6DFAEFA48 /* Pods-SoundBBC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundBBC.release.xcconfig"; path = "Target Support Files/Pods-SoundBBC/Pods-SoundBBC.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +95,7 @@
 		2309CDD2245081E800620475 /* SoundBBC */ = {
 			isa = PBXGroup;
 			children = (
+				2309CE132450FEBA00620475 /* Extensions */,
 				2309CDEB2450838500620475 /* Coordinators */,
 				2309CDEA2450835900620475 /* Supporting Files */,
 				2309CDE92450834E00620475 /* UIComponents */,
@@ -124,6 +131,7 @@
 		2309CDE92450834E00620475 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				239D62632451FD8800239B90 /* PlayableItemView */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -209,6 +217,31 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		2309CE132450FEBA00620475 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2309CE142450FED700620475 /* UIColor */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2309CE142450FED700620475 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				2309CE172450FEF600620475 /* ColorExtensions.swift */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		239D62632451FD8800239B90 /* PlayableItemView */ = {
+			isa = PBXGroup;
+			children = (
+				239D625F2451FD5B00239B90 /* PlayableItemView.swift */,
+				239D62602451FD5B00239B90 /* PlayableItemView.xib */,
+			);
+			path = PlayableItemView;
+			sourceTree = "<group>";
+		};
 		26F961249A9323F7E1E183B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +324,7 @@
 				2309CDFC24508C7200620475 /* ListenViewController.xib in Resources */,
 				2309CE0E2450F7CF00620475 /* BBCReithSans_Rg.ttf in Resources */,
 				2309CE122450F94900620475 /* BBCReithSerif_Md.ttf in Resources */,
+				239D62622451FD5B00239B90 /* PlayableItemView.xib in Resources */,
 				2309CDE0245081ED00620475 /* LaunchScreen.storyboard in Resources */,
 				2309CE112450F94900620475 /* BBCReithSans_Md.ttf in Resources */,
 				2309CDDD245081ED00620475 /* Assets.xcassets in Resources */,
@@ -357,6 +391,8 @@
 				2309CDED245083A300620475 /* BaseCoordinator.swift in Sources */,
 				2309CE04245099D400620475 /* MySoundCoordinator.swift in Sources */,
 				2309CDFB24508C7200620475 /* ListenViewController.swift in Sources */,
+				2309CE182450FEF600620475 /* ColorExtensions.swift in Sources */,
+				239D62612451FD5B00239B90 /* PlayableItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
