@@ -32,4 +32,13 @@ class AppDefinition: NSObject {
 		static var main = UIColor(hexString: "#1cb955")
 	}
 	
+	
+	/**
+	Dimensions
+	**/
+	enum Dimension {
+		static var contentPadding: CGFloat = 15
+		static var itemSpace: CGFloat = 10
+		static var playableItemHeight: CGFloat = 100
+	}
 }

@@ -11,6 +11,7 @@ target 'SoundBBC' do
 	pod 'IQKeyboardManagerSwift', '6.5.0'
 	pod 'SnapKit', '5.0.1'
 	pod 'NVActivityIndicatorView', '4.8.0'
+	pod 'Gemini', '1.4.0'
 	#pod 'UIScrollView-InfiniteScroll', '1.1.0'
 	# pod 'ViewAnimator', '2.5.1'
 	# pod 'FlexLayout', '1.3.12'

@@ -30,3 +30,10 @@ class PlayableItemView: UIView {
 		contentView.frame = self.bounds
 	}
 }
+
+
+extension PlayableItemView: DisplayableItemView {
+	func configure(data: DisplayableItemData) {
+		
+	}
+}
