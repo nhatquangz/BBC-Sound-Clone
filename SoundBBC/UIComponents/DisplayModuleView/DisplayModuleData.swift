@@ -14,8 +14,3 @@ protocol DisplayModuleData {
 	var title: String { get set }
 	var items: [DisplayableItemData] { get set }
 }
-
-class DisplayModule: DisplayModuleData {
-	var title = "Continue Listening"
-	var items: [DisplayableItemData] = (1...10).map { _ in DisplayItemModel() }
-}

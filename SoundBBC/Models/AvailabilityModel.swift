@@ -12,9 +12,9 @@ import SwiftyJSON
 
 class AvailabilityModel {
 
-    var from : String
-    var to : String
-    var label : String
+    var from : String = ""
+    var to : String = ""
+    var label : String = ""
 
 	/**
 	 * Instantiate the instance using the passed json values to set the properties values

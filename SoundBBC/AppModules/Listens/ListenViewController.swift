@@ -37,14 +37,14 @@ extension ListenViewController {
 	}
 	
 	func createView() {
-		let section = DisplayModuleView()
-		let viewmodel = DisplayModuleViewModel(data: DisplayModule(), itemType: .playable)
-		section.configure(viewModel: viewmodel)
-		
-		stackContent.addArrangedSubview(section)
-		section.snp.makeConstraints { maker in
-			maker.height.equalTo(250)
-		}
+//		let section = DisplayModuleView()
+//		let viewmodel = DisplayModuleViewModel(data: DisplayModule(), itemType: .playable)
+//		section.configure(viewModel: viewmodel)
+//		
+//		stackContent.addArrangedSubview(section)
+//		section.snp.makeConstraints { maker in
+//			maker.height.equalTo(250)
+//		}
 	}
 }
 
