@@ -23,9 +23,9 @@ enum DisplayableItemType {
 	case container
 	case category
 	
-	func instance() -> DisplayableItemView {
-		return PlayableItemView()
-	}
+//	func instance() -> DisplayableItemView {
+//		return PlayableItemView()
+//	}
 	
 	func defaultSize() -> CGSize {
 		let itemWidth: CGFloat = UIScreen.main.bounds.width - AppDefinition.Dimension.contentPadding - 10

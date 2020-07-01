@@ -8,21 +8,19 @@
 
 import Foundation
 import SwiftyJSON
+import SwiftDate
 
 
 class ReleaseModel {
 
-    var date : String = ""
+    var date : DateInRegion?
     var label : String = ""
 
 	/**
 	 * Instantiate the instance using the passed json values to set the properties values
 	 */
-	init(fromJson json: JSON) {
-		if json.isEmpty {
-			return
-		}
-        date = json["date"].stringValue
+	init(_ json: JSON) {
+		date = json["date"].stringValue.toDate()
         label = json["label"].stringValue
 	}
 }

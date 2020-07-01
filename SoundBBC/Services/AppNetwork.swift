@@ -30,7 +30,8 @@ class Networking: NSObject {
 		super.init()
 		let configuration = URLSessionConfiguration.default
 		configuration.timeoutIntervalForRequest = TimeInterval(kTimeoutIntervalForRequest)
-		sessionManager = Session(configuration: configuration)
+		sessionManager = Session(configuration: configuration,
+								 interceptor: RequestInterceptor(storage: KeychainManager()))
 	}
 }
 
@@ -38,14 +39,14 @@ class Networking: NSObject {
 // MARK: - Method
 extension Networking {
 	func request(method: HTTPMethod,
-				 endpoint: String,
+				 url: String,
 				 parameters: [String : Any]? = nil,
 				 encoding: ParameterEncoding = URLEncoding.default,
 				 retryCount: Int = 1) -> Observable<Result<JSON, RequestError>> {
-		print("\(method.rawValue): \(endpoint)")
+		print("\(method.rawValue): \(url)")
 		
 		return Observable<Result<JSON, RequestError>>.create { observer -> Disposable in
-			self.sessionManager.request(endpoint, method: method, parameters: parameters, encoding: encoding)
+			self.sessionManager.request(url, method: method, parameters: parameters, encoding: encoding)
 				.validate(statusCode: 200..<300)
 				.responseJSON { response in
 					switch response.result {

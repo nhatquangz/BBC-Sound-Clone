@@ -20,10 +20,7 @@ class NetworkModel {
 	/**
 	 * Instantiate the instance using the passed json values to set the properties values
 	 */
-	init(fromJson json: JSON ){
-		if json.isEmpty {
-			return
-		}
+	init(_ json: JSON ){
         id = json["id"].stringValue
         key = json["key"].stringValue
         shortTitle = json["short_title"].stringValue

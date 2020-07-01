@@ -35,9 +35,9 @@ enum RequestPath: String {
 
 
 extension RequestPath {
-	var rmiurl: String {
-		let baseURL = AppEnvironment.shared.current.rmsURL
-		let path = AppConfiguration.shared.rmsConfig?[self.rawValue].stringValue ?? ""
-		return String(format: "%@/%@", baseURL, path)
+	var url: String {
+		let baseURL = AppEnvironment.shared.current.rootURL
+		let path = AppConfiguration.shared.rmsConfig(path: self.rawValue) ?? ""
+		return String(format: "%@%@", baseURL, path)
 	}
 }

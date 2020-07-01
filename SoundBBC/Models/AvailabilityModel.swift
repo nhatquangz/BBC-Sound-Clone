@@ -19,10 +19,7 @@ class AvailabilityModel {
 	/**
 	 * Instantiate the instance using the passed json values to set the properties values
 	 */
-	init(fromJson json: JSON) {
-		if json.isEmpty {
-			return
-		}
+	init(_ json: JSON) {
 		from = json["from"].stringValue
 		to = json["to"].stringValue
         label = json["label"].stringValue

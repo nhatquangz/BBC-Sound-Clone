@@ -31,20 +31,18 @@ struct AppEnvironment {
 
 	
 	init() {
-		/// Get current environment
-		let env: String = self.value(for: "APP_ENV")
-		current = Environment(rawValue: env) ?? .development
+
 	}
 }
 
 
 // MARK: - Service config
 extension AppEnvironment.Environment {
-	var rmsURL: String {
-		return AppConfiguration.shared.rmsConfig?["rootUrl"].stringValue ?? ""
+	var rootURL: String {
+		return AppConfiguration.shared.rmsConfig(path: "rootUrl") ?? ""
 	}
 	
 	var appConfigURL: String {
-		return "https://sounds-mobile-config.files.bbci.co.uk/ios/1.16.2/config.json"
+		return "https://sounds-mobile-config.files.bbci.co.uk/ios/1.17.2/config.json"
 	}
 }

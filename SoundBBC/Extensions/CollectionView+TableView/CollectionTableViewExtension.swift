@@ -9,40 +9,73 @@
 import Foundation
 import UIKit
 
+public protocol ClassNameProtocol {
+	static var className: String { get }
+	var className: String { get }
+}
+
+public extension ClassNameProtocol {
+	static var className: String {
+		return String(describing: self)
+	}
+	
+	var className: String {
+		return type(of: self).className
+	}
+}
+
+extension NSObject: ClassNameProtocol {}
+
 public extension UITableView {
-    /// Registers a cell from a nib with a reuse identifier set to the class name.
-    func register<T: UITableViewCell>(_ cellType: T.Type, bundle: Bundle? = nil) {
-        register(UINib(nibName: String(describing: cellType), bundle: bundle), forCellReuseIdentifier: String(describing: cellType))
+	func register<T: UITableViewCell>(_ cellType: T.Type, bundle: Bundle? = nil) {
+        let className = cellType.className
+        let nib = UINib(nibName: className, bundle: bundle)
+        register(nib, forCellReuseIdentifier: className)
     }
 
-    /// Registers a cell from its class with a reuse identifier set to the class name.
-    /// Use this call when you have created a cell class with no associated nib.
-    func register<T: UITableViewCell>(fromClass cellType: T.Type) {
-        register(cellType, forCellReuseIdentifier: String(describing: cellType))
+	func register<T: UITableViewCell>(_ cellTypes: [T.Type], bundle: Bundle? = nil) {
+        cellTypes.forEach { register($0, bundle: bundle) }
     }
-    
-    /// Dequeue a registered cell for an index path with a reuse identifier set to the class name.
-    /// - Returns: Strongly typed object of the correct type.
-    func dequeue<T: UITableViewCell>(_ cellType: T.Type, for indexPath: IndexPath) -> T {
-        return dequeueReusableCell(withIdentifier: String(describing: cellType), for: indexPath) as!  T
+
+	func dequeueReusableCell<T: UITableViewCell>(with type: T.Type, for indexPath: IndexPath) -> T {
+        return self.dequeueReusableCell(withIdentifier: type.className, for: indexPath) as! T
     }
 }
 
-public extension UICollectionView {
-    /// Registers a cell from a nib with a reuse identifier set to the class name.
-    func register<T: UICollectionViewCell>(_ cellType: T.Type, bundle: Bundle? = nil) {
-		register(UINib(nibName: String(describing: cellType), bundle: bundle), forCellWithReuseIdentifier: String(describing: cellType))
-    }
 
-    /// Registers a cell from its class with a reuse identifier set to the class name.
-    /// Use this call when you have created a cell class with no associated nib.
-    func register<T: UICollectionViewCell>(fromClass cellType: T.Type) {
-		register(cellType, forCellWithReuseIdentifier: String(describing: cellType))
-    }
+public extension UICollectionView {
+	func register<T: UICollectionViewCell>(_ cellType: T.Type, bundle: Bundle? = nil) {
+		let className = cellType.className
+		let nib = UINib(nibName: className, bundle: bundle)
+		register(nib, forCellWithReuseIdentifier: className)
+	}
 	
-    /// Dequeue a registered cell for an index path with a reuse identifier set to the class name.
-    /// - Returns: Strongly typed object of the correct type.
-    func dequeue<T: UICollectionViewCell>(_ cellType: T.Type, for indexPath: IndexPath) -> T {
-		return dequeueReusableCell(withReuseIdentifier: String(describing: cellType), for: indexPath) as!  T
-    }
+	func register<T: UICollectionViewCell>(_ cellTypes: [T.Type], bundle: Bundle? = nil) {
+		cellTypes.forEach { register($0, bundle: bundle) }
+	}
+	
+	func register<T: UICollectionReusableView>(reusableViewType: T.Type,
+											   ofKind kind: String = UICollectionView.elementKindSectionHeader,
+											   bundle: Bundle? = nil) {
+		let className = reusableViewType.className
+		let nib = UINib(nibName: className, bundle: bundle)
+		register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: className)
+	}
+	
+	func register<T: UICollectionReusableView>(reusableViewTypes: [T.Type],
+											   ofKind kind: String = UICollectionView.elementKindSectionHeader,
+											   bundle: Bundle? = nil) {
+		reusableViewTypes.forEach { register(reusableViewType: $0, ofKind: kind, bundle: bundle) }
+	}
+	
+	func dequeueReusableCell<T: UICollectionViewCell>(with type: T.Type,
+													  for indexPath: IndexPath) -> T {
+		return dequeueReusableCell(withReuseIdentifier: type.className, for: indexPath) as! T
+	}
+	
+	func dequeueReusableView<T: UICollectionReusableView>(with type: T.Type,
+														  for indexPath: IndexPath,
+														  ofKind kind: String = UICollectionView.elementKindSectionHeader) -> T {
+		return dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: type.className, for: indexPath) as! T
+	}
 }

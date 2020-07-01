@@ -17,46 +17,51 @@ class DisplayItemModel {
     var titles: TitleModel?
     var synopses: SynopsisModel?
     var imageUrl: String = ""
-    var duration: DurationModel?
-    var progress: ProgressModel?
+    var duration: KeyValueModel?
+    var progress: KeyValueModel?
     var container: String = ""
     var download: String = ""
     var availability: AvailabilityModel?
     var release: ReleaseModel?
     var guidance: String = ""
     var activities: [String] = []
-    var uris: [String] = []
+    var uris: [UrisModel] = []
     var playContext: String = ""
-
+	
+	
+	class KeyValueModel {
+		var label: String = ""
+		var value: Int?
+		init(_ json: JSON){
+			if json.isEmpty {
+				return
+			}
+			label = json["label"].stringValue
+			value = json["value"].intValue
+		}
+	}
+	
 	/**
 	 * Instantiate the instance using the passed json values to set the properties values
 	 */
-	init(fromJson json: JSON) {
-		if json.isEmpty {
-			return
-		}
+	init(_ json: JSON) {
         type = json["type"].stringValue
         id = json["id"].stringValue
         urn = json["urn"].stringValue
-        network = NetworkModel(fromJson: json["network"])
-        titles = TitleModel(fromJson: json["titles"])
-        synopses = SynopsisModel(fromJson: json["synopses"])
+        network = NetworkModel(json["network"])
+        titles = TitleModel(json["titles"])
+        synopses = SynopsisModel(json["synopses"])
         imageUrl = json["image_url"].stringValue
-        duration = DurationModel(fromJson: json["duration"])
-        progress = ProgressModel(fromJson: json["progress"])
+        duration = KeyValueModel(json["duration"])
+        progress = KeyValueModel(json["progress"])
 		container = json["container"].stringValue
 		download = json["download"].stringValue
-        availability = AvailabilityModel(fromJson: json["availability"])
-        release = ReleaseModel(fromJson: json["release"])
+        availability = AvailabilityModel(json["availability"])
+        release = ReleaseModel(json["release"])
 		guidance = json["guidance"].stringValue
         activities = json["activities"].arrayValue.compactMap { $0.stringValue }
-        uris = json["uris"].arrayValue.compactMap { $0.stringValue }
+        uris = json["uris"].arrayValue.compactMap { UrisModel($0) }
 		playContext = json["play_context"].stringValue
 	}
-}
-
-// MARK: - Displayable item
-extension DisplayItemModel: DisplayableItemData {
-	
 }
 

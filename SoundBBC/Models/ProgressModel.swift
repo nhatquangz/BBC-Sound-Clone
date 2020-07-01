@@ -18,10 +18,7 @@ class ProgressModel {
 	/**
 	 * Instantiate the instance using the passed json values to set the properties values
 	 */
-	init(fromJson json: JSON) {
-		if json.isEmpty {
-			return
-		}
+	init(_ json: JSON) {
         value = json["value"].intValue
         label = json["label"].stringValue
 	}

@@ -19,8 +19,17 @@ class AppCoordinator: BaseCoordinator {
 		self.window.rootViewController = self.navigationController
 		self.window.makeKeyAndVisible()
 		
-		let coordinator = TabbarCoordinator(navigation: navigationController)
-		self.start(coordinator: coordinator)
+		let splashViewController = SplashViewController()
+		splashViewController.cooridinator = self
+		self.navigationController.viewControllers = [splashViewController]
 	}
-	
 }
+
+// MARK: - Navigation
+extension AppCoordinator {
+	func startTabbar() {
+		let tabCooridinator = TabbarCoordinator(navigation: self.navigationController)
+		tabCooridinator.start()
+	}
+}
+
