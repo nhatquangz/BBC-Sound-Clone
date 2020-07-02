@@ -19,30 +19,11 @@ extension AppEnvironment {
 }
 
 struct AppEnvironment {
-	
 	enum Environment: String {
 		case development = "development"
 		case staging = "staging"
 		case product = "production"
 	}
-	
 	static let shared = AppEnvironment()
 	var current: Environment = .development
-
-	
-	init() {
-
-	}
-}
-
-
-// MARK: - Service config
-extension AppEnvironment.Environment {
-	var rootURL: String {
-		return AppConfiguration.shared.rmsConfig(path: "rootUrl") ?? ""
-	}
-	
-	var appConfigURL: String {
-		return "https://sounds-mobile-config.files.bbci.co.uk/ios/1.17.2/config.json"
-	}
 }

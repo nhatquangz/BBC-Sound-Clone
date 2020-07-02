@@ -23,12 +23,6 @@ class AppRequest {
 		return Networking.shared.request(method: .post, url: path.url, retryCount: retryCount)
 	}
 	
-	static func getConfig() -> Observable<Result<JSON, RequestError>> {
-		let path = AppEnvironment.shared.current.appConfigURL
-		return Networking.shared.request(method: .get, url: path)
-	}
-	
-	
 	/// Get array data from returned json
 	/// - Parameters:
 	///   - path: request path
@@ -43,3 +37,25 @@ class AppRequest {
 		}
 	}
 }
+
+
+// MARK: - BBC
+extension AppRequest {
+	static func refreshToken(token: String, result: @escaping (Result<JSON, RequestError>) -> Void) {
+		let parameter = ["cassoClientId": "soundsNMA",
+						 "realm": "NMARealm",
+						 "clientId": "iPlayerNMA"]
+		let cookie = "ckns_rtkn=\(token)"
+		AF.request(RequestPath.refreshToken.url, parameters: parameter, headers: ["Cookie": cookie])
+			.validate(statusCode: 200..<300)
+			.responseJSON { (response) in
+				switch response.result {
+				case .success(let value):
+					result(.success(JSON(value)))
+				case .failure(_):
+					result(.failure(RequestError.serverError(response.data)))
+				}
+		}
+	}
+}
+

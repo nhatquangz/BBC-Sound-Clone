@@ -80,7 +80,7 @@ target 'SoundBBC' do
 	#pod 'Fakery', '~> 3.3.0'
 	#pod 'RealmSwift', '3.11.0'
 	#pod 'CryptoSwift'
-	pod 'KeychainAccess', '4.1.0'
+	pod 'KeychainAccess', '4.2.0'
 	
 	
 	#Language

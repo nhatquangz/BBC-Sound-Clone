@@ -23,15 +23,15 @@ class Networking: NSObject {
 	
 	static let shared = Networking()
 	
-	var sessionManager: Session!
+	var defaultSession: Session!
 	let kTimeoutIntervalForRequest = 30
 	
 	override init() {
 		super.init()
 		let configuration = URLSessionConfiguration.default
 		configuration.timeoutIntervalForRequest = TimeInterval(kTimeoutIntervalForRequest)
-		sessionManager = Session(configuration: configuration,
-								 interceptor: RequestInterceptor(storage: KeychainManager()))
+		defaultSession = Session(configuration: configuration,
+								 interceptor: RequestInterceptor(storage: TokenManager()))
 	}
 }
 
@@ -42,11 +42,12 @@ extension Networking {
 				 url: String,
 				 parameters: [String : Any]? = nil,
 				 encoding: ParameterEncoding = URLEncoding.default,
+				 session: Session? = nil,
 				 retryCount: Int = 1) -> Observable<Result<JSON, RequestError>> {
 		print("\(method.rawValue): \(url)")
-		
+		let session: Session = session ?? self.defaultSession
 		return Observable<Result<JSON, RequestError>>.create { observer -> Disposable in
-			self.sessionManager.request(url, method: method, parameters: parameters, encoding: encoding)
+			session.request(url, method: method, parameters: parameters, encoding: encoding)
 				.validate(statusCode: 200..<300)
 				.responseJSON { response in
 					switch response.result {

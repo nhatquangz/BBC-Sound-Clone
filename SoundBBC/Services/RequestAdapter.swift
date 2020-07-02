@@ -11,20 +11,17 @@ import Alamofire
 
 /// The storage containing your access token, preferable a Keychain wrapper.
 protocol AccessTokenStorage: class {
-	typealias JWT = String
-	var accessToken: JWT { get set }
+	var accessToken: String { get set }
+	func refresh(completion: @escaping (RequestError?) -> Void)
 }
 
 
 class RequestInterceptor: Alamofire.RequestInterceptor {
-	typealias RefreshToken = (Result<String, Error>) -> Void
 	
 	private var storage: AccessTokenStorage
-	private var refreshToken: ((RefreshToken) -> Void)?
 	
-	init(storage: AccessTokenStorage, refreshToken: ((RefreshToken) -> Void)? = nil) {
+	init(storage: AccessTokenStorage) {
 		self.storage = storage
-		self.refreshToken = refreshToken
 	}
 	
 	func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
@@ -40,14 +37,11 @@ class RequestInterceptor: Alamofire.RequestInterceptor {
 			return completion(.doNotRetryWithError(error))
 		}
 		print("Refresh token")
-		refreshToken? { [weak self] result in
-			guard let self = self else { return }
-			switch result {
-			case .success(let token):
-				self.storage.accessToken = token
-				completion(.retry)
-			case .failure(let error):
+		storage.refresh { error in
+			if let error = error {
 				completion(.doNotRetryWithError(error))
+			} else {
+				completion(.retry)
 			}
 		}
 	}
