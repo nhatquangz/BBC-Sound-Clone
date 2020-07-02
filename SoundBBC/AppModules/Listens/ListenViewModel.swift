@@ -31,13 +31,11 @@ class ListenViewModel: BaseViewModel {
 			}
 			.subscribe(onNext: { [weak self] result in
 				if let data = try? result.get() {
-					self?.dataSource.accept([data[1]])
+					self?.dataSource.accept(data)
 					self?.refreshView.onNext(())
 				}
 			})
 			.disposed(by: disposeBag)
-		
-		
 		
 		reloadData.onNext(())
 	}
@@ -60,6 +58,11 @@ extension ListenViewModel {
 			snapshot.appendItems(section.data, toSection: section.id)
 		}
 		return snapshot
+	}
+	
+	func headerViewModel(index: IndexPath) -> DefaultHeaderViewModel? {
+		guard let itemData = dataSource.value[safe: index.section] else { return nil }
+		return DefaultHeaderViewModel(section: itemData)
 	}
 }
 

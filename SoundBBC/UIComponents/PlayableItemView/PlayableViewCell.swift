@@ -12,7 +12,7 @@ class PlayableViewCell: UICollectionViewCell {
 	
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+		self.backgroundColor = .random
     }
 
 }

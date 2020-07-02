@@ -17,7 +17,7 @@ class DisplayModuleModel: DecodableModelProtocol {
     var descriptionField : String = ""
     var state : String = ""
     var uris : [UrisModel] = []
-    var controls : String = ""
+    var controls: ControlsModel?
     var total : Int = 0
     var data : [DisplayItemModel] = []
 
@@ -29,7 +29,7 @@ class DisplayModuleModel: DecodableModelProtocol {
         descriptionField = json["description"].stringValue
         state = json["state"].stringValue
 		uris = json["uris"].arrayValue.compactMap { UrisModel($0) }
-		controls = json["controls"].stringValue
+		controls = ControlsModel(json["controls"])
         total = json["total"].intValue
 		data = json["data"].arrayValue.compactMap { DisplayItemModel($0) }
 	}

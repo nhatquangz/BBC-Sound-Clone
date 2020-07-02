@@ -40,6 +40,7 @@ extension ListenViewController {
 		}
 		
 		collectionView.register(PlayableViewCell.self)
+		collectionView.register(ContainerViewCell.self, forCellWithReuseIdentifier: ContainerViewCell.className)
 		collectionView.register(DefaultCollectionViewHeader.self,
 								forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
 								withReuseIdentifier: DefaultCollectionViewHeader.className)
@@ -71,11 +72,14 @@ extension ListenViewController {
 			return cell
 		}
 		
-		dataSource.supplementaryViewProvider = {
+		dataSource.supplementaryViewProvider = { [weak self]
 			(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
 			let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
 																		 withReuseIdentifier: DefaultCollectionViewHeader.className,
 																		 for: indexPath) as! DefaultCollectionViewHeader
+			if let headerViewModel = self?.viewModel.headerViewModel(index: indexPath) {
+				header.config(viewModel: headerViewModel)
+			}
 			return header
 		}
 	}

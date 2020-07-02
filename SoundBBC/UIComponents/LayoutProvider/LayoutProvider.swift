@@ -40,6 +40,7 @@ class LayoutProvider {
 		}
 	}
 	
+	
 	func itemViewType(for theme: AppElementTheme) -> UICollectionViewCell.Type {
 		switch theme {
 		case .basicSmall:
@@ -49,9 +50,10 @@ class LayoutProvider {
 		}
 	}
 	
+	
 	func defaultSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
 		let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-												heightDimension: .estimated(50))
+												heightDimension: .absolute(50))
 		let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
 																 elementKind: UICollectionView.elementKindSectionHeader,
 																 alignment: .top)
@@ -63,17 +65,19 @@ class LayoutProvider {
 		let item = NSCollectionLayoutItem(
 			layoutSize:NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
 											  heightDimension: .fractionalHeight(0.5)))
-		item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0)
+		item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 15, trailing: 0)
 		
 		let group = NSCollectionLayoutGroup.vertical(
-			layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95),
+			layoutSize: NSCollectionLayoutSize(widthDimension: .estimated(AppDefinition.Dimension.playableItemWidth),
 											   heightDimension: .estimated(200)),
 			subitem: item,
 			count: 2)
-		
+
 		let section = NSCollectionLayoutSection(group: group)
 		section.boundarySupplementaryItems = [defaultSectionHeader()]
-		section.orthogonalScrollingBehavior = .groupPagingCentered
+		section.orthogonalScrollingBehavior = .groupPaging
+		section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 10)
+		
 		return section
 	}
 }

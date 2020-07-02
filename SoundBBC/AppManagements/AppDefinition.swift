@@ -40,5 +40,9 @@ class AppDefinition: NSObject {
 		static var contentPadding: CGFloat = 15
 		static var itemSpace: CGFloat = 10
 		static var playableItemHeight: CGFloat = 100
+		
+		// 15: Leading offset
+		// 7.5: Trailing offset
+		static var playableItemWidth: CGFloat = UIScreen.main.bounds.width - 15 - 10
 	}
 }
