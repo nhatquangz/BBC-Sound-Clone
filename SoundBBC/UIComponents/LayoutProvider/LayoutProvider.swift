@@ -40,13 +40,22 @@ class LayoutProvider {
 		}
 	}
 	
-	func itemView(for theme: AppElementTheme) -> UICollectionViewCell.Type {
+	func itemViewType(for theme: AppElementTheme) -> UICollectionViewCell.Type {
 		switch theme {
 		case .basicSmall:
 			return PlayableViewCell.self
 		default:
 			return PlayableViewCell.self
 		}
+	}
+	
+	func defaultSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+		let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+												heightDimension: .estimated(50))
+		let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
+																 elementKind: UICollectionView.elementKindSectionHeader,
+																 alignment: .top)
+		return header
 	}
 	
 	
@@ -63,6 +72,7 @@ class LayoutProvider {
 			count: 2)
 		
 		let section = NSCollectionLayoutSection(group: group)
+		section.boundarySupplementaryItems = [defaultSectionHeader()]
 		section.orthogonalScrollingBehavior = .groupPagingCentered
 		return section
 	}

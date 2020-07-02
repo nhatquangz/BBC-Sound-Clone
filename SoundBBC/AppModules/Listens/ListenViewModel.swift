@@ -31,7 +31,7 @@ class ListenViewModel: BaseViewModel {
 			}
 			.subscribe(onNext: { [weak self] result in
 				if let data = try? result.get() {
-					self?.dataSource.accept(data)
+					self?.dataSource.accept([data[1]])
 					self?.refreshView.onNext(())
 				}
 			})
@@ -46,19 +46,20 @@ class ListenViewModel: BaseViewModel {
 
 // MARK: - CollectionView
 extension ListenViewModel {
-	func numberOfSection() -> Int {
-		return dataSource.value.count
-	}
-	
-	func numberOfItems(inSection index: Int) -> Int {
-		return dataSource.value[safe: index]?.data.count ?? 0
-	}
-	
 	func theme(forSection index: Int) -> LayoutProvider.AppElementTheme {
 		guard let id = dataSource.value[safe: index]?.id else {
 			return .unknown
 		}
 		return AppConfiguration.shared.theme(id: id)
+	}
+	
+	func snapshotData() -> NSDiffableDataSourceSnapshot<String, DisplayItemModel> {
+		var snapshot = NSDiffableDataSourceSnapshot<String, DisplayItemModel>()
+		self.dataSource.value.forEach { (section) in
+			snapshot.appendSections([section.id])
+			snapshot.appendItems(section.data, toSection: section.id)
+		}
+		return snapshot
 	}
 }
 

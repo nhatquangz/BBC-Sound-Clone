@@ -65,3 +65,14 @@ class DisplayItemModel {
 	}
 }
 
+// MARK: - Hashable
+extension DisplayItemModel: Hashable {
+	static func == (lhs: DisplayItemModel, rhs: DisplayItemModel) -> Bool {
+		return lhs.id == rhs.id
+	}
+	
+	func hash(into hasher: inout Hasher) {
+	  hasher.combine(id)
+	}
+}
+

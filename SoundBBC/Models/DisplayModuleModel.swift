@@ -35,4 +35,14 @@ class DisplayModuleModel: DecodableModelProtocol {
 	}
 }
 
+// MARK: - Hashable
+extension DisplayModuleModel: Hashable {
+	static func == (lhs: DisplayModuleModel, rhs: DisplayModuleModel) -> Bool {
+		return lhs.id == rhs.id
+	}
+	
+	func hash(into hasher: inout Hasher) {
+	  hasher.combine(id)
+	}
+}
 

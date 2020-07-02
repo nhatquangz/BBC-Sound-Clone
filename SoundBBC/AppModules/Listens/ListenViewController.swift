@@ -16,6 +16,7 @@ class ListenViewController: UIViewController {
 	let disposeBag = DisposeBag()
 	var collectionView: UICollectionView!
 	let viewModel = ListenViewModel()
+	var dataSource: UICollectionViewDiffableDataSource<String, DisplayItemModel>! = nil
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -38,12 +39,18 @@ extension ListenViewController {
 			constraint.edges.equalToSuperview()
 		}
 		
-		collectionView.dataSource = self
 		collectionView.register(PlayableViewCell.self)
+		collectionView.register(DefaultCollectionViewHeader.self,
+								forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+								withReuseIdentifier: DefaultCollectionViewHeader.className)
+		
+		configureDataSource()
 		
 		viewModel.refreshView.asObservable()
 			.subscribe(onNext: { [weak self] in
-				self?.collectionView.reloadData()
+				guard let self = self else { return }
+				let snapshot = self.viewModel.snapshotData()
+				self.dataSource.apply(snapshot, animatingDifferences: true)
 			})
 			.disposed(by: disposeBag)
 	}
@@ -54,24 +61,23 @@ extension ListenViewController {
 			return LayoutProvider.shared.sectionLayout(theme: theme)
 		}
 	}
-}
-
-
-// MARK: - Collectionview
-extension ListenViewController: UICollectionViewDataSource {
-	func numberOfSections(in collectionView: UICollectionView) -> Int {
-		return viewModel.numberOfSection()
-	}
 	
-	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return viewModel.numberOfItems(inSection: section)
-	}
-	
-	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let theme = self.viewModel.theme(forSection: indexPath.section)
-		let cellType = LayoutProvider.shared.itemView(for: theme)
-		let cell = collectionView.dequeueReusableCell(with: cellType, for: indexPath)
-		return cell
+	func configureDataSource() {
+		self.dataSource = UICollectionViewDiffableDataSource<String, DisplayItemModel>(collectionView: self.collectionView)
+		{ (collectionView: UICollectionView, indexPath: IndexPath, item: DisplayItemModel) -> UICollectionViewCell? in
+			let theme = self.viewModel.theme(forSection: indexPath.section)
+			let cellType = LayoutProvider.shared.itemViewType(for: theme)
+			let cell = collectionView.dequeueReusableCell(with: cellType, for: indexPath)
+			return cell
+		}
+		
+		dataSource.supplementaryViewProvider = {
+			(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
+			let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+																		 withReuseIdentifier: DefaultCollectionViewHeader.className,
+																		 for: indexPath) as! DefaultCollectionViewHeader
+			return header
+		}
 	}
 }
 
