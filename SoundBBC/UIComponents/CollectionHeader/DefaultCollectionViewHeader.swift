@@ -23,11 +23,16 @@ class DefaultCollectionViewHeader: UICollectionReusableView {
 	
 	var seeMoreButton: UIButton = {
 		let button = UIButton()
+		button.setTitle("View All", for: .normal)
+		button.titleLabel?.font = AppDefinition.Font.reithSans.size(15)
+		button.setTitleColor(.black, for: .normal)
+		button.setTitleColor(.gray, for: .highlighted)
 		return button
 	}()
 	
 	var viewModel: DefaultHeaderViewModel?
 	var disposeBag = DisposeBag()
+	
 	
 	// MARK: - Init
 	override init(frame: CGRect) {
@@ -53,12 +58,12 @@ class DefaultCollectionViewHeader: UICollectionReusableView {
 		
 		sectionTitle.snp.makeConstraints {
 			$0.leading.centerY.equalToSuperview()
-			$0.trailing.equalTo(seeMoreButton)
+			$0.trailing.equalTo(seeMoreButton.snp.leading)
 		}
 		
 		seeMoreButton.snp.makeConstraints {
 			$0.trailing.top.bottom.equalToSuperview()
-			$0.width.equalTo(60)
+			$0.width.equalTo(80)
 		}
 	}
 	

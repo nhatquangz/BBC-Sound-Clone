@@ -44,7 +44,7 @@ extension ListenViewController {
 		collectionView.register(DefaultCollectionViewHeader.self,
 								forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
 								withReuseIdentifier: DefaultCollectionViewHeader.className)
-		
+
 		configureDataSource()
 		
 		viewModel.refreshView.asObservable()
@@ -59,7 +59,9 @@ extension ListenViewController {
 	func compositionalLayout() -> UICollectionViewCompositionalLayout {
 		return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
 			let theme = self.viewModel.theme(forSection: sectionIndex)
-			return LayoutProvider.shared.sectionLayout(theme: theme)
+			let numberOfItems = self.viewModel.numberOfItems(inSection: sectionIndex)
+			return LayoutProvider.shared.sectionLayout(theme: theme,
+													   numberOfItems: numberOfItems)
 		}
 	}
 	
