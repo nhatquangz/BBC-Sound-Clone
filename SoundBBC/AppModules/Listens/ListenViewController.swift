@@ -39,8 +39,11 @@ extension ListenViewController {
 			constraint.edges.equalToSuperview()
 		}
 		
-		collectionView.register(PlayableViewCell.self)
+		let nibCells: [UICollectionViewCell.Type] = [PlayableViewCell.self,
+													 ImpactLargeViewCell.self]
+		collectionView.register(nibCells)
 		collectionView.register(ContainerViewCell.self, forCellWithReuseIdentifier: ContainerViewCell.className)
+		collectionView.register(ImpactSmallViewCell.self, forCellWithReuseIdentifier: ImpactSmallViewCell.className)
 		collectionView.register(DefaultCollectionViewHeader.self,
 								forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
 								withReuseIdentifier: DefaultCollectionViewHeader.className)

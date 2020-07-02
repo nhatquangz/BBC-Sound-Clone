@@ -40,6 +40,12 @@ class LayoutProvider: NSObject {
 		case .basicLarge:
 			let columnCount = numberOfItems < 3 ? numberOfItems : 3
 			return basicLayout(columnItemCount: columnCount)
+		
+		case .impactLarge:
+			return impactLargeLayout()
+		
+		case .impactSmall:
+			return impactSmallLayout()
 			
 		default:
 			return basicLayout()
@@ -51,6 +57,10 @@ class LayoutProvider: NSObject {
 		switch theme {
 		case .basicSmall:
 			return PlayableViewCell.self
+		case .impactLarge:
+			return ImpactLargeViewCell.self
+		case .impactSmall:
+			return ImpactSmallViewCell.self
 		default:
 			return PlayableViewCell.self
 		}
@@ -82,12 +92,64 @@ class LayoutProvider: NSObject {
 											   heightDimension: .estimated(groupHeight)),
 			subitem: item,
 			count: columnItemCount)
-		group.interItemSpacing = .fixed(15)
+		group.interItemSpacing = .fixed(itemSpace)
 		
 		let section = NSCollectionLayoutSection(group: group)
 		section.boundarySupplementaryItems = [defaultSectionHeader()]
 		section.orthogonalScrollingBehavior = .groupPaging
-		section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: itemSpace + 5, bottom: itemSpace + 5, trailing: itemSpace - 5)
+		section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: itemSpace, bottom: itemSpace, trailing: itemSpace)
+		
+		return section
+	}
+	
+	
+	private func impactLargeLayout() -> NSCollectionLayoutSection {
+		let itemSpace = AppDefinition.Dimension.itemSpace - 5
+		let itemWidth = UIScreen.main.bounds.width * 0.5
+		let itemHeight = itemWidth + 90
+		let sectionPadding = AppDefinition.Dimension.contenPadding
+		
+		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+											  heightDimension: .fractionalHeight(1))
+		let item = NSCollectionLayoutItem(layoutSize: itemSize)
+		
+		let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(itemWidth),
+											   heightDimension: .absolute(itemHeight))
+		let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+													   subitems: [item])
+		
+		let section = NSCollectionLayoutSection(group: group)
+		section.boundarySupplementaryItems = [defaultSectionHeader()]
+		section.orthogonalScrollingBehavior = .continuous
+		section.interGroupSpacing = itemSpace
+		section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: sectionPadding, bottom: sectionPadding, trailing: sectionPadding)
+		
+		return section
+	}
+	
+	
+	private func impactSmallLayout() -> NSCollectionLayoutSection {
+		let itemSpace = AppDefinition.Dimension.itemSpace - 5
+		let itemHeight: CGFloat = 80.0
+		let itemWidth = itemHeight * 1.5
+		let sectionPadding = AppDefinition.Dimension.contenPadding
+		
+		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+											  heightDimension: .fractionalHeight(0.5))
+		let item = NSCollectionLayoutItem(layoutSize: itemSize)
+		
+		let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(itemWidth),
+											   heightDimension: .absolute(itemHeight * 2 + itemSpace))
+		let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize,
+													   subitem: item,
+													   count: 2)
+		group.interItemSpacing = .fixed(itemSpace)
+		
+		let section = NSCollectionLayoutSection(group: group)
+		section.boundarySupplementaryItems = [defaultSectionHeader()]
+		section.orthogonalScrollingBehavior = .continuous
+		section.interGroupSpacing = itemSpace
+		section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: sectionPadding, bottom: sectionPadding, trailing: sectionPadding)
 		
 		return section
 	}
