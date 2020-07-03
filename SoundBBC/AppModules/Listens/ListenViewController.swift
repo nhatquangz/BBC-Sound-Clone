@@ -38,16 +38,18 @@ extension ListenViewController {
 		collectionView.snp.makeConstraints { constraint in
 			constraint.edges.equalToSuperview()
 		}
+		let viewCells: [UICollectionViewCell.Type] = [PlayableViewCell.self,
+													 ImpactLargeViewCell.self,
+													 ImpactSmallViewCell.self,
+													 ContainerViewCell.self,
+													 CircleViewCell.self]
 		
-		let nibCells: [UICollectionViewCell.Type] = [PlayableViewCell.self,
-													 ImpactLargeViewCell.self]
-		collectionView.register(nibCells)
-		collectionView.register(ContainerViewCell.self, forCellWithReuseIdentifier: ContainerViewCell.className)
-		collectionView.register(ImpactSmallViewCell.self, forCellWithReuseIdentifier: ImpactSmallViewCell.className)
-		collectionView.register(DefaultCollectionViewHeader.self,
-								forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-								withReuseIdentifier: DefaultCollectionViewHeader.className)
-
+		let supplementaryViews: [UICollectionReusableView.Type] = [DefaultCollectionViewHeader.self,
+																   ListenLiveViewFooter.self]
+		
+		
+		collectionView.register(viewCells)
+		collectionView.register(reusableViewTypes: supplementaryViews)
 		configureDataSource()
 		
 		viewModel.refreshView.asObservable()
@@ -59,20 +61,21 @@ extension ListenViewController {
 			.disposed(by: disposeBag)
 	}
 	
+	
 	func compositionalLayout() -> UICollectionViewCompositionalLayout {
 		return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
 			let theme = self.viewModel.theme(forSection: sectionIndex)
 			let numberOfItems = self.viewModel.numberOfItems(inSection: sectionIndex)
-			return LayoutProvider.shared.sectionLayout(theme: theme,
-													   numberOfItems: numberOfItems)
+			return LayoutProvider(theme, numberOfItems: numberOfItems).sectionLayout
 		}
 	}
+	
 	
 	func configureDataSource() {
 		self.dataSource = UICollectionViewDiffableDataSource<String, DisplayItemModel>(collectionView: self.collectionView)
 		{ (collectionView: UICollectionView, indexPath: IndexPath, item: DisplayItemModel) -> UICollectionViewCell? in
 			let theme = self.viewModel.theme(forSection: indexPath.section)
-			let cellType = LayoutProvider.shared.itemViewType(for: theme)
+			let cellType: UICollectionViewCell.Type = LayoutProvider(theme).itemViewType
 			let cell = collectionView.dequeueReusableCell(with: cellType, for: indexPath)
 			return cell
 		}
@@ -89,5 +92,4 @@ extension ListenViewController {
 		}
 	}
 }
-
 

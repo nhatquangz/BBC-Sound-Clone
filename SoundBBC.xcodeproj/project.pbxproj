@@ -57,6 +57,9 @@
 		23C87E5C24AE3D9D00239A60 /* DefaultHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C87E5B24AE3D9D00239A60 /* DefaultHeaderViewModel.swift */; };
 		23C87E6524AE778100239A60 /* ImpactLargeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C87E6324AE778100239A60 /* ImpactLargeViewCell.swift */; };
 		23C87E6624AE778100239A60 /* ImpactLargeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C87E6424AE778100239A60 /* ImpactLargeViewCell.xib */; };
+		23E90F3824AF44E700D630F5 /* CircleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F3724AF44E700D630F5 /* CircleViewCell.swift */; };
+		23E90F3D24AF934C00D630F5 /* ListenLiveViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F3B24AF934C00D630F5 /* ListenLiveViewFooter.swift */; };
+		23E90F3E24AF934C00D630F5 /* ListenLiveViewFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23E90F3C24AF934C00D630F5 /* ListenLiveViewFooter.xib */; };
 		23FECE1624ABD08000F906DE /* UrisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FECE1524ABD07F00F906DE /* UrisModel.swift */; };
 		23FECE1824ABD20000F906DE /* GuidanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FECE1724ABD20000F906DE /* GuidanceModel.swift */; };
 		23FECE1B24ABE24800F906DE /* DecodableModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FECE1A24ABE24800F906DE /* DecodableModelProtocol.swift */; };
@@ -120,6 +123,9 @@
 		23C87E5B24AE3D9D00239A60 /* DefaultHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHeaderViewModel.swift; sourceTree = "<group>"; };
 		23C87E6324AE778100239A60 /* ImpactLargeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactLargeViewCell.swift; sourceTree = "<group>"; };
 		23C87E6424AE778100239A60 /* ImpactLargeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImpactLargeViewCell.xib; sourceTree = "<group>"; };
+		23E90F3724AF44E700D630F5 /* CircleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewCell.swift; sourceTree = "<group>"; };
+		23E90F3B24AF934C00D630F5 /* ListenLiveViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenLiveViewFooter.swift; sourceTree = "<group>"; };
+		23E90F3C24AF934C00D630F5 /* ListenLiveViewFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenLiveViewFooter.xib; sourceTree = "<group>"; };
 		23FECE1524ABD07F00F906DE /* UrisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrisModel.swift; sourceTree = "<group>"; };
 		23FECE1724ABD20000F906DE /* GuidanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceModel.swift; sourceTree = "<group>"; };
 		23FECE1A24ABE24800F906DE /* DecodableModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableModelProtocol.swift; sourceTree = "<group>"; };
@@ -236,10 +242,11 @@
 		2309CDE92450834E00620475 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				23E90F3624AF447A00D630F5 /* CircleViewCell */,
 				23B7C30824AE896C00539E6B /* ImpactSmallView */,
 				23C87E6024AE76FE00239A60 /* ImpactLargeView */,
 				23C87E5624AE008000239A60 /* ContainerViewCell */,
-				23C87E5324ADD05600239A60 /* CollectionHeader */,
+				23C87E5324ADD05600239A60 /* CollectionHeaderFooter */,
 				232C60C424AA87B30049A68A /* LayoutProvider */,
 				239D62642452089E00239B90 /* DisplayModuleView */,
 				239D62632451FD8800239B90 /* PlayableItemView */,
@@ -401,13 +408,14 @@
 			path = ImpactSmallView;
 			sourceTree = "<group>";
 		};
-		23C87E5324ADD05600239A60 /* CollectionHeader */ = {
+		23C87E5324ADD05600239A60 /* CollectionHeaderFooter */ = {
 			isa = PBXGroup;
 			children = (
+				23E90F3F24AF934F00D630F5 /* ListenLiveFooter */,
 				23C87E5424ADD10B00239A60 /* DefaultCollectionViewHeader.swift */,
 				23C87E5B24AE3D9D00239A60 /* DefaultHeaderViewModel.swift */,
 			);
-			path = CollectionHeader;
+			path = CollectionHeaderFooter;
 			sourceTree = "<group>";
 		};
 		23C87E5624AE008000239A60 /* ContainerViewCell */ = {
@@ -425,6 +433,23 @@
 				23C87E6424AE778100239A60 /* ImpactLargeViewCell.xib */,
 			);
 			path = ImpactLargeView;
+			sourceTree = "<group>";
+		};
+		23E90F3624AF447A00D630F5 /* CircleViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				23E90F3724AF44E700D630F5 /* CircleViewCell.swift */,
+			);
+			path = CircleViewCell;
+			sourceTree = "<group>";
+		};
+		23E90F3F24AF934F00D630F5 /* ListenLiveFooter */ = {
+			isa = PBXGroup;
+			children = (
+				23E90F3B24AF934C00D630F5 /* ListenLiveViewFooter.swift */,
+				23E90F3C24AF934C00D630F5 /* ListenLiveViewFooter.xib */,
+			);
+			path = ListenLiveFooter;
 			sourceTree = "<group>";
 		};
 		23FECE1E24AC7FA500F906DE /* Array */ = {
@@ -523,6 +548,7 @@
 				2309CE092450F3E500620475 /* BBCReithSerif_Rg.ttf in Resources */,
 				232C60CA24AA96140049A68A /* PlayableViewCell.xib in Resources */,
 				2309CE0024508D1400620475 /* MySoundViewController.xib in Resources */,
+				23E90F3E24AF934C00D630F5 /* ListenLiveViewFooter.xib in Resources */,
 				232C60C324AA42FF0049A68A /* SplashViewController.xib in Resources */,
 				23C87E6624AE778100239A60 /* ImpactLargeViewCell.xib in Resources */,
 				2309CE0E2450F7CF00620475 /* BBCReithSans_Rg.ttf in Resources */,
@@ -594,6 +620,7 @@
 				23328BF824545BC1005E2C5F /* ReleaseModel.swift in Sources */,
 				2309CE0C2450F4AD00620475 /* AppDefinition.swift in Sources */,
 				23328BF624545B8D005E2C5F /* AvailabilityModel.swift in Sources */,
+				23E90F3824AF44E700D630F5 /* CircleViewCell.swift in Sources */,
 				23FECE1D24AC7E9900F906DE /* ArrayExtension.swift in Sources */,
 				23328C01245474B0005E2C5F /* AppRequest.swift in Sources */,
 				23C87E6524AE778100239A60 /* ImpactLargeViewCell.swift in Sources */,
@@ -610,6 +637,7 @@
 				23C87E5A24AE2C4200239A60 /* ControlsModel.swift in Sources */,
 				232C60D224AB6BD10049A68A /* DownloadModel.swift in Sources */,
 				23328C0824548A64005E2C5F /* JSONHelper.swift in Sources */,
+				23E90F3D24AF934C00D630F5 /* ListenLiveViewFooter.swift in Sources */,
 				23328C0424547C2A005E2C5F /* AppConfigModel.swift in Sources */,
 				2309CE0624509A0B00620475 /* SearchCoordinator.swift in Sources */,
 				2309CDED245083A300620475 /* BaseCoordinator.swift in Sources */,

@@ -38,14 +38,18 @@ public extension UITableView {
     }
 
 	func dequeueReusableCell<T: UITableViewCell>(with type: T.Type, for indexPath: IndexPath) -> T {
-        return self.dequeueReusableCell(withIdentifier: type.className, for: indexPath) as! T
-    }
+		return self.dequeueReusableCell(withIdentifier: type.className, for: indexPath) as! T
+	}
 }
 
 
 public extension UICollectionView {
 	func register<T: UICollectionViewCell>(_ cellType: T.Type, bundle: Bundle? = nil) {
 		let className = cellType.className
+		if Bundle.main.path(forResource: className, ofType: "nib") == nil {
+			register(cellType, forCellWithReuseIdentifier: className)
+			return
+		}
 		let nib = UINib(nibName: className, bundle: bundle)
 		register(nib, forCellWithReuseIdentifier: className)
 	}
@@ -58,6 +62,10 @@ public extension UICollectionView {
 											   ofKind kind: String = UICollectionView.elementKindSectionHeader,
 											   bundle: Bundle? = nil) {
 		let className = reusableViewType.className
+		if Bundle.main.path(forResource: className, ofType: "nib") == nil {
+			register(reusableViewType, forSupplementaryViewOfKind: kind, withReuseIdentifier: className)
+			return
+		}
 		let nib = UINib(nibName: className, bundle: bundle)
 		register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: className)
 	}

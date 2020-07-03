@@ -29,7 +29,7 @@ class AppDefinition: NSObject {
 	Definition of color
 	**/
 	enum Color {
-		static var main = UIColor(hexString: "#1cb955")
+		static let main = UIColor(hexString: "#1cb955")
 	}
 	
 	
@@ -37,12 +37,14 @@ class AppDefinition: NSObject {
 	Dimensions
 	**/
 	enum Dimension {
-		static var contenPadding: CGFloat = 15
-		static var itemSpace: CGFloat = 15
-		static var playableItemHeight: CGFloat = 100
+		static let contenPadding: CGFloat = 15
+		static let itemSpace: CGFloat = 15
+		static let playableItemHeight: CGFloat = 100
 		
 		// 15: Leading offset
 		// 10: Trailing offset
-		static var playableItemWidth: CGFloat = UIScreen.main.bounds.width - 15 - 10
+		static let playableItemWidth: CGFloat = UIScreen.main.bounds.width - 15 - 10
+		
+		static let dialItemHeight: CGFloat = UIScreen.main.bounds.width / 4
 	}
 }
