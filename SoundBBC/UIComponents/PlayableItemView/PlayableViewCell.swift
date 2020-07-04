@@ -16,3 +16,11 @@ class PlayableViewCell: UICollectionViewCell {
     }
 
 }
+
+
+extension PlayableViewCell: DisplayableItemView {
+	func configure<T>(data: T) {
+		
+	}
+}
+

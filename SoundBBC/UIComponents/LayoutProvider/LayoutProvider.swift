@@ -56,8 +56,8 @@ class LayoutProvider {
 			itemViewType = ImpactSmallViewCell.self
 		
 		case .dial:
-			sectionLayout = dialLayout()
-			itemViewType = CircleViewCell.self
+			sectionLayout = listenLive()
+			itemViewType = ListenLiveView.self
 			
 		default:
 			sectionLayout = basicLayout()
@@ -70,13 +70,21 @@ class LayoutProvider {
 
 // MARK: - Layouts
 extension LayoutProvider {
+	private func supplementaryView(height: NSCollectionLayoutDimension,
+								   width: NSCollectionLayoutDimension = .fractionalWidth(1),
+								   kind: String = UICollectionView.elementKindSectionHeader,
+								   alignment: NSRectAlignment) -> NSCollectionLayoutBoundarySupplementaryItem {
+		
+		let size = NSCollectionLayoutSize(widthDimension: width,
+												heightDimension: height)
+		let reuseView = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: size,
+																 elementKind: kind,
+																 alignment: alignment)
+		return reuseView
+	}
+	
 	private func defaultSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-		let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-												heightDimension: .absolute(50))
-		let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
-																 elementKind: UICollectionView.elementKindSectionHeader,
-																 alignment: .top)
-		return header
+		return supplementaryView(height: .absolute(50), alignment: .top)
 	}
 	
 	
@@ -100,7 +108,7 @@ extension LayoutProvider {
 		let section = NSCollectionLayoutSection(group: group)
 		section.boundarySupplementaryItems = [defaultSectionHeader()]
 		section.orthogonalScrollingBehavior = .groupPaging
-		section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: itemSpace, bottom: itemSpace, trailing: itemSpace)
+		section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: itemSpace, bottom: itemSpace, trailing: itemSpace-5)
 		
 		return section
 	}
@@ -158,7 +166,29 @@ extension LayoutProvider {
 	}
 	
 	
-	private func dialLayout() -> NSCollectionLayoutSection {
+	private func listenLive() -> NSCollectionLayoutSection {
+		let itemHeight = AppDefinition.Dimension.dialItemHeight
+		let itemSpace = AppDefinition.Dimension.itemSpace
+		
+		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+											  heightDimension: .fractionalWidth(1))
+		let item = NSCollectionLayoutItem(layoutSize: itemSize)
+		
+		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+											   heightDimension: .absolute(itemHeight+50))
+		let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+													   subitems: [item])
+		
+		let section = NSCollectionLayoutSection(group: group)
+		section.contentInsets = NSDirectionalEdgeInsets(top: itemSpace, leading: 0, bottom: 0, trailing: 0)
+		let footer = supplementaryView(height: .absolute(200),
+									   kind: ListenLiveViewFooter.className,
+									   alignment: .bottom)
+		section.boundarySupplementaryItems = [footer]
+		return section
+	}
+	
+	func dialLayout() -> NSCollectionLayoutSection {
 		let itemHeight = AppDefinition.Dimension.dialItemHeight
 		let itemSpace = AppDefinition.Dimension.itemSpace
 		
@@ -172,22 +202,22 @@ extension LayoutProvider {
 													   subitems: [item])
 		
 		let section = NSCollectionLayoutSection(group: group)
-		section.orthogonalScrollingBehavior = .continuous
-		section.interGroupSpacing = itemSpace - 5
-		section.contentInsets = NSDirectionalEdgeInsets(top: itemSpace, leading: 0, bottom: itemSpace, trailing: 0)
+//		section.orthogonalScrollingBehavior = .continuous
+		section.interGroupSpacing = itemSpace + 5
+		section.contentInsets = NSDirectionalEdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0)
 		
 		section.visibleItemsInvalidationHandler = { items, offset, env in
 			let r = CGRect(origin: offset, size: env.container.contentSize)
 			let cells = items.filter { $0.representedElementCategory == .cell }
 			for item in cells {
 				let d = abs(r.midX - item.center.x)
-				let tolerance : CGFloat = 0.02
-				var scale = 1.0 + tolerance - (d / r.size.width * 2) * 0.2
-				if (scale > 1.0) {
-					scale = 1.0
+				var scale = 1.15 - d / (r.size.width / 2)
+				if (scale < 0.95) {
+					scale = 0.95
 				}
 				let scaleTransform = CGAffineTransform(scaleX: scale, y: scale)
-				let y = d * 0.15
+				var y = -30 * (1 - d / (r.size.width / 2))
+				if y > 0 { y = 0 }
 				let translationYTransform = CGAffineTransform(translationX: 0, y: y)
 				item.transform = scaleTransform.concatenating(translationYTransform)
 			}

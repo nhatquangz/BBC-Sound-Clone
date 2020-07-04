@@ -60,6 +60,8 @@
 		23E90F3824AF44E700D630F5 /* CircleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F3724AF44E700D630F5 /* CircleViewCell.swift */; };
 		23E90F3D24AF934C00D630F5 /* ListenLiveViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F3B24AF934C00D630F5 /* ListenLiveViewFooter.swift */; };
 		23E90F3E24AF934C00D630F5 /* ListenLiveViewFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23E90F3C24AF934C00D630F5 /* ListenLiveViewFooter.xib */; };
+		23E90F4324AFF1F900D630F5 /* ListenLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F4124AFF1F900D630F5 /* ListenLiveView.swift */; };
+		23E90F4624B088C400D630F5 /* DialCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F4524B088C400D630F5 /* DialCollectionView.swift */; };
 		23FECE1624ABD08000F906DE /* UrisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FECE1524ABD07F00F906DE /* UrisModel.swift */; };
 		23FECE1824ABD20000F906DE /* GuidanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FECE1724ABD20000F906DE /* GuidanceModel.swift */; };
 		23FECE1B24ABE24800F906DE /* DecodableModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FECE1A24ABE24800F906DE /* DecodableModelProtocol.swift */; };
@@ -126,6 +128,8 @@
 		23E90F3724AF44E700D630F5 /* CircleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewCell.swift; sourceTree = "<group>"; };
 		23E90F3B24AF934C00D630F5 /* ListenLiveViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenLiveViewFooter.swift; sourceTree = "<group>"; };
 		23E90F3C24AF934C00D630F5 /* ListenLiveViewFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenLiveViewFooter.xib; sourceTree = "<group>"; };
+		23E90F4124AFF1F900D630F5 /* ListenLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenLiveView.swift; sourceTree = "<group>"; };
+		23E90F4524B088C400D630F5 /* DialCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialCollectionView.swift; sourceTree = "<group>"; };
 		23FECE1524ABD07F00F906DE /* UrisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrisModel.swift; sourceTree = "<group>"; };
 		23FECE1724ABD20000F906DE /* GuidanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceModel.swift; sourceTree = "<group>"; };
 		23FECE1A24ABE24800F906DE /* DecodableModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableModelProtocol.swift; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 		2309CDE92450834E00620475 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				23E90F4024AFF1EA00D630F5 /* ListenLiveView */,
 				23E90F3624AF447A00D630F5 /* CircleViewCell */,
 				23B7C30824AE896C00539E6B /* ImpactSmallView */,
 				23C87E6024AE76FE00239A60 /* ImpactLargeView */,
@@ -452,6 +457,15 @@
 			path = ListenLiveFooter;
 			sourceTree = "<group>";
 		};
+		23E90F4024AFF1EA00D630F5 /* ListenLiveView */ = {
+			isa = PBXGroup;
+			children = (
+				23E90F4124AFF1F900D630F5 /* ListenLiveView.swift */,
+				23E90F4524B088C400D630F5 /* DialCollectionView.swift */,
+			);
+			path = ListenLiveView;
+			sourceTree = "<group>";
+		};
 		23FECE1E24AC7FA500F906DE /* Array */ = {
 			isa = PBXGroup;
 			children = (
@@ -613,11 +627,13 @@
 				23328BFA24546E35005E2C5F /* AppNetwork.swift in Sources */,
 				232C60C224AA42FF0049A68A /* SplashViewController.swift in Sources */,
 				23C87E5524ADD10B00239A60 /* DefaultCollectionViewHeader.swift in Sources */,
+				23E90F4324AFF1F900D630F5 /* ListenLiveView.swift in Sources */,
 				23FECE1B24ABE24800F906DE /* DecodableModelProtocol.swift in Sources */,
 				2304EA4424535BB500A1B75C /* DisplayItemModel.swift in Sources */,
 				23FECE1824ABD20000F906DE /* GuidanceModel.swift in Sources */,
 				23328BFF24547310005E2C5F /* AppEnvironment.swift in Sources */,
 				23328BF824545BC1005E2C5F /* ReleaseModel.swift in Sources */,
+				23E90F4624B088C400D630F5 /* DialCollectionView.swift in Sources */,
 				2309CE0C2450F4AD00620475 /* AppDefinition.swift in Sources */,
 				23328BF624545B8D005E2C5F /* AvailabilityModel.swift in Sources */,
 				23E90F3824AF44E700D630F5 /* CircleViewCell.swift in Sources */,
@@ -793,6 +809,7 @@
 			baseConfigurationReference = 3861E8562E46EE65FFA92F18 /* Pods-SoundBBC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C4XF7U982N;
 				INFOPLIST_FILE = SoundBBC/Info.plist;
@@ -803,6 +820,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nhatquangz.soundbbc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -813,6 +831,7 @@
 			baseConfigurationReference = C72ADD3035029FC6DFAEFA48 /* Pods-SoundBBC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C4XF7U982N;
 				INFOPLIST_FILE = SoundBBC/Info.plist;
@@ -823,6 +842,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nhatquangz.soundbbc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

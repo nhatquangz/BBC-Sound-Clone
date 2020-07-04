@@ -20,5 +20,6 @@ class ListenLiveViewFooter: UICollectionReusableView {
 		Bundle.main.loadNibNamed(nibName, owner: self, options: nil)
 		addSubview(contentView)
 		contentView.frame = self.bounds
+		contentView.backgroundColor = .random
 	}
 }

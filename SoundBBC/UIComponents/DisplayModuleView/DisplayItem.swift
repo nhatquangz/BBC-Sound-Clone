@@ -10,16 +10,5 @@ import Foundation
 import UIKit
 
 protocol DisplayableItemView {
-	func configure(data: DisplayableItemData)
-}
-
-protocol DisplayableItemData {
-	
-}
-
-
-enum DisplayableItemType {
-	case playable
-	case container
-	case category
+	func configure<T>(data: T)
 }

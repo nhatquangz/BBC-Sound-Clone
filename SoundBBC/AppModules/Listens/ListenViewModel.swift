@@ -51,8 +51,21 @@ extension ListenViewModel {
 		return AppConfiguration.shared.theme(id: id)
 	}
 	
+	func numberOfSection() -> Int {
+		return self.dataSource.value.count
+	}
+	
 	func numberOfItems(inSection index: Int) -> Int {
-		return dataSource.value[safe: index]?.data.count ?? 0
+		let theme = self.theme(forSection: index)
+		if theme == .dial {
+			return 1
+		} else {
+			return dataSource.value[safe: index]?.data.count ?? 0
+		}
+	}
+	
+	func data(section: Int) -> [DisplayItemModel] {
+		return self.dataSource.value[safe: section]?.data ?? []
 	}
 	
 	func snapshotData() -> NSDiffableDataSourceSnapshot<String, DisplayItemModel> {
