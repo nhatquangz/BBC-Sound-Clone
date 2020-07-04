@@ -64,17 +64,14 @@ extension ListenViewModel {
 		}
 	}
 	
-	func data(section: Int) -> [DisplayItemModel] {
+	func items(section: Int) -> [DisplayItemModel] {
 		return self.dataSource.value[safe: section]?.data ?? []
 	}
 	
-	func snapshotData() -> NSDiffableDataSourceSnapshot<String, DisplayItemModel> {
-		var snapshot = NSDiffableDataSourceSnapshot<String, DisplayItemModel>()
-		self.dataSource.value.forEach { (section) in
-			snapshot.appendSections([section.id])
-			snapshot.appendItems(section.data, toSection: section.id)
-		}
-		return snapshot
+	func item(indexPath: IndexPath) -> DisplayItemModel? {
+		let section = indexPath.section
+		let itemIndex = indexPath.row
+		return self.dataSource.value[safe: section]?.data[safe: itemIndex]
 	}
 	
 	func headerViewModel(index: IndexPath) -> DefaultHeaderViewModel? {

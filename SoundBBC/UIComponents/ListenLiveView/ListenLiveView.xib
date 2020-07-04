@@ -31,12 +31,12 @@
                                 <rect key="frame" x="20" y="10" width="374" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  LIVE  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OX0-ok-oDM">
-                                        <rect key="frame" x="166" y="0.0" width="42.5" height="20"/>
+                                        <rect key="frame" x="165.5" y="0.0" width="43" height="20"/>
                                         <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="rOG-yW-yx9"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="13"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>

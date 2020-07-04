@@ -30,9 +30,9 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="k1F-JC-2Mv">
                                 <rect key="frame" x="0.0" y="0.0" width="529" height="120"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FrB-M6-G8F">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FrB-M6-G8F">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                        <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="FrB-M6-G8F" secondAttribute="height" id="Ysv-oD-Zyj"/>
                                         </constraints>
@@ -113,7 +113,12 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="529" height="210"/>
-            <point key="canvasLocation" x="103.62318840579711" y="-61.607142857142854"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="jbq-bv-cUa" id="86O-GA-oay"/>
+                <outlet property="itemImageView" destination="FrB-M6-G8F" id="ys7-Rp-dZj"/>
+                <outlet property="titleLabel" destination="ImT-Vg-21y" id="XrX-va-lcu"/>
+            </connections>
+            <point key="canvasLocation" x="-246" y="-129"/>
         </collectionViewCell>
     </objects>
     <resources>
