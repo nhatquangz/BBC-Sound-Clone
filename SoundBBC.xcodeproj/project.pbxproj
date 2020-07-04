@@ -61,7 +61,9 @@
 		23E90F3D24AF934C00D630F5 /* ListenLiveViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F3B24AF934C00D630F5 /* ListenLiveViewFooter.swift */; };
 		23E90F3E24AF934C00D630F5 /* ListenLiveViewFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23E90F3C24AF934C00D630F5 /* ListenLiveViewFooter.xib */; };
 		23E90F4324AFF1F900D630F5 /* ListenLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F4124AFF1F900D630F5 /* ListenLiveView.swift */; };
-		23E90F4624B088C400D630F5 /* DialCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F4524B088C400D630F5 /* DialCollectionView.swift */; };
+		23E90F4624B088C400D630F5 /* SnapCenterItemCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F4524B088C400D630F5 /* SnapCenterItemCollectionViewLayout.swift */; };
+		23E90F4824B0E63700D630F5 /* ListenLiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F4724B0E63700D630F5 /* ListenLiveViewModel.swift */; };
+		23E90F4C24B10B1100D630F5 /* ListenLiveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23E90F4B24B10B1100D630F5 /* ListenLiveView.xib */; };
 		23FECE1624ABD08000F906DE /* UrisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FECE1524ABD07F00F906DE /* UrisModel.swift */; };
 		23FECE1824ABD20000F906DE /* GuidanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FECE1724ABD20000F906DE /* GuidanceModel.swift */; };
 		23FECE1B24ABE24800F906DE /* DecodableModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FECE1A24ABE24800F906DE /* DecodableModelProtocol.swift */; };
@@ -129,7 +131,9 @@
 		23E90F3B24AF934C00D630F5 /* ListenLiveViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenLiveViewFooter.swift; sourceTree = "<group>"; };
 		23E90F3C24AF934C00D630F5 /* ListenLiveViewFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenLiveViewFooter.xib; sourceTree = "<group>"; };
 		23E90F4124AFF1F900D630F5 /* ListenLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenLiveView.swift; sourceTree = "<group>"; };
-		23E90F4524B088C400D630F5 /* DialCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialCollectionView.swift; sourceTree = "<group>"; };
+		23E90F4524B088C400D630F5 /* SnapCenterItemCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCenterItemCollectionViewLayout.swift; sourceTree = "<group>"; };
+		23E90F4724B0E63700D630F5 /* ListenLiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenLiveViewModel.swift; sourceTree = "<group>"; };
+		23E90F4B24B10B1100D630F5 /* ListenLiveView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenLiveView.xib; sourceTree = "<group>"; };
 		23FECE1524ABD07F00F906DE /* UrisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrisModel.swift; sourceTree = "<group>"; };
 		23FECE1724ABD20000F906DE /* GuidanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceModel.swift; sourceTree = "<group>"; };
 		23FECE1A24ABE24800F906DE /* DecodableModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableModelProtocol.swift; sourceTree = "<group>"; };
@@ -461,7 +465,9 @@
 			isa = PBXGroup;
 			children = (
 				23E90F4124AFF1F900D630F5 /* ListenLiveView.swift */,
-				23E90F4524B088C400D630F5 /* DialCollectionView.swift */,
+				23E90F4B24B10B1100D630F5 /* ListenLiveView.xib */,
+				23E90F4524B088C400D630F5 /* SnapCenterItemCollectionViewLayout.swift */,
+				23E90F4724B0E63700D630F5 /* ListenLiveViewModel.swift */,
 			);
 			path = ListenLiveView;
 			sourceTree = "<group>";
@@ -560,6 +566,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2309CE092450F3E500620475 /* BBCReithSerif_Rg.ttf in Resources */,
+				23E90F4C24B10B1100D630F5 /* ListenLiveView.xib in Resources */,
 				232C60CA24AA96140049A68A /* PlayableViewCell.xib in Resources */,
 				2309CE0024508D1400620475 /* MySoundViewController.xib in Resources */,
 				23E90F3E24AF934C00D630F5 /* ListenLiveViewFooter.xib in Resources */,
@@ -633,7 +640,8 @@
 				23FECE1824ABD20000F906DE /* GuidanceModel.swift in Sources */,
 				23328BFF24547310005E2C5F /* AppEnvironment.swift in Sources */,
 				23328BF824545BC1005E2C5F /* ReleaseModel.swift in Sources */,
-				23E90F4624B088C400D630F5 /* DialCollectionView.swift in Sources */,
+				23E90F4824B0E63700D630F5 /* ListenLiveViewModel.swift in Sources */,
+				23E90F4624B088C400D630F5 /* SnapCenterItemCollectionViewLayout.swift in Sources */,
 				2309CE0C2450F4AD00620475 /* AppDefinition.swift in Sources */,
 				23328BF624545B8D005E2C5F /* AvailabilityModel.swift in Sources */,
 				23E90F3824AF44E700D630F5 /* CircleViewCell.swift in Sources */,

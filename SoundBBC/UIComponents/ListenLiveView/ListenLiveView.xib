@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="BBCReithSans_Md.ttf">
+            <string>BBCReithSans-Medium</string>
+        </array>
+        <array key="BBCReithSans_Rg.ttf">
+            <string>BBCReithSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FuR-1B-ZVg" customClass="ListenLiveView" customModule="SoundBBC" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="303"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RHx-dp-h3F">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="303"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vC-X2-i16">
+                        <rect key="frame" x="0.0" y="160" width="414" height="155"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Rfs-YY-JnG">
+                                <rect key="frame" x="20" y="10" width="374" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  LIVE  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OX0-ok-oDM">
+                                        <rect key="frame" x="166" y="0.0" width="42.5" height="20"/>
+                                        <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="rOG-yW-yx9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Tailenders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wp6-jO-oRx">
+                                        <rect key="frame" x="146" y="25.5" width="82.5" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="FUw-Ue-j4W"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="BBCReithSans-Medium" family="BBC Reith Sans" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Felix White picks the songs that are best to clean to" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaE-Wr-RSE">
+                                        <rect key="frame" x="20.5" y="51" width="333" height="19"/>
+                                        <fontDescription key="fontDescription" name="BBCReithSans-Regular" family="BBC Reith Sans" pointSize="14"/>
+                                        <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="tmo-jy-BAY"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jil-Qu-MwN">
+                                <rect key="frame" x="107" y="95" width="200" height="40"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="GHi-jI-BRS"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="XuZ-tj-ldS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BBCReithSans-Medium" family="BBC Reith Sans" pointSize="15"/>
+                                <state key="normal" title="Stations &amp; Schedules">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Rfs-YY-JnG" secondAttribute="trailing" constant="20" id="IfP-CR-l90"/>
+                            <constraint firstAttribute="bottom" secondItem="Jil-Qu-MwN" secondAttribute="bottom" constant="20" id="OCe-p2-qGX"/>
+                            <constraint firstItem="Rfs-YY-JnG" firstAttribute="top" secondItem="0vC-X2-i16" secondAttribute="top" constant="10" id="PE4-Rf-Aaa"/>
+                            <constraint firstItem="Jil-Qu-MwN" firstAttribute="top" secondItem="Rfs-YY-JnG" secondAttribute="bottom" constant="15" id="SAK-VG-UKj"/>
+                            <constraint firstItem="Jil-Qu-MwN" firstAttribute="centerX" secondItem="Rfs-YY-JnG" secondAttribute="centerX" id="eVG-PB-xg0"/>
+                            <constraint firstItem="Rfs-YY-JnG" firstAttribute="leading" secondItem="0vC-X2-i16" secondAttribute="leading" constant="20" id="hpO-lG-aYt"/>
+                        </constraints>
+                    </view>
+                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gqz-UZ-MRb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="160" id="HPn-zB-3X3"/>
+                        </constraints>
+                        <collectionViewLayout key="collectionViewLayout" id="Vuc-QU-PR4"/>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="0vC-X2-i16" firstAttribute="leading" secondItem="RHx-dp-h3F" secondAttribute="leading" id="Ho4-2G-rfl"/>
+                    <constraint firstAttribute="trailing" secondItem="0vC-X2-i16" secondAttribute="trailing" id="MAh-Pp-zJx"/>
+                    <constraint firstItem="gqz-UZ-MRb" firstAttribute="top" secondItem="RHx-dp-h3F" secondAttribute="top" id="NWm-p1-EFi"/>
+                    <constraint firstItem="gqz-UZ-MRb" firstAttribute="leading" secondItem="RHx-dp-h3F" secondAttribute="leading" id="dt2-G2-iJm"/>
+                    <constraint firstAttribute="bottom" secondItem="0vC-X2-i16" secondAttribute="bottom" priority="250" id="gBp-nh-VSd"/>
+                    <constraint firstAttribute="trailing" secondItem="gqz-UZ-MRb" secondAttribute="trailing" id="oB2-hd-Pp3"/>
+                    <constraint firstItem="Jil-Qu-MwN" firstAttribute="width" secondItem="RHx-dp-h3F" secondAttribute="width" multiplier="0.5" priority="999" id="r17-2k-3Jt"/>
+                    <constraint firstItem="0vC-X2-i16" firstAttribute="top" secondItem="gqz-UZ-MRb" secondAttribute="bottom" id="z3V-nU-C6H"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="387" height="303"/>
+            <connections>
+                <outlet property="collectionView" destination="gqz-UZ-MRb" id="dpl-Ri-8dR"/>
+            </connections>
+            <point key="canvasLocation" x="-177.59999999999999" y="-172.26386806596702"/>
+        </collectionViewCell>
+    </objects>
+</document>

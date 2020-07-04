@@ -167,24 +167,12 @@ extension LayoutProvider {
 	
 	
 	private func listenLive() -> NSCollectionLayoutSection {
-		let itemHeight = AppDefinition.Dimension.dialItemHeight
-		let itemSpace = AppDefinition.Dimension.itemSpace
-		
-		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-											  heightDimension: .fractionalWidth(1))
-		let item = NSCollectionLayoutItem(layoutSize: itemSize)
-		
-		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-											   heightDimension: .absolute(itemHeight+50))
-		let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+		let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+										  heightDimension: .estimated(200))
+		let item = NSCollectionLayoutItem(layoutSize: size)
+		let group = NSCollectionLayoutGroup.horizontal(layoutSize: size,
 													   subitems: [item])
-		
 		let section = NSCollectionLayoutSection(group: group)
-		section.contentInsets = NSDirectionalEdgeInsets(top: itemSpace, leading: 0, bottom: 0, trailing: 0)
-		let footer = supplementaryView(height: .absolute(200),
-									   kind: ListenLiveViewFooter.className,
-									   alignment: .bottom)
-		section.boundarySupplementaryItems = [footer]
 		return section
 	}
 	
@@ -198,13 +186,14 @@ extension LayoutProvider {
 		
 		let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(itemHeight),
 											   heightDimension: .absolute(itemHeight))
+		
 		let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
 													   subitems: [item])
 		
 		let section = NSCollectionLayoutSection(group: group)
 //		section.orthogonalScrollingBehavior = .continuous
 		section.interGroupSpacing = itemSpace + 5
-		section.contentInsets = NSDirectionalEdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0)
+		section.contentInsets = NSDirectionalEdgeInsets(top: 70, leading: 0, bottom: 0, trailing: 0)
 		
 		section.visibleItemsInvalidationHandler = { items, offset, env in
 			let r = CGRect(origin: offset, size: env.container.contentSize)
@@ -216,7 +205,7 @@ extension LayoutProvider {
 					scale = 0.95
 				}
 				let scaleTransform = CGAffineTransform(scaleX: scale, y: scale)
-				var y = -30 * (1 - d / (r.size.width / 2))
+				var y = -35 * (1 - d / (r.size.width / 2))
 				if y > 0 { y = 0 }
 				let translationYTransform = CGAffineTransform(translationX: 0, y: y)
 				item.transform = scaleTransform.concatenating(translationYTransform)

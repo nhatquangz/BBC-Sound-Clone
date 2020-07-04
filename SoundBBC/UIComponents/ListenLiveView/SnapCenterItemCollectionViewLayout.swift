@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class DialCollectionLayout: UICollectionViewCompositionalLayout {
+class SnapCenterItemCollectionViewLayout: UICollectionViewCompositionalLayout {
 	override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
 		guard let collectionView = collectionView else {
 			return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
