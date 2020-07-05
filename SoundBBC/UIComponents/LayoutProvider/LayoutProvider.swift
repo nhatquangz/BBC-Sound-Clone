@@ -193,7 +193,7 @@ extension LayoutProvider {
 		let section = NSCollectionLayoutSection(group: group)
 //		section.orthogonalScrollingBehavior = .continuous
 		section.interGroupSpacing = itemSpace + 5
-		section.contentInsets = NSDirectionalEdgeInsets(top: 70, leading: 0, bottom: 0, trailing: 0)
+		section.contentInsets = NSDirectionalEdgeInsets(top: 60, leading: 0, bottom: 0, trailing: 0)
 		
 		section.visibleItemsInvalidationHandler = { items, offset, env in
 			let r = CGRect(origin: offset, size: env.container.contentSize)

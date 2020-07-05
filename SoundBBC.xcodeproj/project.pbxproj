@@ -240,6 +240,7 @@
 		2309CDE92450834E00620475 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				232F746424B1D5AC0057A580 /* New Group */,
 				23E90F4024AFF1EA00D630F5 /* ListenLiveView */,
 				23E90F3624AF447A00D630F5 /* CircleViewCell */,
 				23B7C30824AE896C00539E6B /* ImpactSmallView */,
@@ -353,6 +354,13 @@
 				232C60C524AA87E90049A68A /* LayoutProvider.swift */,
 			);
 			path = LayoutProvider;
+			sourceTree = "<group>";
+		};
+		232F746424B1D5AC0057A580 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		23328BFD245472C2005E2C5F /* AppManagements */ = {

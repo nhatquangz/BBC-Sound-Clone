@@ -25,10 +25,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vC-X2-i16">
-                        <rect key="frame" x="0.0" y="160" width="414" height="155"/>
+                        <rect key="frame" x="0.0" y="160" width="414" height="145"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Rfs-YY-JnG">
-                                <rect key="frame" x="20" y="10" width="374" height="70"/>
+                                <rect key="frame" x="20" y="0.0" width="374" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  LIVE  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OX0-ok-oDM">
                                         <rect key="frame" x="165.5" y="0.0" width="43" height="20"/>
@@ -61,7 +61,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jil-Qu-MwN">
-                                <rect key="frame" x="107" y="95" width="200" height="40"/>
+                                <rect key="frame" x="107" y="85" width="200" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="GHi-jI-BRS"/>
@@ -82,7 +82,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Rfs-YY-JnG" secondAttribute="trailing" constant="20" id="IfP-CR-l90"/>
                             <constraint firstAttribute="bottom" secondItem="Jil-Qu-MwN" secondAttribute="bottom" constant="20" id="OCe-p2-qGX"/>
-                            <constraint firstItem="Rfs-YY-JnG" firstAttribute="top" secondItem="0vC-X2-i16" secondAttribute="top" constant="10" id="PE4-Rf-Aaa"/>
+                            <constraint firstItem="Rfs-YY-JnG" firstAttribute="top" secondItem="0vC-X2-i16" secondAttribute="top" id="PE4-Rf-Aaa"/>
                             <constraint firstItem="Jil-Qu-MwN" firstAttribute="top" secondItem="Rfs-YY-JnG" secondAttribute="bottom" constant="15" id="SAK-VG-UKj"/>
                             <constraint firstItem="Jil-Qu-MwN" firstAttribute="centerX" secondItem="Rfs-YY-JnG" secondAttribute="centerX" id="eVG-PB-xg0"/>
                             <constraint firstItem="Rfs-YY-JnG" firstAttribute="leading" secondItem="0vC-X2-i16" secondAttribute="leading" constant="20" id="hpO-lG-aYt"/>
@@ -90,7 +90,7 @@
                     </view>
                     <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gqz-UZ-MRb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="160" id="HPn-zB-3X3"/>
                         </constraints>

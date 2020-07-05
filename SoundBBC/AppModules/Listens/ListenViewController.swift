@@ -15,6 +15,8 @@ class ListenViewController: UIViewController {
 	
 	let disposeBag = DisposeBag()
 	var collectionView: UICollectionView!
+	let refreshControl = UIRefreshControl()
+	
 	let viewModel = ListenViewModel()
 	var dataSource: UICollectionViewDiffableDataSource<String, DisplayItemModel>! = nil
 	
@@ -33,8 +35,10 @@ extension ListenViewController {
 		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: AppDefinition.Font.reithSerifMedium.size(20)]
 		
 		collectionView = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout())
-		self.view.addSubview(collectionView)
-		self.collectionView.backgroundColor = .white
+		view.addSubview(collectionView)
+		collectionView.insertSubview(refreshControl, at: 0)
+		collectionView.backgroundColor = .white
+		collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
 		collectionView.snp.makeConstraints { constraint in
 			constraint.edges.equalToSuperview()
 		}
@@ -51,14 +55,20 @@ extension ListenViewController {
 								withReuseIdentifier: DefaultCollectionViewHeader.className)
 		
 		collectionView.dataSource = self
-
+		
 		viewModel.refreshView.asObservable()
 			.subscribe(onNext: { [weak self] in
 				guard let self = self else { return }
 				UIView.transition(with: self.collectionView, duration: 0.5, options: .transitionCrossDissolve, animations: {
 					self.collectionView.reloadData()
 				}, completion: nil)
+				self.refreshControl.endRefreshing()
 			})
+			.disposed(by: disposeBag)
+		
+		refreshControl.rx.controlEvent(.valueChanged)
+			.throttle(.seconds(5), scheduler: MainScheduler.instance)
+			.bind(to: viewModel.reloadData)
 			.disposed(by: disposeBag)
 	}
 	
