@@ -30,6 +30,7 @@ class AppDefinition: NSObject {
 	**/
 	enum Color {
 		static let main = UIColor(hexString: "#1cb955")
+		static let preloadProgress = UIColor(hexString: "#F2F2F7")
 	}
 	
 	

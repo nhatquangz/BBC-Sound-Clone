@@ -13,11 +13,13 @@ class PlayableViewCell: UICollectionViewCell {
 	@IBOutlet weak var itemImageView: UIImageView!
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var descriptionLabel: UILabel!
+	@IBOutlet weak var progressBar: ProgressView!
 	
 	
     override func awakeFromNib() {
         super.awakeFromNib()
 		self.backgroundColor = .random
+		progressBar.config(type: .horizontal)
     }
 }
 
@@ -29,6 +31,7 @@ extension PlayableViewCell: DisplayableItemView {
 		itemImageView.kf.setImage(with: imageURL)
 		titleLabel.text = data.titles?.primary ?? ""
 		descriptionLabel.text = "\(data.titles?.secondary ?? "")\n\(data.titles?.tertiary ?? "")"
+		progressBar.setProgress(current: 0.4)
 	}
 }
 

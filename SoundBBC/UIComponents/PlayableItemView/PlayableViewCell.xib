@@ -56,23 +56,32 @@
                                                 <rect key="frame" x="0.0" y="40.5" width="364" height="79.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WA0-6Z-ihe">
-                                                        <rect key="frame" x="0.0" y="59.5" width="364" height="20"/>
+                                                        <rect key="frame" x="0.0" y="64.5" width="364" height="15"/>
                                                         <subviews>
-                                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Os-GO-b02">
-                                                                <rect key="frame" x="0.0" y="18" width="218.5" height="2"/>
-                                                                <color key="progressTintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <color key="trackTintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </progressView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17 mins left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="8cY-ro-SCv">
-                                                                <rect key="frame" x="223.5" y="1" width="140.5" height="19"/>
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0pG-YD-qFE" customClass="ProgressView" customModule="SoundBBC" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="8.5" width="282.5" height="6.5"/>
+                                                                <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="6.5" id="JlT-N5-DGy"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <integer key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17 mins left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="8cY-ro-SCv">
+                                                                <rect key="frame" x="287.5" y="5" width="76.5" height="10"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="10" id="ar0-nX-X8h"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" name="BBCReithSans-Regular" family="BBC Reith Sans" pointSize="14"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="2Os-GO-b02" firstAttribute="width" secondItem="WA0-6Z-ihe" secondAttribute="width" multiplier="0.6" id="uBF-25-CXE"/>
-                                                            <constraint firstAttribute="height" constant="20" id="x26-TQ-t4S"/>
+                                                            <constraint firstAttribute="height" constant="15" id="x26-TQ-t4S"/>
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
@@ -116,9 +125,10 @@
             <connections>
                 <outlet property="descriptionLabel" destination="jbq-bv-cUa" id="86O-GA-oay"/>
                 <outlet property="itemImageView" destination="FrB-M6-G8F" id="ys7-Rp-dZj"/>
+                <outlet property="progressBar" destination="0pG-YD-qFE" id="rXZ-NH-dkd"/>
                 <outlet property="titleLabel" destination="ImT-Vg-21y" id="XrX-va-lcu"/>
             </connections>
-            <point key="canvasLocation" x="-246" y="-129"/>
+            <point key="canvasLocation" x="-338" y="-174"/>
         </collectionViewCell>
     </objects>
     <resources>

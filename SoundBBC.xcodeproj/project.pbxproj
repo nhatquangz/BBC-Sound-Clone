@@ -37,6 +37,7 @@
 		232C60CA24AA96140049A68A /* PlayableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 232C60C824AA96140049A68A /* PlayableViewCell.xib */; };
 		232C60CC24AB410C0049A68A /* ListenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232C60CB24AB410C0049A68A /* ListenViewModel.swift */; };
 		232C60D224AB6BD10049A68A /* DownloadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232C60D124AB6BD10049A68A /* DownloadModel.swift */; };
+		232F746624B1DBF40057A580 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F746524B1DBF40057A580 /* ProgressView.swift */; };
 		23328BEC2454592B005E2C5F /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23328BEB2454592B005E2C5F /* NetworkModel.swift */; };
 		23328BEE24545969005E2C5F /* TitleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23328BED24545969005E2C5F /* TitleModel.swift */; };
 		23328BF0245459C1005E2C5F /* SynopsisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23328BEF245459C1005E2C5F /* SynopsisModel.swift */; };
@@ -106,6 +107,7 @@
 		232C60C824AA96140049A68A /* PlayableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayableViewCell.xib; sourceTree = "<group>"; };
 		232C60CB24AB410C0049A68A /* ListenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenViewModel.swift; sourceTree = "<group>"; };
 		232C60D124AB6BD10049A68A /* DownloadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadModel.swift; sourceTree = "<group>"; };
+		232F746524B1DBF40057A580 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		23328BEB2454592B005E2C5F /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		23328BED24545969005E2C5F /* TitleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleModel.swift; sourceTree = "<group>"; };
 		23328BEF245459C1005E2C5F /* SynopsisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynopsisModel.swift; sourceTree = "<group>"; };
@@ -240,7 +242,7 @@
 		2309CDE92450834E00620475 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				232F746424B1D5AC0057A580 /* New Group */,
+				232F746424B1D5AC0057A580 /* ProgressView */,
 				23E90F4024AFF1EA00D630F5 /* ListenLiveView */,
 				23E90F3624AF447A00D630F5 /* CircleViewCell */,
 				23B7C30824AE896C00539E6B /* ImpactSmallView */,
@@ -356,11 +358,12 @@
 			path = LayoutProvider;
 			sourceTree = "<group>";
 		};
-		232F746424B1D5AC0057A580 /* New Group */ = {
+		232F746424B1D5AC0057A580 /* ProgressView */ = {
 			isa = PBXGroup;
 			children = (
+				232F746524B1DBF40057A580 /* ProgressView.swift */,
 			);
-			path = "New Group";
+			path = ProgressView;
 			sourceTree = "<group>";
 		};
 		23328BFD245472C2005E2C5F /* AppManagements */ = {
@@ -608,6 +611,7 @@
 				23C87E5524ADD10B00239A60 /* DefaultCollectionViewHeader.swift in Sources */,
 				23E90F4324AFF1F900D630F5 /* ListenLiveView.swift in Sources */,
 				23FECE1B24ABE24800F906DE /* DecodableModelProtocol.swift in Sources */,
+				232F746624B1DBF40057A580 /* ProgressView.swift in Sources */,
 				2304EA4424535BB500A1B75C /* DisplayItemModel.swift in Sources */,
 				23FECE1824ABD20000F906DE /* GuidanceModel.swift in Sources */,
 				23328BFF24547310005E2C5F /* AppEnvironment.swift in Sources */,
