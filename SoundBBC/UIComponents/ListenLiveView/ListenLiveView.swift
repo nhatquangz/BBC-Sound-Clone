@@ -1,5 +1,8 @@
 import Foundation
 import UIKit
+import RxCocoa
+import RxSwift
+
 
 class ListenLiveView: UICollectionViewCell {
 	
@@ -7,11 +10,11 @@ class ListenLiveView: UICollectionViewCell {
 	@IBOutlet weak var collectionView: UICollectionView!
 	
 	// Information
-	let channelNameLabel = UILabel()
-	let channelDescriptionLabel = UILabel()
-	let scheduleButton = UIButton()
+	@IBOutlet weak var channelNameLabel: UILabel!
+	@IBOutlet weak var channelDescriptionLabel: UILabel!
 	
-	var data: [DisplayItemModel] = []
+	var viewModel: ListenLiveViewModel?
+	var disposeBag = DisposeBag()
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -20,11 +23,10 @@ class ListenLiveView: UICollectionViewCell {
 	
 	override func prepareForReuse() {
 		super.prepareForReuse()
-
+		disposeBag = DisposeBag()
 	}
 	
 	private func setup() {
-		// Collection View
 		collectionView.collectionViewLayout = compositionalLayout()
 		collectionView.backgroundColor = .clear
 		contentView.backgroundColor = .clear
@@ -32,13 +34,6 @@ class ListenLiveView: UICollectionViewCell {
 		collectionView.showsHorizontalScrollIndicator = false
 		collectionView.register(CircleViewCell.self)
 		collectionView.dataSource = self
-		
-		// Listen live information
-		let informationView = UIStackView()
-		informationView.axis = .vertical
-		
-		
-		
 	}
 	
 	private func compositionalLayout() -> UICollectionViewCompositionalLayout {
@@ -49,36 +44,54 @@ class ListenLiveView: UICollectionViewCell {
 		return layout
 	}
 	
-	func centerItem() {
-		collectionView.layoutIfNeeded()
-		collectionView.scrollToItem(at: IndexPath(item: 1000, section: 0), at: .centeredHorizontally, animated: false)
+	func scrollToCenter() {
+		collectionView.scrollToItem(at: IndexPath(item: 500000, section: 0), at: .centeredHorizontally, animated: false)
 		collectionView.collectionViewLayout.invalidateLayout()
 	}
 }
+
 
 // MARK: - Data
 extension ListenLiveView: DisplayableItemView {
 	func configure<T>(data: T) {
 		guard let data = data as? [DisplayItemModel] else { return }
-//		self.update(data: data)
-		self.data = data
-		centerItem()
+		let viewModel = ListenLiveViewModel(data: data)
+		self.viewModel = viewModel
+		bindData(viewModel: viewModel)
+		collectionView.reloadData()
+		scrollToCenter()
 	}
+	
+	private func bindData(viewModel: ListenLiveViewModel) {
+		collectionView.rx.contentOffset
+			.map { $0.x }
+			.bind(to: viewModel.currentOffset)
+			.disposed(by: disposeBag)
+		
+		viewModel.channelTitle.asDriver()
+			.drive(channelNameLabel.rx.text)
+			.disposed(by: disposeBag)
+		
+		viewModel.channelDescription.asDriver()
+			.drive(channelDescriptionLabel.rx.text)
+			.disposed(by: disposeBag)
+	}
+	
 }
 
 
 // MARK: - CollectionView
 extension ListenLiveView: UICollectionViewDataSource, UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 99999
+		return 999999
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(with: CircleViewCell.self, for: indexPath)
-		if let viewCell = cell as? DisplayableItemView {
+		let viewCell = collectionView.dequeueReusableCell(with: CircleViewCell.self, for: indexPath)
+		if let data = viewModel?.dataChannel(index: indexPath.row) {
 			viewCell.configure(data: data)
 		}
-		return cell
+		return viewCell
 	}
 }
 

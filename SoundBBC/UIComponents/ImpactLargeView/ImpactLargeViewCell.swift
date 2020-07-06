@@ -26,7 +26,7 @@ extension ImpactLargeViewCell: DisplayableItemView {
 	func configure<T>(data: T) {
 		let data = data as? DisplayItemModel
 		// 736x736 - 432x432 - 192x192 - 320x180
-		let imageURL = data?.imageUrl.bbc.recipe("432x432").urlEncoded
+		let imageURL = data?.imageUrl.bbc.replace([.recipe: "432x432"]).urlEncoded
 		coverImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.4))])
 		titleLabel.text = data?.titles?.primary ?? ""
 		descriptionLabel.text = data?.synopses?.shortField ?? ""

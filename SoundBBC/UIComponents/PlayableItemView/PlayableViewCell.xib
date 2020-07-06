@@ -40,15 +40,16 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xoe-Xj-iKm">
                                         <rect key="frame" x="100" y="0.0" width="389" height="100"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Tailenders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImT-Vg-21y">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImT-Vg-21y">
                                                 <rect key="frame" x="10" y="0.0" width="379" height="21.5"/>
+                                                <string key="text">he songs that are best to clean to Felix White picks the songs that are best to clean toFelix White picks the songs that are best to clean to the songs that are best to clean to</string>
                                                 <fontDescription key="fontDescription" name="BBCReithSans-Bold" family="BBC Reith Sans" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbq-bv-cUa">
                                                 <rect key="frame" x="10" y="21.5" width="379" height="56"/>
-                                                <string key="text">Felix White picks the songs that are best to clean to Felix White picks the songs that are best to clean toFelix White picks the songs that are best to clean to the songs that are best to clean to</string>
+                                                <string key="text">he songs that are best to clean to Felix White picks the songs that are best to clean toFelix White picks the songs that are best to clean to the songs that are best to clean to</string>
                                                 <fontDescription key="fontDescription" name="BBCReithSans-Regular" family="BBC Reith Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -60,10 +61,10 @@
                                                         <rect key="frame" x="0.0" y="7.5" width="379" height="15"/>
                                                         <subviews>
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0pG-YD-qFE" customClass="ProgressView" customModule="SoundBBC" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="8.5" width="297.5" height="6.5"/>
+                                                                <rect key="frame" x="0.0" y="9" width="297.5" height="6"/>
                                                                 <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="6.5" id="JlT-N5-DGy"/>
+                                                                    <constraint firstAttribute="height" constant="6" id="JlT-N5-DGy"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -101,10 +102,10 @@
                                             <constraint firstItem="ImT-Vg-21y" firstAttribute="leading" secondItem="Xoe-Xj-iKm" secondAttribute="leading" constant="10" id="Dvj-qO-oLp"/>
                                             <constraint firstItem="jbq-bv-cUa" firstAttribute="top" secondItem="ImT-Vg-21y" secondAttribute="bottom" id="ToV-ig-3PL"/>
                                             <constraint firstItem="jbq-bv-cUa" firstAttribute="leading" secondItem="ImT-Vg-21y" secondAttribute="leading" id="Xif-wm-Dnd"/>
+                                            <constraint firstItem="GuZ-fe-XUf" firstAttribute="top" secondItem="jbq-bv-cUa" secondAttribute="bottom" id="lRU-cB-8AK"/>
                                             <constraint firstAttribute="trailing" secondItem="ImT-Vg-21y" secondAttribute="trailing" id="n72-Lh-FCP"/>
                                             <constraint firstItem="GuZ-fe-XUf" firstAttribute="trailing" secondItem="ImT-Vg-21y" secondAttribute="trailing" id="uw5-Kt-NTC"/>
                                             <constraint firstAttribute="bottom" secondItem="GuZ-fe-XUf" secondAttribute="bottom" id="ytK-Jv-Dp4"/>
-                                            <constraint firstItem="GuZ-fe-XUf" firstAttribute="top" secondItem="jbq-bv-cUa" secondAttribute="bottom" id="zbS-nB-OVU"/>
                                             <constraint firstAttribute="trailing" secondItem="jbq-bv-cUa" secondAttribute="trailing" id="zod-Zy-4zN"/>
                                         </constraints>
                                     </view>

@@ -27,16 +27,15 @@ class PlayableViewCell: UICollectionViewCell {
 extension PlayableViewCell: DisplayableItemView {
 	func configure<T>(data: T) {
 		let data = data as? DisplayItemModel
-		let imageURL = data?.imageUrl.bbc.recipe("192x192").urlEncoded
+		let imageURL = data?.imageUrl.bbc.replace([.recipe: "192x192"]).urlEncoded
 		itemImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.4))])
 		titleLabel.text = data?.titles?.primary ?? ""
 		descriptionLabel.text = "\(data?.titles?.secondary ?? "")\n\(data?.titles?.tertiary ?? "")"
 		
-		if let progress = data?.progress {
-			timeLabel.text = progress.label
+		if let progress = data?.currentProgress() {
+			timeLabel.text = data?.progress?.label ?? ""
 			progressBar.isHidden = false
-			let currentProgress = progress.value / (data?.duration?.value ?? 1)
-			progressBar.setProgress(current: CGFloat(currentProgress))
+			progressBar.setProgress(current: CGFloat(progress))
 		} else {
 			timeLabel.text = data?.duration?.label ?? ""
 			progressBar.isHidden = true

@@ -93,7 +93,20 @@ extension DisplayItemModel: Hashable {
 	}
 	
 	func hash(into hasher: inout Hasher) {
-	  hasher.combine(id)
+		hasher.combine(id)
+	}
+}
+
+
+
+// MARK: - Utility functions
+extension DisplayItemModel {
+	func currentProgress() -> Float? {
+		guard let progress = self.progress, let duration = self.duration else { return nil }
+		if duration.value > 0 {
+			return progress.value / duration.value
+		}
+		return nil
 	}
 }
 

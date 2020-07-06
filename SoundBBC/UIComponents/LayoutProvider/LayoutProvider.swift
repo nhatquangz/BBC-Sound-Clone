@@ -191,7 +191,7 @@ extension LayoutProvider {
 													   subitems: [item])
 		
 		let section = NSCollectionLayoutSection(group: group)
-		section.interGroupSpacing = itemSpace + 5
+		section.interGroupSpacing = itemSpace
 		section.contentInsets = NSDirectionalEdgeInsets(top: 60, leading: 0, bottom: 0, trailing: 0)
 		
 		section.visibleItemsInvalidationHandler = { items, offset, env in

@@ -113,6 +113,8 @@
             </collectionViewCellContentView>
             <size key="customSize" width="387" height="303"/>
             <connections>
+                <outlet property="channelDescriptionLabel" destination="TaE-Wr-RSE" id="6H0-Fk-OeX"/>
+                <outlet property="channelNameLabel" destination="wp6-jO-oRx" id="HFf-s4-0Sg"/>
                 <outlet property="collectionView" destination="gqz-UZ-MRb" id="dpl-Ri-8dR"/>
             </connections>
             <point key="canvasLocation" x="-177.59999999999999" y="-172.26386806596702"/>

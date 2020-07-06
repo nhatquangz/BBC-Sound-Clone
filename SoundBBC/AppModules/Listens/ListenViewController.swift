@@ -59,7 +59,7 @@ extension ListenViewController {
 		viewModel.refreshView.asObservable()
 			.subscribe(onNext: { [weak self] in
 				guard let self = self else { return }
-				UIView.transition(with: self.collectionView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+				UIView.transition(with: self.collectionView, duration: 0.4, options: .transitionCrossDissolve, animations: {
 					self.collectionView.reloadData()
 				}, completion: nil)
 				self.refreshControl.endRefreshing()

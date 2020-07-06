@@ -19,8 +19,20 @@ extension String {
 
 // MARK: - Replace Image URL
 extension AppExtensionWrapper where Base == String {
-	func recipe(_ size: String) -> String {
-		base.replacingOccurrences(of: "{recipe}", with: size)
+	enum Placeholder: String {
+		case recipe = "{recipe}"
+		case size = "{size}"
+		case type = "{type}"
+		case format = "{format}"
+	}
+	
+	func replace(_ placeholders: [Placeholder: String]) -> String {
+		var result = base
+		placeholders.forEach {
+			result = result.replacingOccurrences(of: $0.key.rawValue,
+											   with: $0.value)
+		}
+		return result
 	}
 }
 
