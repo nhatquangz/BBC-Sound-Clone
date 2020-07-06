@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
 	var urlEncoded: URL? {
@@ -14,3 +15,14 @@ extension String {
 		return URL(string: encoded)
 	}
 }
+
+
+// MARK: - Replace Image URL
+extension AppExtensionWrapper where Base == String {
+	func recipe(_ size: String) -> String {
+		base.replacingOccurrences(of: "{recipe}", with: size)
+	}
+}
+
+
+extension String: AppExtensionCompatible {}

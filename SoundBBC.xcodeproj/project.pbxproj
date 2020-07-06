@@ -51,6 +51,8 @@
 		23328C0424547C2A005E2C5F /* AppConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23328C0324547C2A005E2C5F /* AppConfigModel.swift */; };
 		23328C0624548220005E2C5F /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23328C0524548220005E2C5F /* AppConfiguration.swift */; };
 		23328C0824548A64005E2C5F /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23328C0724548A64005E2C5F /* JSONHelper.swift */; };
+		237126E924B3646A00D9CF34 /* AppExtensionNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237126E824B3646A00D9CF34 /* AppExtensionNamespace.swift */; };
+		237126EB24B3761700D9CF34 /* BBCReithSans_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 237126EA24B3761700D9CF34 /* BBCReithSans_Bd.ttf */; };
 		23B7C30A24AE898400539E6B /* ImpactSmallViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B7C30924AE898400539E6B /* ImpactSmallViewCell.swift */; };
 		23C87E5524ADD10B00239A60 /* DefaultCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C87E5424ADD10B00239A60 /* DefaultCollectionViewHeader.swift */; };
 		23C87E5824AE009600239A60 /* ContainerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C87E5724AE009600239A60 /* ContainerViewCell.swift */; };
@@ -121,6 +123,8 @@
 		23328C0324547C2A005E2C5F /* AppConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigModel.swift; sourceTree = "<group>"; };
 		23328C0524548220005E2C5F /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		23328C0724548A64005E2C5F /* JSONHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
+		237126E824B3646A00D9CF34 /* AppExtensionNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensionNamespace.swift; sourceTree = "<group>"; };
+		237126EA24B3761700D9CF34 /* BBCReithSans_Bd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BBCReithSans_Bd.ttf; sourceTree = "<group>"; };
 		23B7C30924AE898400539E6B /* ImpactSmallViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactSmallViewCell.swift; sourceTree = "<group>"; };
 		23C87E5424ADD10B00239A60 /* DefaultCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCollectionViewHeader.swift; sourceTree = "<group>"; };
 		23C87E5724AE009600239A60 /* ContainerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewCell.swift; sourceTree = "<group>"; };
@@ -323,6 +327,7 @@
 		2309CE072450F3BC00620475 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				237126EA24B3761700D9CF34 /* BBCReithSans_Bd.ttf */,
 				2309CE0F2450F94900620475 /* BBCReithSans_Md.ttf */,
 				2309CE102450F94900620475 /* BBCReithSerif_Md.ttf */,
 				2309CE0D2450F7CF00620475 /* BBCReithSans_Rg.ttf */,
@@ -460,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				23FECE2624ACF1B500F906DE /* BaseViewModel.swift */,
+				237126E824B3646A00D9CF34 /* AppExtensionNamespace.swift */,
 			);
 			path = BaseClasses;
 			sourceTree = "<group>";
@@ -541,6 +547,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				237126EB24B3761700D9CF34 /* BBCReithSans_Bd.ttf in Resources */,
 				2309CE092450F3E500620475 /* BBCReithSerif_Rg.ttf in Resources */,
 				23E90F4C24B10B1100D630F5 /* ListenLiveView.xib in Resources */,
 				232C60CA24AA96140049A68A /* PlayableViewCell.xib in Resources */,
@@ -611,6 +618,7 @@
 				23C87E5524ADD10B00239A60 /* DefaultCollectionViewHeader.swift in Sources */,
 				23E90F4324AFF1F900D630F5 /* ListenLiveView.swift in Sources */,
 				23FECE1B24ABE24800F906DE /* DecodableModelProtocol.swift in Sources */,
+				237126E924B3646A00D9CF34 /* AppExtensionNamespace.swift in Sources */,
 				232F746624B1DBF40057A580 /* ProgressView.swift in Sources */,
 				2304EA4424535BB500A1B75C /* DisplayItemModel.swift in Sources */,
 				23FECE1824ABD20000F906DE /* GuidanceModel.swift in Sources */,

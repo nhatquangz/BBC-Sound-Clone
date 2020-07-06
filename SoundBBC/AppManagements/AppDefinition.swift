@@ -18,6 +18,7 @@ class AppDefinition: NSObject {
 		case reithSans = "BBCReithSans-Regular"
 		case reithSerifMedium = "BBCReithSerif-Medium"
 		case reithSansMedium = "BBCReithSans-Medium"
+		case reithSansBold = "BBCReithSans-Bold"
 		
 		func size(_ size: CGFloat) -> UIFont {
 			return UIFont(name: self.rawValue, size: size) ?? UIFont.systemFont(ofSize: size)
@@ -45,7 +46,7 @@ class AppDefinition: NSObject {
 		// 15: Leading offset
 		// 10: Trailing offset
 		static let playableItemWidth: CGFloat = UIScreen.main.bounds.width - 15 - 10
-		
 		static let dialItemHeight: CGFloat = UIScreen.main.bounds.width / 4
+		static let categoryItemHeight: CGFloat = 70
 	}
 }

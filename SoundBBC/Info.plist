@@ -4,6 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>BBCReithSans_Bd.tff</string>
 		<string>BBCReithSerif_Md.ttf</string>
 		<string>BBCReithSerif_Rg.ttf</string>
 		<string>BBCReithSans_Rg.ttf</string>

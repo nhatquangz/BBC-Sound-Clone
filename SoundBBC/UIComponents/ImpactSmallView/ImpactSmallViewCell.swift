@@ -12,13 +12,16 @@ class ImpactSmallViewCell: UICollectionViewCell {
     
 	let coverImageView: UIImageView = {
 		let imageview = UIImageView()
+		imageview.clipsToBounds = true
 		imageview.contentMode = .scaleAspectFill
 		return imageview
 	}()
 	
 	let categoryName: UILabel = {
 		let label = UILabel()
-		label.font = AppDefinition.Font.reithSansMedium.size(15)
+		label.font = AppDefinition.Font.reithSansBold.size(15)
+		label.numberOfLines = 3
+		label.textAlignment = .center
 		label.textColor = .white
 		return label
 	}()
@@ -41,3 +44,14 @@ class ImpactSmallViewCell: UICollectionViewCell {
 	}
 	
 }
+
+
+extension ImpactSmallViewCell: DisplayableItemView {
+	func configure<T>(data: T) {
+		let data = data as? DisplayItemModel
+		let imageURL = data?.imageUrl.bbc.recipe("320x180").urlEncoded
+		coverImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.4))])
+		categoryName.text = data?.titles?.primary ?? ""
+	}
+}
+

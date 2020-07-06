@@ -24,12 +24,12 @@ class ImpactLargeViewCell: UICollectionViewCell {
 
 extension ImpactLargeViewCell: DisplayableItemView {
 	func configure<T>(data: T) {
-		guard let data = data as? DisplayItemModel else { return }
-		// 736x736 - 432x432 - 192x192
-		let imageURL = data.imageUrl.replacingOccurrences(of: "{recipe}", with: "432x432").urlEncoded
-		coverImageView.kf.setImage(with: imageURL)
-		titleLabel.text = data.titles?.primary ?? ""
-		descriptionLabel.text = data.synopses?.shortField ?? ""
+		let data = data as? DisplayItemModel
+		// 736x736 - 432x432 - 192x192 - 320x180
+		let imageURL = data?.imageUrl.bbc.recipe("432x432").urlEncoded
+		coverImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.4))])
+		titleLabel.text = data?.titles?.primary ?? ""
+		descriptionLabel.text = data?.synopses?.shortField ?? ""
 	}
 }
 

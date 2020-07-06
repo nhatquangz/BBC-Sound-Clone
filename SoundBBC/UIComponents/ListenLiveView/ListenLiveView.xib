@@ -7,6 +7,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="BBCReithSans_Bd.ttf">
+            <string>BBCReithSans-Bold</string>
+        </array>
         <array key="BBCReithSans_Md.ttf">
             <string>BBCReithSans-Medium</string>
         </array>
@@ -31,21 +34,21 @@
                                 <rect key="frame" x="20" y="0.0" width="374" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  LIVE  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OX0-ok-oDM">
-                                        <rect key="frame" x="165.5" y="0.0" width="43" height="20"/>
+                                        <rect key="frame" x="165" y="0.0" width="44.5" height="20"/>
                                         <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="rOG-yW-yx9"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="13"/>
+                                        <fontDescription key="fontDescription" name="BBCReithSans-Bold" family="BBC Reith Sans" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Tailenders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wp6-jO-oRx">
-                                        <rect key="frame" x="146" y="25.5" width="82.5" height="20"/>
+                                        <rect key="frame" x="145" y="25.5" width="84" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="FUw-Ue-j4W"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="BBCReithSans-Medium" family="BBC Reith Sans" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="BBCReithSans-Bold" family="BBC Reith Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

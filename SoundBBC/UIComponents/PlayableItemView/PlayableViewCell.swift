@@ -16,7 +16,6 @@ class PlayableViewCell: UICollectionViewCell {
 	@IBOutlet weak var progressBar: ProgressView!
 	@IBOutlet weak var timeLabel: UILabel!
 	
-	
     override func awakeFromNib() {
         super.awakeFromNib()
 		self.backgroundColor = .random
@@ -27,22 +26,21 @@ class PlayableViewCell: UICollectionViewCell {
 
 extension PlayableViewCell: DisplayableItemView {
 	func configure<T>(data: T) {
-		guard let data = data as? DisplayItemModel else { return }
-		let imageURL = data.imageUrl.replacingOccurrences(of: "{recipe}", with: "192x192").urlEncoded
-		itemImageView.kf.setImage(with: imageURL)
-		titleLabel.text = data.titles?.primary ?? ""
-		descriptionLabel.text = "\(data.titles?.secondary ?? "")\n\(data.titles?.tertiary ?? "")"
+		let data = data as? DisplayItemModel
+		let imageURL = data?.imageUrl.bbc.recipe("192x192").urlEncoded
+		itemImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.4))])
+		titleLabel.text = data?.titles?.primary ?? ""
+		descriptionLabel.text = "\(data?.titles?.secondary ?? "")\n\(data?.titles?.tertiary ?? "")"
 		
-		if let progress = data.progress {
+		if let progress = data?.progress {
 			timeLabel.text = progress.label
 			progressBar.isHidden = false
-			let currentProgress = progress.value / (data.duration?.value ?? 1)
+			let currentProgress = progress.value / (data?.duration?.value ?? 1)
 			progressBar.setProgress(current: CGFloat(currentProgress))
 		} else {
-			timeLabel.text = data.duration?.label ?? ""
+			timeLabel.text = data?.duration?.label ?? ""
 			progressBar.isHidden = true
 		}
-		
 	}
 }
 

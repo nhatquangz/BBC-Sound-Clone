@@ -140,9 +140,9 @@ extension LayoutProvider {
 	
 	
 	private func impactSmallLayout() -> NSCollectionLayoutSection {
-		let itemSpace = AppDefinition.Dimension.itemSpace - 5
-		let itemHeight: CGFloat = 80.0
-		let itemWidth = itemHeight * 1.5
+		let itemSpace = AppDefinition.Dimension.itemSpace * 0.5
+		let itemHeight = AppDefinition.Dimension.categoryItemHeight
+		let itemWidth = itemHeight * 1.8
 		let sectionPadding = AppDefinition.Dimension.contenPadding
 		
 		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
@@ -191,7 +191,6 @@ extension LayoutProvider {
 													   subitems: [item])
 		
 		let section = NSCollectionLayoutSection(group: group)
-//		section.orthogonalScrollingBehavior = .continuous
 		section.interGroupSpacing = itemSpace + 5
 		section.contentInsets = NSDirectionalEdgeInsets(top: 60, leading: 0, bottom: 0, trailing: 0)
 		

@@ -7,8 +7,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="BBCReithSans_Md.ttf">
-            <string>BBCReithSans-Medium</string>
+        <array key="BBCReithSans_Bd.ttf">
+            <string>BBCReithSans-Bold</string>
         </array>
         <array key="BBCReithSans_Rg.ttf">
             <string>BBCReithSans-Regular</string>
@@ -39,7 +39,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="Rs9-A5-JOo"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="BBCReithSans-Medium" family="BBC Reith Sans" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="BBCReithSans-Bold" family="BBC Reith Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
