@@ -14,6 +14,7 @@ class PlayableViewCell: UICollectionViewCell {
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var descriptionLabel: UILabel!
 	@IBOutlet weak var progressBar: ProgressView!
+	@IBOutlet weak var timeLabel: UILabel!
 	
 	
     override func awakeFromNib() {
@@ -31,7 +32,17 @@ extension PlayableViewCell: DisplayableItemView {
 		itemImageView.kf.setImage(with: imageURL)
 		titleLabel.text = data.titles?.primary ?? ""
 		descriptionLabel.text = "\(data.titles?.secondary ?? "")\n\(data.titles?.tertiary ?? "")"
-		progressBar.setProgress(current: 0.4)
+		
+		if let progress = data.progress {
+			timeLabel.text = progress.label
+			progressBar.isHidden = false
+			let currentProgress = progress.value / (data.duration?.value ?? 1)
+			progressBar.setProgress(current: CGFloat(currentProgress))
+		} else {
+			timeLabel.text = data.duration?.label ?? ""
+			progressBar.isHidden = true
+		}
+		
 	}
 }
 

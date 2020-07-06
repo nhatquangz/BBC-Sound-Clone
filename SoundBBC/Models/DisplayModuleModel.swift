@@ -29,9 +29,11 @@ class DisplayModuleModel: DecodableModelProtocol {
         descriptionField = json["description"].stringValue
         state = json["state"].stringValue
 		uris = json["uris"].arrayValue.compactMap { UrisModel($0) }
-		controls = ControlsModel(json["controls"])
         total = json["total"].intValue
 		data = json["data"].arrayValue.compactMap { DisplayItemModel($0) }
+		if !json["controls"].isEmpty {
+			controls = ControlsModel(json["controls"])
+		}
 	}
 }
 
