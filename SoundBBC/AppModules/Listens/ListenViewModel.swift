@@ -31,7 +31,7 @@ class ListenViewModel: BaseViewModel {
 			}
 			.subscribe(onNext: { [weak self] result in
 				if let data = try? result.get() {
-					self?.dataSource.accept(data)
+					self?.dataSource.accept(data.filter { $0.state == "ok" })
 					self?.refreshView.onNext(())
 				}
 			})

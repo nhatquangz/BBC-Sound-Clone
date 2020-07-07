@@ -53,6 +53,8 @@
 		23328C0824548A64005E2C5F /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23328C0724548A64005E2C5F /* JSONHelper.swift */; };
 		237126E924B3646A00D9CF34 /* AppExtensionNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237126E824B3646A00D9CF34 /* AppExtensionNamespace.swift */; };
 		237126EB24B3761700D9CF34 /* BBCReithSans_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 237126EA24B3761700D9CF34 /* BBCReithSans_Bd.ttf */; };
+		23848D7D24B49E8C0085A3A0 /* PlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23848D7B24B49E8C0085A3A0 /* PlayingViewController.swift */; };
+		23848D7E24B49E8C0085A3A0 /* PlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23848D7C24B49E8C0085A3A0 /* PlayingViewController.xib */; };
 		23B7C30A24AE898400539E6B /* ImpactSmallViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B7C30924AE898400539E6B /* ImpactSmallViewCell.swift */; };
 		23C87E5524ADD10B00239A60 /* DefaultCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C87E5424ADD10B00239A60 /* DefaultCollectionViewHeader.swift */; };
 		23C87E5824AE009600239A60 /* ContainerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C87E5724AE009600239A60 /* ContainerViewCell.swift */; };
@@ -125,6 +127,8 @@
 		23328C0724548A64005E2C5F /* JSONHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
 		237126E824B3646A00D9CF34 /* AppExtensionNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensionNamespace.swift; sourceTree = "<group>"; };
 		237126EA24B3761700D9CF34 /* BBCReithSans_Bd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BBCReithSans_Bd.ttf; sourceTree = "<group>"; };
+		23848D7B24B49E8C0085A3A0 /* PlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingViewController.swift; sourceTree = "<group>"; };
+		23848D7C24B49E8C0085A3A0 /* PlayingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayingViewController.xib; sourceTree = "<group>"; };
 		23B7C30924AE898400539E6B /* ImpactSmallViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactSmallViewCell.swift; sourceTree = "<group>"; };
 		23C87E5424ADD10B00239A60 /* DefaultCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCollectionViewHeader.swift; sourceTree = "<group>"; };
 		23C87E5724AE009600239A60 /* ContainerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewCell.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 		2309CDE72450833D00620475 /* AppModules */ = {
 			isa = PBXGroup;
 			children = (
+				23848D7A24B49E520085A3A0 /* Playing */,
 				2309CDF824508BCF00620475 /* Search */,
 				2309CDF724508BC700620475 /* MySounds */,
 				2309CDF624508AEA00620475 /* Listens */,
@@ -391,6 +396,15 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		23848D7A24B49E520085A3A0 /* Playing */ = {
+			isa = PBXGroup;
+			children = (
+				23848D7B24B49E8C0085A3A0 /* PlayingViewController.swift */,
+				23848D7C24B49E8C0085A3A0 /* PlayingViewController.xib */,
+			);
+			path = Playing;
+			sourceTree = "<group>";
+		};
 		239D62632451FD8800239B90 /* PlayableItemView */ = {
 			isa = PBXGroup;
 			children = (
@@ -552,6 +566,7 @@
 				23E90F4C24B10B1100D630F5 /* ListenLiveView.xib in Resources */,
 				232C60CA24AA96140049A68A /* PlayableViewCell.xib in Resources */,
 				2309CE0024508D1400620475 /* MySoundViewController.xib in Resources */,
+				23848D7E24B49E8C0085A3A0 /* PlayingViewController.xib in Resources */,
 				232C60C324AA42FF0049A68A /* SplashViewController.xib in Resources */,
 				23C87E6624AE778100239A60 /* ImpactLargeViewCell.xib in Resources */,
 				2309CE0E2450F7CF00620475 /* BBCReithSans_Rg.ttf in Resources */,
@@ -644,6 +659,7 @@
 				23328BEE24545969005E2C5F /* TitleModel.swift in Sources */,
 				2304EA4224535B6D00A1B75C /* DisplayModuleModel.swift in Sources */,
 				23C87E5A24AE2C4200239A60 /* ControlsModel.swift in Sources */,
+				23848D7D24B49E8C0085A3A0 /* PlayingViewController.swift in Sources */,
 				232C60D224AB6BD10049A68A /* DownloadModel.swift in Sources */,
 				23328C0824548A64005E2C5F /* JSONHelper.swift in Sources */,
 				23328C0424547C2A005E2C5F /* AppConfigModel.swift in Sources */,

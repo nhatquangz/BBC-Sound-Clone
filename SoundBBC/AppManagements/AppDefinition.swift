@@ -49,5 +49,7 @@ class AppDefinition: NSObject {
 		static let playableItemWidth: CGFloat = UIScreen.main.bounds.width - 15 - 10
 		static let dialItemHeight: CGFloat = UIScreen.main.bounds.width / 4
 		static let categoryItemHeight: CGFloat = 70
+		
+		static let playingBarHeight: CGFloat = 50
 	}
 }
