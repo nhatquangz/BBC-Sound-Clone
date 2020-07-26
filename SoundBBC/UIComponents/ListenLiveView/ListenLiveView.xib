@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -31,10 +31,10 @@
                         <rect key="frame" x="0.0" y="160" width="414" height="145"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Rfs-YY-JnG">
-                                <rect key="frame" x="20" y="0.0" width="374" height="70"/>
+                                <rect key="frame" x="5" y="0.0" width="404" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  LIVE  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OX0-ok-oDM">
-                                        <rect key="frame" x="165" y="0.0" width="44.5" height="20"/>
+                                        <rect key="frame" x="180" y="0.0" width="44.5" height="20"/>
                                         <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="rOG-yW-yx9"/>
@@ -44,7 +44,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Tailenders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wp6-jO-oRx">
-                                        <rect key="frame" x="145" y="25.5" width="84" height="20"/>
+                                        <rect key="frame" x="160" y="25.5" width="84" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="FUw-Ue-j4W"/>
                                         </constraints>
@@ -53,7 +53,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Felix White picks the songs that are best to clean to" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaE-Wr-RSE">
-                                        <rect key="frame" x="20.5" y="51" width="333" height="19"/>
+                                        <rect key="frame" x="35.5" y="51" width="333" height="19"/>
                                         <fontDescription key="fontDescription" name="BBCReithSans-Regular" family="BBC Reith Sans" pointSize="14"/>
                                         <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -83,12 +83,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Rfs-YY-JnG" secondAttribute="trailing" constant="20" id="IfP-CR-l90"/>
+                            <constraint firstAttribute="trailing" secondItem="Rfs-YY-JnG" secondAttribute="trailing" constant="5" id="IfP-CR-l90"/>
                             <constraint firstAttribute="bottom" secondItem="Jil-Qu-MwN" secondAttribute="bottom" constant="20" id="OCe-p2-qGX"/>
                             <constraint firstItem="Rfs-YY-JnG" firstAttribute="top" secondItem="0vC-X2-i16" secondAttribute="top" id="PE4-Rf-Aaa"/>
                             <constraint firstItem="Jil-Qu-MwN" firstAttribute="top" secondItem="Rfs-YY-JnG" secondAttribute="bottom" constant="15" id="SAK-VG-UKj"/>
                             <constraint firstItem="Jil-Qu-MwN" firstAttribute="centerX" secondItem="Rfs-YY-JnG" secondAttribute="centerX" id="eVG-PB-xg0"/>
-                            <constraint firstItem="Rfs-YY-JnG" firstAttribute="leading" secondItem="0vC-X2-i16" secondAttribute="leading" constant="20" id="hpO-lG-aYt"/>
+                            <constraint firstItem="Rfs-YY-JnG" firstAttribute="leading" secondItem="0vC-X2-i16" secondAttribute="leading" constant="5" id="hpO-lG-aYt"/>
                         </constraints>
                     </view>
                     <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gqz-UZ-MRb">

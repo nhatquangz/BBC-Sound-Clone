@@ -116,7 +116,7 @@ extension LayoutProvider {
 	
 	private func impactLargeLayout() -> NSCollectionLayoutSection {
 		let itemSpace = AppDefinition.Dimension.itemSpace - 5
-		let itemWidth = UIScreen.main.bounds.width * 0.5
+		let itemWidth = UIScreen.main.bounds.width * 0.6
 		let itemHeight = itemWidth + 90
 		let sectionPadding = AppDefinition.Dimension.contenPadding
 		

@@ -31,7 +31,7 @@ class SplashViewController: UIViewController {
 // MARK: - Init function
 extension SplashViewController {
 	func setup() {
-		AppRequest.get(path: .config).subscribe(onNext: { [weak self] result in
+		AppRequest.get(path: .config, retryCount: 10000).subscribe(onNext: { [weak self] result in
 			if let config = try? result.get() {
 				AppConfiguration.shared.setup(config: config)
 				self?.cooridinator?.startTabbar()

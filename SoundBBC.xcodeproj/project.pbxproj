@@ -227,7 +227,7 @@
 		2309CDE72450833D00620475 /* AppModules */ = {
 			isa = PBXGroup;
 			children = (
-				23848D7A24B49E520085A3A0 /* Playing */,
+				23848D7A24B49E520085A3A0 /* PlayingSound */,
 				2309CDF824508BCF00620475 /* Search */,
 				2309CDF724508BC700620475 /* MySounds */,
 				2309CDF624508AEA00620475 /* Listens */,
@@ -396,13 +396,13 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		23848D7A24B49E520085A3A0 /* Playing */ = {
+		23848D7A24B49E520085A3A0 /* PlayingSound */ = {
 			isa = PBXGroup;
 			children = (
 				23848D7B24B49E8C0085A3A0 /* PlayingViewController.swift */,
 				23848D7C24B49E8C0085A3A0 /* PlayingViewController.xib */,
 			);
-			path = Playing;
+			path = PlayingSound;
 			sourceTree = "<group>";
 		};
 		239D62632451FD8800239B90 /* PlayableItemView */ = {
@@ -819,14 +819,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C4XF7U982N;
+				DEVELOPMENT_TEAM = 7YMMS76DWJ;
 				INFOPLIST_FILE = SoundBBC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nhatquangz.soundbbc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quangla.soundbbc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -841,14 +841,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C4XF7U982N;
+				DEVELOPMENT_TEAM = 7YMMS76DWJ;
 				INFOPLIST_FILE = SoundBBC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nhatquangz.soundbbc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quangla.soundbbc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

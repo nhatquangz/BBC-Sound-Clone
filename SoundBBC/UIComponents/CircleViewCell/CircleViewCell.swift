@@ -50,7 +50,7 @@ class CircleViewCell: UICollectionViewCell {
 		contentView.addSubview(progressView)
 		contentView.addSubview(channelImageView)
 		
-		coverImageView.snp.makeConstraints { $0.edges.equalToSuperview() }
+		coverImageView.snp.makeConstraints { $0.edges.equalToSuperview().inset(2) }
 		progressView.snp.makeConstraints { $0.edges.equalToSuperview() }
 		channelImageView.snp.makeConstraints {
 			$0.width.height.equalTo(itemRadius * 0.7)

@@ -45,6 +45,7 @@ class ListenLiveView: UICollectionViewCell {
 	}
 	
 	func scrollToCenter() {
+		self.layoutIfNeeded()
 		collectionView.scrollToItem(at: IndexPath(item: 500000, section: 0), at: .centeredHorizontally, animated: false)
 		collectionView.collectionViewLayout.invalidateLayout()
 	}
@@ -59,7 +60,7 @@ extension ListenLiveView: DisplayableItemView {
 		self.viewModel = viewModel
 		bindData(viewModel: viewModel)
 		collectionView.reloadData()
-		scrollToCenter()
+		self.scrollToCenter()
 	}
 	
 	private func bindData(viewModel: ListenLiveViewModel) {

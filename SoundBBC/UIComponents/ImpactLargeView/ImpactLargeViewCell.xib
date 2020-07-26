@@ -18,14 +18,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ImpactLargeViewCell" customModule="SoundBBC" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="218" height="353"/>
+            <rect key="frame" x="0.0" y="0.0" width="218" height="310"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="218" height="353"/>
+                <rect key="frame" x="0.0" y="0.0" width="218" height="310"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLU-F3-IeF">
-                        <rect key="frame" x="0.0" y="0.0" width="218" height="353"/>
+                        <rect key="frame" x="0.0" y="0.0" width="218" height="310"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Do6-ay-ySj">
                                 <rect key="frame" x="0.0" y="0.0" width="218" height="218"/>
@@ -76,13 +76,13 @@
                 <constraint firstItem="vLU-F3-IeF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="jcg-ta-zsq"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="216" height="353"/>
+            <size key="customSize" width="216" height="310"/>
             <connections>
                 <outlet property="coverImageView" destination="Do6-ay-ySj" id="dLQ-RF-YIJ"/>
                 <outlet property="descriptionLabel" destination="ofi-sd-3Y0" id="wps-xU-E9R"/>
                 <outlet property="titleLabel" destination="Tla-Uc-MzS" id="Xgr-QI-5T5"/>
             </connections>
-            <point key="canvasLocation" x="-386.95652173913044" y="20.424107142857142"/>
+            <point key="canvasLocation" x="-386.95652173913044" y="6.0267857142857144"/>
         </collectionViewCell>
     </objects>
 </document>

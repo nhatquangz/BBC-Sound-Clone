@@ -8,11 +8,12 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 /// The storage containing your access token, preferable a Keychain wrapper.
 protocol AccessTokenStorage: class {
 	var accessToken: String { get set }
-	func refresh(completion: @escaping (RequestError?) -> Void)
+	func refresh(completion: @escaping (Result<JSON, RequestError>) -> Void)
 }
 
 
@@ -37,11 +38,12 @@ class RequestInterceptor: Alamofire.RequestInterceptor {
 			return completion(.doNotRetryWithError(error))
 		}
 		print("Refresh token")
-		storage.refresh { error in
-			if let error = error {
-				completion(.doNotRetryWithError(error))
-			} else {
+		storage.refresh { result in
+			switch result {
+			case .success:
 				completion(.retry)
+			case .failure(let error):
+				completion(.doNotRetryWithError(error))
 			}
 		}
 	}
