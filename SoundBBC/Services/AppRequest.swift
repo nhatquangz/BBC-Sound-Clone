@@ -15,12 +15,29 @@ import Alamofire
 
 class AppRequest {
 	
-	static func get(path: RequestPath, retryCount: Int = 2) -> Observable<Result<JSON, RequestError>> {
+	static func getJSON(_ path: RequestPath, retryCount: Int = 2) -> Observable<Result<JSON, RequestError>> {
 		return Networking.shared.request(method: .get, url: path.url, retryCount: retryCount)
+			.map { result -> Result<JSON, RequestError> in
+				return result.map { data -> JSON in
+					return JSON(data)
+				}
+			}
 	}
 	
-	static func post(path: RequestPath, retryCount: Int = 2) -> Observable<Result<JSON, RequestError>> {
-		return Networking.shared.request(method: .post, url: path.url, retryCount: retryCount)
+	/// Get object data from returned json
+	/// - Parameters:
+	///   - path: request path
+	///   - retryCount: number of retring the request
+	/// - Returns: Object of expected data model
+	static func get<T>(_ path: RequestPath, retryCount: Int = 2) -> Observable<Result<T?, RequestError>> where T: Decodable {
+		return Networking.shared.request(method: .get, url: path.url, retryCount: retryCount)
+			.map { result -> Result<T?, RequestError> in
+				return result.map { data -> T? in
+					let jsonData = try? JSON(data)["data"].rawData()
+					let object: T? = try? jsonData?.decoded()
+					return object
+				}
+		}
 	}
 	
 	/// Get array data from returned json
@@ -28,11 +45,13 @@ class AppRequest {
 	///   - path: request path
 	///   - retryCount: number of retring the request
 	/// - Returns: Array of expected data model
-	static func get<T>(path: RequestPath, retryCount: Int = 2) -> Observable<Result<[T], RequestError>> where T: DecodableModelProtocol {
+	static func get<T>(_ path: RequestPath, retryCount: Int = 2) -> Observable<Result<[T], RequestError>> where T: Decodable {
 		return Networking.shared.request(method: .get, url: path.url, retryCount: retryCount)
 			.map { result -> Result<[T], RequestError> in
-				return result.map { jsonData -> [T] in
-					return jsonData["data"].arrayValue.map { T($0) }
+				return result.map { data -> [T] in
+					let jsonData = try? JSON(data)["data"].rawData()
+					let arrayData: [T] = jsonData?.decodedArray() ?? []
+					return arrayData
 				}
 		}
 	}

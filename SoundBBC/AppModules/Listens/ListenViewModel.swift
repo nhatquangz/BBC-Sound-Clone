@@ -27,7 +27,7 @@ class ListenViewModel: BaseViewModel {
 		reloadData.asObservable()
 			.throttle(.seconds(5), scheduler: MainScheduler.instance)
 			.flatMapLatest { _ -> Observable<Result<[DisplayModuleModel], RequestError>> in
-				return AppRequest.get(path: .listen)
+				return AppRequest.get(.listen)
 			}
 			.subscribe(onNext: { [weak self] result in
 				if let data = try? result.get() {
@@ -60,7 +60,7 @@ extension ListenViewModel {
 		if theme == .dial {
 			return 1
 		} else {
-			return dataSource.value[safe: index]?.data.count ?? 0
+			return dataSource.value[safe: index]?.data?.count ?? 0
 		}
 	}
 	
@@ -71,7 +71,7 @@ extension ListenViewModel {
 	func item(indexPath: IndexPath) -> DisplayItemModel? {
 		let section = indexPath.section
 		let itemIndex = indexPath.row
-		return self.dataSource.value[safe: section]?.data[safe: itemIndex]
+		return self.dataSource.value[safe: section]?.data?[safe: itemIndex]
 	}
 	
 	func headerViewModel(index: IndexPath) -> DefaultHeaderViewModel? {

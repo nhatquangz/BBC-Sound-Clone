@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class PlayableViewCell: UICollectionViewCell {
 	
@@ -16,30 +18,33 @@ class PlayableViewCell: UICollectionViewCell {
 	@IBOutlet weak var progressBar: ProgressView!
 	@IBOutlet weak var timeLabel: UILabel!
 	
+	var viewModel: ListenCellViewModel?
+	var disposeBag = DisposeBag()
+	
     override func awakeFromNib() {
         super.awakeFromNib()
 		self.backgroundColor = .random
 		progressBar.config(type: .horizontal)
     }
+	
+	override func prepareForReuse() {
+		super.prepareForReuse()
+		disposeBag = DisposeBag()
+	}
 }
 
 
 extension PlayableViewCell: DisplayableItemView {
 	func configure<T>(data: T) {
-		let data = data as? DisplayItemModel
-		let imageURL = data?.imageUrl.bbc.replace([.recipe: "192x192"]).urlEncoded
+		viewModel = data as? ListenCellViewModel
+		let imageURL = viewModel?.imageURL(placeholders: [.recipe: "192x192"])
 		itemImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.4))])
-		titleLabel.text = data?.titles?.primary ?? ""
-		descriptionLabel.text = "\(data?.titles?.secondary ?? "")\n\(data?.titles?.tertiary ?? "")"
 		
-		if let progress = data?.currentProgress() {
-			timeLabel.text = data?.progress?.label ?? ""
-			progressBar.isHidden = false
-			progressBar.setProgress(current: CGFloat(progress))
-		} else {
-			timeLabel.text = data?.duration?.label ?? ""
-			progressBar.isHidden = true
-		}
+		viewModel?.title.bind(to: titleLabel.rx.text).disposed(by: disposeBag)
+		viewModel?.descriptionText.bind(to: descriptionLabel.rx.text).disposed(by: disposeBag)
+		viewModel?.showProgressBar.bind(to: progressBar.rx.isHidden).disposed(by: disposeBag)
+		viewModel?.currentProgress.bind(to: progressBar.rx.progress).disposed(by: disposeBag)
+		viewModel?.dateTimeText.bind(to: timeLabel.rx.text).disposed(by: disposeBag)
 	}
 }
 

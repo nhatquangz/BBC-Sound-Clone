@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import SnapKit
+import RxCocoa
+import RxSwift
 
 
 class ProgressView: UIView {
@@ -128,5 +130,12 @@ extension ProgressView {
 	}
 }
 
+extension Reactive where Base: ProgressView {
+	var progress: Binder<CGFloat> {
+		return Binder(self.base) { view, progress in
+			view.setProgress(current: progress)
+		}
+	}
+}
 
 

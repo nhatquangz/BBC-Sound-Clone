@@ -8,6 +8,8 @@
 
 import UIKit
 import Kingfisher
+import RxCocoa
+import RxSwift
 
 class ImpactLargeViewCell: UICollectionViewCell {
 
@@ -15,21 +17,28 @@ class ImpactLargeViewCell: UICollectionViewCell {
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var descriptionLabel: UILabel!
 	
+	var viewModel: ListenCellViewModel?
+	var disposeBag = DisposeBag()
 	
     override func awakeFromNib() {
         super.awakeFromNib()
 		backgroundColor = .random
     }
+	
+	override func prepareForReuse() {
+		disposeBag = DisposeBag()
+		super.prepareForReuse()
+	}
 }
 
 extension ImpactLargeViewCell: DisplayableItemView {
 	func configure<T>(data: T) {
-		let data = data as? DisplayItemModel
+		viewModel = data as? ListenCellViewModel
 		// 736x736 - 432x432 - 192x192 - 320x180
-		let imageURL = data?.imageUrl.bbc.replace([.recipe: "432x432"]).urlEncoded
+		let imageURL = viewModel?.imageURL(placeholders: [.recipe: "432x432"])
 		coverImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.4))])
-		titleLabel.text = data?.titles?.primary ?? ""
-		descriptionLabel.text = data?.synopses?.shortField ?? ""
+		viewModel?.title.bind(to: titleLabel.rx.text).disposed(by: disposeBag)
+		viewModel?.synopses.bind(to: descriptionLabel.rx.text).disposed(by: disposeBag)
 	}
 }
 

@@ -9,26 +9,20 @@
 import Foundation
 import SwiftyJSON
 
-class GuidanceModel {
+// MARK: - Guidance
+struct GuidanceModel: Decodable {
 	
-	var competitionWarning : Bool = false
-	var warnings : WarningModel?
-	
-	init(_ json: JSON) {
-		competitionWarning = json["competition_warning"].boolValue
-		warnings = WarningModel(json["warnings"])
+	let competitionWarning: Bool?
+	let warnings: Warnings?
+
+	enum CodingKeys: String, CodingKey {
+		case competitionWarning = "competition_warning"
+		case warnings
 	}
 }
 
-// MARK: - Warning
-extension GuidanceModel {
-	class WarningModel {
-		var longField : String = ""
-		var shortField : String = ""
-		init(_ json: JSON) {
-			longField = json["long"].stringValue
-			shortField = json["short"].stringValue
-		}
-	}
+// MARK: - Warnings
+struct Warnings: Codable {
+	let short, long: String?
 }
 

@@ -43,16 +43,16 @@ extension Networking {
 				 parameters: [String : Any]? = nil,
 				 encoding: ParameterEncoding = URLEncoding.default,
 				 session: Session? = nil,
-				 retryCount: Int = 1) -> Observable<Result<JSON, RequestError>> {
+				 retryCount: Int = 1) -> Observable<Result<Any, RequestError>> {
 		print("\(method.rawValue): \(url)")
 		let session: Session = session ?? self.defaultSession
-		return Observable<Result<JSON, RequestError>>.create { observer -> Disposable in
+		return Observable<Result<Any, RequestError>>.create { observer -> Disposable in
 			session.request(url, method: method, parameters: parameters, encoding: encoding)
 				.validate(statusCode: 200..<300)
 				.responseJSON { response in
 					switch response.result {
 					case .success(let value):
-						observer.onNext(.success(JSON(value)))
+						observer.onNext(.success(value))
 					case .failure(_):
 						observer.onError(RequestError.serverError(response.data))
 					}
@@ -61,7 +61,7 @@ extension Networking {
 			return Disposables.create()
 			}
 			.retry(.delayed(maxCount: UInt(retryCount), time: 5))
-			.catchError({ error -> Observable<Result<JSON, RequestError>> in
+			.catchError({ error -> Observable<Result<Any, RequestError>> in
 				return Observable.just(.failure(error as! RequestError))
 			})
 	}

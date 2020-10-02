@@ -64,9 +64,9 @@ class CircleViewCell: UICollectionViewCell {
 extension CircleViewCell: DisplayableItemView {
 	func configure<T>(data: T) {
 		let data = data as? DisplayItemModel
-		let imageURL = data?.imageUrl.bbc.replace([.recipe: "320x180"]).urlEncoded
+		let imageURL = data?.imageUrl?.bbc.replace([.recipe: "320x180"]).urlEncoded
 		coverImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.4))])
-		let logoURL = data?.network?.logoUrl.bbc.replace([.type: "colour",
+		let logoURL = data?.network?.logoUrl?.bbc.replace([.type: "colour",
 														  .size: "276",
 														  .format: "png"]).urlEncoded
 		channelImageView.kf.setImage(with: logoURL, options: [.transition(.fade(0.4))])

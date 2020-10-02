@@ -7,33 +7,32 @@
 //
 
 import Foundation
-import SwiftyJSON
 
-class DownloadModel {
-	
-	var type: String = ""
-	var data: [String: DownloadQualityModel] = [:]
-	
-	init(_ json: JSON) {
-		type = json["type"].stringValue
-		data = json["quality_variants"].dictionaryValue.mapValues { DownloadQualityModel($0) }
+struct DownloadModel: Decodable {
+	let type: String?
+	let qualityVariants: QualityVariants?
+
+	enum CodingKeys: String, CodingKey {
+		case type
+		case qualityVariants = "quality_variants"
 	}
 }
 
+// MARK: - QualityVariants
+struct QualityVariants: Decodable {
+	let low, medium, high: Quality?
+	
+	struct Quality: Decodable {
+		let bitrate: Int?
+		let fileurl: String?
+		let fileSize: Int?
+		let label: String?
 
-// MARK: - Quality
-extension DownloadModel {
-	class DownloadQualityModel {
-		var bitrate: Int?
-		var fileSize: Int?
-		var fileUrl: String?
-		var label: String?
-
-		init(_ json: JSON) {
-			bitrate = json["bitrate"].intValue
-			fileSize = json["file_size"].intValue
-			fileUrl = json["file_url"].stringValue
-			label = json["label"].stringValue
+		enum CodingKeys: String, CodingKey {
+			case bitrate
+			case fileurl = "file_url"
+			case fileSize = "file_size"
+			case label
 		}
 	}
 }

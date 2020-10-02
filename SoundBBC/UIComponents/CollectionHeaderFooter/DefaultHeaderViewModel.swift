@@ -21,6 +21,6 @@ class DefaultHeaderViewModel {
 	
 	
 	init(section: DisplayModuleModel) {
-		observableSectionTitle.accept(section.title)
+		observableSectionTitle.accept(section.title ?? "")
 	}
 }

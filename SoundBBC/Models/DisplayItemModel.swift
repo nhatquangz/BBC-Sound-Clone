@@ -9,104 +9,80 @@
 import Foundation
 import SwiftyJSON
 
-class DisplayItemModel {
-	var type: String = ""
-    var id: String = ""
-    var urn: String = ""
-    var network: NetworkModel?
-    var titles: TitleModel?
-    var synopses: SynopsisModel?
-    var imageUrl: String = ""
-    var duration: KeyValueModel?
-    var progress: KeyValueModel?
-    var container: String = ""
-    var download: String = ""
-    var availability: AvailabilityModel?
-    var release: ReleaseModel?
-    var guidance: String = ""
-    var activities: [String] = []
-    var uris: [UrisModel] = []
-    var playContext: String = ""
+struct DisplayItemModel: Decodable {
+	
+	let type : String?
+	let id : String?
+	let urn : String?
+	let network : NetworkModel?
+	let titles : TitleModel?
+	let synopses : SynopsisModel?
+	let imageUrl : String?
+	let duration : KeyValueModel?
+	let progress : KeyValueModel?
+//	let container : String?
+	let download : DownloadModel?
+	let availability : AvailabilityModel?
+	let release : ReleaseModel?
+	let guidance : GuidanceModel?
+	let activities : [ActivitiesModel]?
+//	let uris : [UrisModel]?
+	let playContext : String?
 	
 	
-	class KeyValueModel {
-		var label: String = ""
-		var value: Float = 0
-		init(_ json: JSON){
-			if json.isEmpty {
-				return
-			}
-			label = json["label"].stringValue
-			value = json["value"].floatValue
-		}
+	struct KeyValueModel: Decodable {
+		let label: String?
+		let value: Float?
 	}
 	
-	/**
-	 * Instantiate the instance using the passed json values to set the properties values
-	 */
-	init(_ json: JSON) {
-        type = json["type"].stringValue
-        id = json["id"].stringValue
-        urn = json["urn"].stringValue
-		
-		if !json["network"].isEmpty {
-			network = NetworkModel(json["network"])
-		}
-		if !json["titles"].isEmpty {
-			titles = TitleModel(json["titles"])
-		}
-		if !json["synopses"].isEmpty {
-			synopses = SynopsisModel(json["synopses"])
-		}
-		
-        imageUrl = json["image_url"].stringValue
-		
-		if !json["duration"].isEmpty {
-			duration = KeyValueModel(json["duration"])
-		}
-		
-		if !json["progress"].isEmpty {
-			progress = KeyValueModel(json["progress"])
-		}
-		
-		container = json["container"].stringValue
-		download = json["download"].stringValue
-		
-		if !json["availability"].isEmpty {
-			availability = AvailabilityModel(json["availability"])
-		}
-		if !json["release"].isEmpty {
-			release = ReleaseModel(json["release"])
-		}
-		
-		guidance = json["guidance"].stringValue
-        activities = json["activities"].arrayValue.compactMap { $0.stringValue }
-        uris = json["uris"].arrayValue.compactMap { UrisModel($0) }
-		playContext = json["play_context"].stringValue
-	}
-}
-
-// MARK: - Hashable
-extension DisplayItemModel: Hashable {
-	static func == (lhs: DisplayItemModel, rhs: DisplayItemModel) -> Bool {
-		return lhs.id == rhs.id
+	struct TitleModel: Decodable {
+		let primary : String?
+		let secondary : String?
+		let tertiary : String?
 	}
 	
-	func hash(into hasher: inout Hasher) {
-		hasher.combine(id)
+	struct NetworkModel: Decodable {
+		let id : String?
+		let key : String?
+		let shortTitle : String?
+		let logoUrl : String?
 	}
-}
-
-
-
-// MARK: - Utility functions
-extension DisplayItemModel {
+	
+	
+	struct SynopsisModel: Decodable {
+		let short : String?
+		let medium : String?
+		let long : String?
+	}
+	
+	struct AvailabilityModel: Decodable {
+		let from : String?
+		let to : String?
+		let label : String?
+	}
+	
+	struct ReleaseModel: Decodable {
+		let date: String?
+		let label: String?
+	}
+	
+	
+	struct UrisModel: Decodable {
+		let type: String?
+		let id: String?
+		let label: String?
+		let uri: String?
+	}
+	
+	struct ActivitiesModel: Decodable {
+		let type, action, label: String?
+	}
+	
 	func currentProgress() -> Float? {
-		guard let progress = self.progress, let duration = self.duration else { return nil }
-		if duration.value > 0 {
-			return progress.value / duration.value
+		guard let progress = self.progress?.value, let duration = self.duration?.value else { return nil }
+		if duration > 0 {
+			return progress / duration
 		}
 		return nil
 	}
 }
-

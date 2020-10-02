@@ -18,7 +18,6 @@ class ListenViewController: UIViewController {
 	let refreshControl = UIRefreshControl()
 	
 	let viewModel = ListenViewModel()
-	var dataSource: UICollectionViewDiffableDataSource<String, DisplayItemModel>! = nil
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -104,9 +103,8 @@ extension ListenViewController: UICollectionViewDataSource {
 		
 		if cellType == ListenLiveView.self {
 			itemView.configure(data: self.viewModel.items(section: indexPath.section))
-		} else {
-			let data = self.viewModel.item(indexPath: indexPath)
-			itemView.configure(data: data)
+		} else if let data = self.viewModel.item(indexPath: indexPath) {
+			itemView.configure(data: ListenCellViewModel(data: data))
 		}
 		
 		return cell
