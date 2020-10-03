@@ -23,8 +23,8 @@ class ListenLiveViewModel {
 	init(data: [DisplayItemModel]) {
 		self.dataSource = data
 		
-		let itemHeight = AppDefinition.Dimension.dialItemHeight
-		let itemSpace = AppDefinition.Dimension.itemSpace
+		let itemHeight = AppConstants.Dimension.dialItemHeight
+		let itemSpace = AppConstants.Dimension.itemSpace
 		
 		currentOffset.asObservable()
 			.throttle(.milliseconds(100), scheduler: MainScheduler.instance)

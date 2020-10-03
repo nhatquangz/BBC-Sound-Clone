@@ -89,9 +89,9 @@ extension LayoutProvider {
 	
 	
 	private func basicLayout(columnItemCount: Int = 2) -> NSCollectionLayoutSection {
-		let itemSpace = AppDefinition.Dimension.itemSpace
-		let itemHeight = AppDefinition.Dimension.playableItemHeight
-		let itemWidth = AppDefinition.Dimension.playableItemWidth
+		let itemSpace = AppConstants.Dimension.itemSpace
+		let itemHeight = AppConstants.Dimension.playableItemHeight
+		let itemWidth = AppConstants.Dimension.playableItemWidth
 		
 		let item = NSCollectionLayoutItem(
 			layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
@@ -115,10 +115,10 @@ extension LayoutProvider {
 	
 	
 	private func impactLargeLayout() -> NSCollectionLayoutSection {
-		let itemSpace = AppDefinition.Dimension.itemSpace - 5
+		let itemSpace = AppConstants.Dimension.itemSpace - 5
 		let itemWidth = UIScreen.main.bounds.width * 0.6
 		let itemHeight = itemWidth + 90
-		let sectionPadding = AppDefinition.Dimension.contenPadding
+		let sectionPadding = AppConstants.Dimension.contenPadding
 		
 		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
 											  heightDimension: .fractionalHeight(1))
@@ -140,10 +140,10 @@ extension LayoutProvider {
 	
 	
 	private func impactSmallLayout() -> NSCollectionLayoutSection {
-		let itemSpace = AppDefinition.Dimension.itemSpace * 0.5
-		let itemHeight = AppDefinition.Dimension.categoryItemHeight
+		let itemSpace = AppConstants.Dimension.itemSpace * 0.5
+		let itemHeight = AppConstants.Dimension.categoryItemHeight
 		let itemWidth = itemHeight * 1.8
-		let sectionPadding = AppDefinition.Dimension.contenPadding
+		let sectionPadding = AppConstants.Dimension.contenPadding
 		
 		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
 											  heightDimension: .fractionalHeight(0.5))
@@ -177,8 +177,8 @@ extension LayoutProvider {
 	}
 	
 	func dialLayout() -> NSCollectionLayoutSection {
-		let itemHeight = AppDefinition.Dimension.dialItemHeight
-		let itemSpace = AppDefinition.Dimension.itemSpace
+		let itemHeight = AppConstants.Dimension.dialItemHeight
+		let itemSpace = AppConstants.Dimension.itemSpace
 		
 		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
 											  heightDimension: .fractionalHeight(1))

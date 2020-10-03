@@ -17,6 +17,7 @@ class AppCoordinator: BaseCoordinator {
 	override func start() {
 		self.navigationController.navigationBar.isHidden = true
 		self.window.rootViewController = self.navigationController
+//		self.window.rootViewController = PlayingViewController.shared
 		self.window.makeKeyAndVisible()
 		
 		let splashViewController = SplashViewController()

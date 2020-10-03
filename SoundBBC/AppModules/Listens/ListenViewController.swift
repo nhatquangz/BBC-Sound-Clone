@@ -31,7 +31,7 @@ class ListenViewController: UIViewController {
 extension ListenViewController {
 	func setup() {
 		self.title = "Listen"
-		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: AppDefinition.Font.reithSerifMedium.size(20)]
+		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: AppConstants.Font.reithSerifMedium.size(20)]
 		
 		collectionView = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout())
 		view.addSubview(collectionView)

@@ -10,35 +10,32 @@ import Foundation
 import UIKit
 
 
+
 class TabbarController: UITabBarController {
 	
-	private let playingViewController = PlayingViewController.shared
+	private let playingView = PlayingView()
 
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setup()
-		addPlayingView()
 	}
 }
 
 // MARK: - Setup
 extension TabbarController {
 	func setup() {
-		self.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.font: AppDefinition.Font.reithSans.size(12)], for: .normal)
-		self.tabBar.tintColor = AppDefinition.Color.main
+		self.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.font: AppConstants.Font.reithSans.size(12)], for: .normal)
+		self.tabBar.tintColor = AppConstants.Color.main
+		addPlayingView()
 	}
 }
 
 // MARK: - Playing View Controller
 extension TabbarController {
 	func addPlayingView() {
-		let playingView: UIView = playingViewController.view
 		view.addSubview(playingView)
 		view.bringSubviewToFront(self.tabBar)
-		addChild(playingViewController)
-		playingViewController.didMove(toParent: self)
-		
 		playingView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			playingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -46,7 +43,6 @@ extension TabbarController {
 			playingView.heightAnchor.constraint(equalTo: view.heightAnchor),
 			playingView.topAnchor.constraint(equalTo: view.topAnchor)
 		])
-		
 		let pan = UIPanGestureRecognizer.init(target: self, action: #selector(handlePan(recognizer:)))
 		playingView.addGestureRecognizer(pan)
 	}
@@ -62,7 +58,7 @@ extension TabbarController {
 		var topConstant: CGFloat
 		let fullHeight = self.view.frame.height
 		let tabbarHeight = self.tabBar.frame.height
-		let miniBarHeight = AppDefinition.Dimension.playingBarHeight
+		let miniBarHeight = AppConstants.Dimension.playingBarHeight
 		
 		switch state {
 		case .full:
@@ -74,7 +70,7 @@ extension TabbarController {
 		}
 		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.curveEaseInOut], animations: {
 			self.view.layoutIfNeeded()
-			self.playingViewController.view.frame.origin.y = topConstant
+			self.playingView.frame.origin.y = topConstant
 		}, completion: nil)
 	}
 	
@@ -83,7 +79,7 @@ extension TabbarController {
 		guard let playingView = recognizer.view else { return }
 		
 		// Max distance that playing view can move down from the full state
-		let maxDistance = self.tabBar.frame.origin.y + AppDefinition.Dimension.playingBarHeight
+		let maxDistance = self.tabBar.frame.origin.y + AppConstants.Dimension.playingBarHeight
 		
 		let newY = playingView.frame.origin.y + translation.y
 		if newY <= maxDistance && newY >= 0 {

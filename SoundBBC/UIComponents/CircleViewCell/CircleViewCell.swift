@@ -40,7 +40,7 @@ class CircleViewCell: UICollectionViewCell {
 	}
 	
 	private func setup() {
-		let itemRadius = AppDefinition.Dimension.dialItemHeight / 2
+		let itemRadius = AppConstants.Dimension.dialItemHeight / 2
 		self.clipsToBounds = false
 		self.backgroundColor = .random
 		self.layer.cornerRadius = itemRadius

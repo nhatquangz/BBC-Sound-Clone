@@ -20,7 +20,7 @@ class ListenCellViewModel: BaseViewModel {
 	let descriptionText = BehaviorRelay<String>(value: "")
 	let dateTimeText = BehaviorRelay<String>(value: "")
 	let showProgressBar = BehaviorRelay<Bool>(value: false)
-	let currentProgress = BehaviorRelay<CGFloat>(value: 0)
+	let currentProgress = BehaviorRelay<Float>(value: 0)
 	
 	private let data: DisplayItemModel
 	
@@ -33,7 +33,7 @@ class ListenCellViewModel: BaseViewModel {
 		if let progress = data.currentProgress() {
 			dateTimeText.accept(data.progress?.label ?? "")
 			showProgressBar.accept(false)
-			currentProgress.accept(CGFloat(progress))
+			currentProgress.accept(progress)
 		} else {
 			dateTimeText.accept(data.duration?.label ?? "")
 			showProgressBar.accept(true)

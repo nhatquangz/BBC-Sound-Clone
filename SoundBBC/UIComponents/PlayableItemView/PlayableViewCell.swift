@@ -15,7 +15,7 @@ class PlayableViewCell: UICollectionViewCell {
 	@IBOutlet weak var itemImageView: UIImageView!
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var descriptionLabel: UILabel!
-	@IBOutlet weak var progressBar: ProgressView!
+	@IBOutlet weak var progressBar: CustomSlider!
 	@IBOutlet weak var timeLabel: UILabel!
 	
 	var viewModel: ListenCellViewModel?
@@ -24,7 +24,6 @@ class PlayableViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 		self.backgroundColor = .random
-		progressBar.config(type: .horizontal)
     }
 	
 	override func prepareForReuse() {
@@ -43,7 +42,7 @@ extension PlayableViewCell: DisplayableItemView {
 		viewModel?.title.bind(to: titleLabel.rx.text).disposed(by: disposeBag)
 		viewModel?.descriptionText.bind(to: descriptionLabel.rx.text).disposed(by: disposeBag)
 		viewModel?.showProgressBar.bind(to: progressBar.rx.isHidden).disposed(by: disposeBag)
-		viewModel?.currentProgress.bind(to: progressBar.rx.progress).disposed(by: disposeBag)
+		viewModel?.currentProgress.bind(to: progressBar.rx.value).disposed(by: disposeBag)
 		viewModel?.dateTimeText.bind(to: timeLabel.rx.text).disposed(by: disposeBag)
 	}
 }

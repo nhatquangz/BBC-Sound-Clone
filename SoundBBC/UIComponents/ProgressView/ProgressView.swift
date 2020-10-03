@@ -26,9 +26,9 @@ class ProgressView: UIView {
 	private let backgroundLayer = CAShapeLayer()
 	
 	private var lineWidth: CGFloat = 5
-	private let currentColor = AppDefinition.Color.main
-	private let preloadColor = AppDefinition.Color.preloadProgress
-	private let trackColor = AppDefinition.Color.progressTrack
+	private let currentColor = AppConstants.Color.main
+	private let preloadColor = AppConstants.Color.preloadProgress
+	private let trackColor = AppConstants.Color.progressTrack
 	
 	private var currentProgress: CGFloat = 0
 	private var preloadProgress: CGFloat = 0

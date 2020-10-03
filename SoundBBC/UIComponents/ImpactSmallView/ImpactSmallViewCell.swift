@@ -23,7 +23,7 @@ class ImpactSmallViewCell: UICollectionViewCell {
 	
 	let categoryName: UILabel = {
 		let label = UILabel()
-		label.font = AppDefinition.Font.reithSansBold.size(15)
+		label.font = AppConstants.Font.reithSansBold.size(15)
 		label.numberOfLines = 3
 		label.textAlignment = .center
 		label.textColor = .white

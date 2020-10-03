@@ -17,14 +17,14 @@ class DefaultCollectionViewHeader: UICollectionReusableView {
 	
 	var sectionTitle: UILabel = {
 		let label = UILabel()
-		label.font = AppDefinition.Font.reithSerifMedium.size(20)
+		label.font = AppConstants.Font.reithSerifMedium.size(20)
 		return label
 	}()
 	
 	var seeMoreButton: UIButton = {
 		let button = UIButton()
 		button.setTitle("View All", for: .normal)
-		button.titleLabel?.font = AppDefinition.Font.reithSans.size(15)
+		button.titleLabel?.font = AppConstants.Font.reithSans.size(15)
 		button.setTitleColor(.black, for: .normal)
 		button.setTitleColor(.gray, for: .highlighted)
 		return button

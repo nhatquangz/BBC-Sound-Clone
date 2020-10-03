@@ -7,11 +7,10 @@ target 'SoundBBC' do
 
   # Pods for SoundBBC
    #UI
-	pod 'SwiftMessages', '7.0.1'
 	pod 'IQKeyboardManagerSwift', '6.5.0'
 	pod 'SnapKit', '5.0.1'
 	pod 'NVActivityIndicatorView', '4.8.0'
-	
+	pod 'MarqueeLabel', '4.0.2'
 	
 	#Extension
 	pod 'SwiftDate', '6.1.0'
@@ -22,10 +21,7 @@ target 'SoundBBC' do
 	
 	#Services & Network
 	pod 'Alamofire', '5.1'
-	#pod 'RxAlamofire', '4.4.1'
 	pod 'Kingfisher', '5.3.1'
-	#pod 'ReachabilitySwift', '~> 4.1.0'
-	#pod 'RealReachability'
 	
 	#Database
 	pod 'SwiftyJSON', '5.0.0'
