@@ -20,7 +20,10 @@ class PlayingView: UIView {
 	@IBOutlet weak var rewindForward: UIButton!
 	@IBOutlet weak var nextSong: UIButton!
 	
-	@IBOutlet weak var circleProgress: CircleProgressView!
+	@IBOutlet var circleProgress: [CircleProgressView]!
+	
+	@IBOutlet weak var airplayConnectButton: UIButton!
+	
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -40,5 +43,16 @@ class PlayingView: UIView {
 		
 		playingTrack.minimumTrackTintColor = AppConstants.Color.main
 		playingTrack.thumbTintColor = AppConstants.Color.main
+		
+		/// Airplay connect button title
+		let airplayTitle = NSMutableAttributedString(string: "Available Devices\n", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+		let airplayIcon = NSTextAttachment()
+		airplayIcon.image = UIImage(named: "airplay-audio")
+		let airplay = NSAttributedString(attachment: airplayIcon)
+		airplayTitle.append(airplay)
+		airplayTitle.append(NSAttributedString(string: " Connect to AirPlay"))
+		
+		airplayConnectButton.setAttributedTitle(airplayTitle, for: .normal)
+		airplayConnectButton.titleLabel?.textAlignment = .center
 	}
 }

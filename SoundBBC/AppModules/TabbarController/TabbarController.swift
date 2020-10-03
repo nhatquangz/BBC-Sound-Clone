@@ -50,11 +50,7 @@ extension TabbarController {
 
 // MARK: - Playing State
 extension TabbarController {
-	enum PlayingViewState {
-		case full, mini, hide
-	}
-	
-	func changePlayingViewState(_ state: PlayingViewState) {
+	func changePlayingViewState(_ state: PlayingViewPosition) {
 		var topConstant: CGFloat
 		let fullHeight = self.view.frame.height
 		let tabbarHeight = self.tabBar.frame.height
@@ -71,7 +67,11 @@ extension TabbarController {
 		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.curveEaseInOut], animations: {
 			self.view.layoutIfNeeded()
 			self.playingView.frame.origin.y = topConstant
-		}, completion: nil)
+		}, completion: { result in
+			if result {
+				PlayingViewModel.shared.position.accept(state)
+			}
+		})
 	}
 	
 	@objc func handlePan(recognizer: UIPanGestureRecognizer) {

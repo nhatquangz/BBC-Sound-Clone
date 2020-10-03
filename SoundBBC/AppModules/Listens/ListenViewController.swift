@@ -69,6 +69,14 @@ extension ListenViewController {
 			.throttle(.seconds(5), scheduler: MainScheduler.instance)
 			.bind(to: viewModel.reloadData)
 			.disposed(by: disposeBag)
+		
+		PlayingViewModel.shared.position.asObservable()
+			.distinctUntilChanged()
+			.subscribe(onNext: { [weak self] state in
+				let bottomInset: CGFloat = state == .hide ? 0 : 50
+				self?.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
+			})
+			.disposed(by: disposeBag)
 	}
 	
 	

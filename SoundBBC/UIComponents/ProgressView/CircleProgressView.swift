@@ -11,13 +11,19 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+@IBDesignable
 class CircleProgressView: UIView {
 	
 	private let currentLayer = CAShapeLayer()
 	private let preloadLayer = CAShapeLayer()
 	private let backgroundLayer = CAShapeLayer()
 	
-	private var lineWidth: CGFloat = 4
+	@IBInspectable
+	private var lineWidth: CGFloat = 4 {
+		didSet {
+			draw()
+		}
+	}
 	private let currentColor = AppConstants.Color.main
 	private let preloadColor = AppConstants.Color.preloadProgress
 	private let trackColor = AppConstants.Color.progressTrack

@@ -53,6 +53,7 @@
 		23898F992528D56200C2D94D /* PlayingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23898F972528D56200C2D94D /* PlayingView.xib */; };
 		23898F9D2528E2D600C2D94D /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23898F9C2528E2D600C2D94D /* CircleProgressView.swift */; };
 		23898FA02528E37400C2D94D /* RxExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23898F9F2528E37400C2D94D /* RxExtension.swift */; };
+		23898FA3252922D400C2D94D /* PlayingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23898FA2252922D400C2D94D /* PlayingViewModel.swift */; };
 		23AF5F3E2526349500BE471B /* CodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF5F3D2526349500BE471B /* CodableExtension.swift */; };
 		23AF5F4925263DDE00BE471B /* ListenCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF5F4825263DDE00BE471B /* ListenCellViewModel.swift */; };
 		23B7C30A24AE898400539E6B /* ImpactSmallViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B7C30924AE898400539E6B /* ImpactSmallViewCell.swift */; };
@@ -125,6 +126,7 @@
 		23898F972528D56200C2D94D /* PlayingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayingView.xib; sourceTree = "<group>"; };
 		23898F9C2528E2D600C2D94D /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		23898F9F2528E37400C2D94D /* RxExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtension.swift; sourceTree = "<group>"; };
+		23898FA2252922D400C2D94D /* PlayingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingViewModel.swift; sourceTree = "<group>"; };
 		23AF5F3D2526349500BE471B /* CodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtension.swift; sourceTree = "<group>"; };
 		23AF5F4825263DDE00BE471B /* ListenCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenCellViewModel.swift; sourceTree = "<group>"; };
 		23B7C30924AE898400539E6B /* ImpactSmallViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactSmallViewCell.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 			children = (
 				23898F962528D56200C2D94D /* PlayingView.swift */,
 				23898F972528D56200C2D94D /* PlayingView.xib */,
+				23898FA2252922D400C2D94D /* PlayingViewModel.swift */,
 			);
 			path = PlayingSound;
 			sourceTree = "<group>";
@@ -677,6 +680,7 @@
 				232C60C924AA96140049A68A /* PlayableViewCell.swift in Sources */,
 				23898FA02528E37400C2D94D /* RxExtension.swift in Sources */,
 				23898F982528D56200C2D94D /* PlayingView.swift in Sources */,
+				23898FA3252922D400C2D94D /* PlayingViewModel.swift in Sources */,
 				23328BFC2454720E005E2C5F /* RequestPath.swift in Sources */,
 				2309CDFB24508C7200620475 /* ListenViewController.swift in Sources */,
 				2309CE182450FEF600620475 /* ColorExtensions.swift in Sources */,
