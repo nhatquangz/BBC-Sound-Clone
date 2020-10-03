@@ -20,6 +20,8 @@ class PlayingView: UIView {
 	@IBOutlet weak var rewindForward: UIButton!
 	@IBOutlet weak var nextSong: UIButton!
 	
+	@IBOutlet weak var circleProgress: CircleProgressView!
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		setup()
@@ -29,6 +31,7 @@ class PlayingView: UIView {
 		super.init(coder: aDecoder)
 		setup()
 	}
+	
 	
 	private func setup() {
 		Bundle.main.loadNibNamed(nibName, owner: self, options: nil)
