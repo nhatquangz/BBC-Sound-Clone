@@ -20,6 +20,7 @@ protocol AccessTokenStorage: class {
 class RequestInterceptor: Alamofire.RequestInterceptor {
 	
 	private var storage: AccessTokenStorage
+	private let ignoreTokenList = ["open.live.bbc.uk"]
 	
 	init(storage: AccessTokenStorage) {
 		self.storage = storage
@@ -27,7 +28,9 @@ class RequestInterceptor: Alamofire.RequestInterceptor {
 	
 	func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
 		var urlRequest = urlRequest
-		urlRequest.setValue("Bearer " + storage.accessToken, forHTTPHeaderField: "Authorization")
+		if needToken(for: urlRequest.url) {
+			urlRequest.setValue("Bearer " + storage.accessToken, forHTTPHeaderField: "Authorization")
+		}
 		completion(.success(urlRequest))
 	}
 	
@@ -46,6 +49,10 @@ class RequestInterceptor: Alamofire.RequestInterceptor {
 				completion(.doNotRetryWithError(error))
 			}
 		}
+	}
+	
+	private func needToken(for url: URL?) -> Bool {
+		return url?.absoluteString.contains("open.live.bbc.uk") ?? false
 	}
 }
 

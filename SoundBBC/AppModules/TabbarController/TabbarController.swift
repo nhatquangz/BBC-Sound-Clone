@@ -41,7 +41,7 @@ extension TabbarController {
 			playingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			playingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			playingView.heightAnchor.constraint(equalTo: view.heightAnchor),
-			playingView.topAnchor.constraint(equalTo: view.topAnchor)
+			playingView.topAnchor.constraint(equalTo: view.bottomAnchor)
 		])
 		let pan = UIPanGestureRecognizer.init(target: self, action: #selector(handlePan(recognizer:)))
 		playingView.addGestureRecognizer(pan)

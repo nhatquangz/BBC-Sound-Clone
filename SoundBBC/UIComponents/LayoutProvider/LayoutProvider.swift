@@ -23,6 +23,7 @@ extension LayoutProvider {
 		case impactLarge = "impact_large"
 		case schedule = "schdule"
 		case index = "index"
+		case spotlight_curation_unfamiliar
 		case unknown
 	}
 }

@@ -111,6 +111,7 @@
                                             <constraint firstAttribute="width" constant="40" id="dgK-Do-NOU"/>
                                         </constraints>
                                         <state key="normal" image="ic_play"/>
+                                        <state key="selected" image="ic_pause"/>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -136,6 +137,7 @@
             <connections>
                 <outlet property="descriptionLabel" destination="jbq-bv-cUa" id="86O-GA-oay"/>
                 <outlet property="itemImageView" destination="FrB-M6-G8F" id="ys7-Rp-dZj"/>
+                <outlet property="playButton" destination="kEe-ig-qEf" id="n3t-Mv-Xvh"/>
                 <outlet property="progressBar" destination="KsH-sZ-OtX" id="DzY-h9-i2K"/>
                 <outlet property="timeLabel" destination="8cY-ro-SCv" id="63m-ic-fvE"/>
                 <outlet property="titleLabel" destination="ImT-Vg-21y" id="XrX-va-lcu"/>
@@ -144,6 +146,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="ic_pause" width="23" height="23"/>
         <image name="ic_play" width="23" height="23"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

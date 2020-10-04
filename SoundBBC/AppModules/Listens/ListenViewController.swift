@@ -70,6 +70,7 @@ extension ListenViewController {
 			.bind(to: viewModel.reloadData)
 			.disposed(by: disposeBag)
 		
+		/// Add botton insect to collectionview when showing mini playing bar
 		PlayingViewModel.shared.position.asObservable()
 			.distinctUntilChanged()
 			.subscribe(onNext: { [weak self] state in
@@ -111,8 +112,8 @@ extension ListenViewController: UICollectionViewDataSource {
 		
 		if cellType == ListenLiveView.self {
 			itemView.configure(data: self.viewModel.items(section: indexPath.section))
-		} else if let data = self.viewModel.item(indexPath: indexPath) {
-			itemView.configure(data: ListenCellViewModel(data: data))
+		} else if let cellViewModel = self.viewModel.viewModel(indexPath: indexPath) {
+			itemView.configure(data: cellViewModel)
 		}
 		
 		return cell

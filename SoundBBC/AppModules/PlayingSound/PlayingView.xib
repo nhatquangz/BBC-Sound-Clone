@@ -141,6 +141,7 @@
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" image="play-h20"/>
+                                    <state key="selected" image="pause-h20"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hdf-z9-6xj">
                                     <rect key="frame" x="220.66666666666666" y="0.0" width="62.333333333333343" height="65"/>
@@ -296,6 +297,7 @@
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <inset key="imageEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" image="play-small"/>
+                                    <state key="selected" image="pause-small"/>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -359,6 +361,8 @@
         <image name="alert" width="15.666666984558105" height="18.666666030883789"/>
         <image name="next-rewind" width="26" height="30.666666030883789"/>
         <image name="next-song" width="15" height="15"/>
+        <image name="pause-h20" width="16.333333969116211" height="20"/>
+        <image name="pause-small" width="7.6666665077209473" height="10"/>
         <image name="play-h20" width="20" height="25"/>
         <image name="play-small" width="8" height="10"/>
         <image name="previous-rewind" width="26" height="30.666666030883789"/>

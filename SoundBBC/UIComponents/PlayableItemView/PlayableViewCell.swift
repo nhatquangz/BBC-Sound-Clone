@@ -18,6 +18,9 @@ class PlayableViewCell: UICollectionViewCell {
 	@IBOutlet weak var progressBar: CustomSlider!
 	@IBOutlet weak var timeLabel: UILabel!
 	
+	@IBOutlet weak var playButton: UIButton!
+	
+	
 	var viewModel: ListenCellViewModel?
 	var disposeBag = DisposeBag()
 	
@@ -35,15 +38,22 @@ class PlayableViewCell: UICollectionViewCell {
 
 extension PlayableViewCell: DisplayableItemView {
 	func configure<T>(data: T) {
-		viewModel = data as? ListenCellViewModel
-		let imageURL = viewModel?.imageURL(placeholders: [.recipe: "192x192"])
+		guard let viewModel = data as? ListenCellViewModel else { return }
+		self.viewModel = viewModel
+		let imageURL = viewModel.imageURL(placeholders: [.recipe: "192x192"])
 		itemImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.4))])
 		
-		viewModel?.title.bind(to: titleLabel.rx.text).disposed(by: disposeBag)
-		viewModel?.descriptionText.bind(to: descriptionLabel.rx.text).disposed(by: disposeBag)
-		viewModel?.showProgressBar.bind(to: progressBar.rx.isHidden).disposed(by: disposeBag)
-		viewModel?.currentProgress.bind(to: progressBar.rx.value).disposed(by: disposeBag)
-		viewModel?.dateTimeText.bind(to: timeLabel.rx.text).disposed(by: disposeBag)
+		viewModel.title.bind(to: titleLabel.rx.text).disposed(by: disposeBag)
+		viewModel.descriptionText.bind(to: descriptionLabel.rx.text).disposed(by: disposeBag)
+		viewModel.showProgressBar.bind(to: progressBar.rx.isHidden).disposed(by: disposeBag)
+		viewModel.currentProgress.bind(to: progressBar.rx.value).disposed(by: disposeBag)
+		viewModel.dateTimeText.bind(to: timeLabel.rx.text).disposed(by: disposeBag)
+		viewModel.playingState.bind(to: playButton.rx.isSelected).disposed(by: disposeBag)
+		
+		playButton.rx.tap.asObservable()
+			.throttle(.seconds(1), scheduler: MainScheduler.instance)
+			.bind(to: viewModel.playItem)
+			.disposed(by: disposeBag)
 	}
 }
 

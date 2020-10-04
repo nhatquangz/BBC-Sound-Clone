@@ -31,13 +31,24 @@ class SplashViewController: UIViewController {
 // MARK: - Init function
 extension SplashViewController {
 	func setup() {
-		AppRequest.getJSON(.config, retryCount: 10000).subscribe(onNext: { [weak self] result in
-			if let config = try? result.get() {
-				AppConfiguration.shared.setup(config: config)
-				self?.cooridinator?.startTabbar()
+		AppRequest.getJSON(.config, retryCount: 100)
+			.flatMapLatest { (result) -> Observable<Result<JSON, RequestError>> in
+				if let config = try? result.get() {
+					AppConfiguration.shared.setup(config: config)
+					let idctaURL = config["idv5Config"]["idctaConfigURL"].stringValue
+					return AppRequest.getJSON(idctaURL)
+				} else {
+					return Observable.empty()
+				}
 			}
-		})
+			.subscribe(onNext: { result in
+				if let config = try? result.get() {
+					AppConfiguration.shared.setup(idctaConfig: config)
+					self.cooridinator?.startTabbar()
+				}
+			})
 		.disposed(by: disposeBag)
+		
 	}
 }
 

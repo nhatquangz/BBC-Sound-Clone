@@ -14,17 +14,35 @@ class AppConfiguration {
 	
 	static let shared = AppConfiguration()
 	
-	var config: JSON?
+	private var config: JSON?
+	private var idctaConfig: JSON?
 	
 	func setup(config: JSON) {
 		self.config = config
 	}
+	
+	func setup(idctaConfig: JSON) {
+		self.idctaConfig = config
+	}
 }
+
 
 // MARK: - APIs
 extension AppConfiguration {
-	func rmsConfig(path: String) -> String? {
+	func rmsConfig(_ path: JSONSubscriptType) -> String? {
 		return self.config?["rmsConfig"][path].string
+	}
+	
+	func idctaConfig(_ path: [JSONSubscriptType]) -> String? {
+		return self.idctaConfig?[path].stringValue
+	}
+	
+	var playbackURL: String {
+		guard let baseURL = config?["playbackConfig", "mediaSelectorConfig", "baseUrl"] else {
+			return ""
+		}
+		let mediaSet = "mobile-phone-main"
+		return "\(baseURL)/mediaset/\(mediaSet)/vpid/{vpid}/transferformat/hls"
 	}
 }
 

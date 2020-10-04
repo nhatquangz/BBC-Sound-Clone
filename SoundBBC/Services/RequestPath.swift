@@ -31,11 +31,13 @@ enum RequestPath: String {
 	case categoriesIndex = "categoriesIndexPath"
 	case playableNetworks = "playableNetworksPath"
 	
+	case playmedia
+	
 	case refreshToken = "/tokens"
 	case config = "/ios/{version}/config.json"
 	
 	enum Destination {
-		case rms, config, session
+		case rms, config, session, playback
 	}
 }
 
@@ -45,36 +47,42 @@ extension RequestPath {
 	static func baseURL(_ destination: Destination) -> String {
 		switch destination {
 		case .rms:
-			return AppConfiguration.shared.rmsConfig(path: "rootUrl") ?? ""
+			return AppConfiguration.shared.rmsConfig("rootUrl") ?? ""
 			
 		case .config:
 			return "https://sounds-mobile-config.files.bbci.co.uk"
 			
 		case .session:
 			return "https://session.bbc.co.uk/session"
+			
+		case .playback:
+			return AppConfiguration.shared.playbackURL
 		}
 	}
-	
-	
-	/// Convenient variable getting URL
-	var url: String {
-		switch self {
-		case .config:
-			let currentVersion = "1.17.2"
-			let path = self.rawValue.replacingOccurrences(of: "{version}", with: currentVersion)
-			return RequestPath.createURL(destination: .config, path: path)
-			
-		case .refreshToken:
-			return RequestPath.createURL(destination: .session, path: self.rawValue)
-			
-		default:
-			let path = AppConfiguration.shared.rmsConfig(path: self.rawValue) ?? ""
-			return RequestPath.createURL(path: path)
-		}
-	}
-	
 	
 	static func createURL(destination: RequestPath.Destination = .rms, path: String) -> String {
 		return String(format: "%@%@", baseURL(destination), path)
+	}
+	
+	/// Convenient variable getting URL
+	func url(_ placeholders: String.Placeholder = [:]) -> String {
+		var fullpath = ""
+		switch self {
+		case .config:
+			let currentVersion = "1.20.0"
+			let path = self.rawValue.replacingOccurrences(of: "{version}", with: currentVersion)
+			fullpath = RequestPath.createURL(destination: .config, path: path)
+			
+		case .refreshToken:
+			fullpath = RequestPath.createURL(destination: .session, path: self.rawValue)
+			
+		case .playmedia:
+			fullpath = AppConfiguration.shared.playbackURL
+			
+		default:
+			let path = AppConfiguration.shared.rmsConfig(self.rawValue) ?? ""
+			fullpath = RequestPath.createURL(path: path)
+		}
+		return fullpath.bbc.replace(placeholders)
 	}
 }

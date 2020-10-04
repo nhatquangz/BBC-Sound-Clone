@@ -14,6 +14,7 @@ import RxSwift
 class ListenViewModel: BaseViewModel {
 	
 	private let dataSource = BehaviorRelay<[DisplayModuleModel]>(value: [])
+	private var cellViewModels: [[ListenCellViewModel]] = []
 	
 	// Input
 	let reloadData = PublishSubject<Void>()
@@ -31,7 +32,12 @@ class ListenViewModel: BaseViewModel {
 			}
 			.subscribe(onNext: { [weak self] result in
 				if let data = try? result.get() {
-					self?.dataSource.accept(data.filter { $0.state == "ok" })
+					let items = data.filter { $0.state == "ok" }
+					self?.dataSource.accept(items)
+					self?.cellViewModels = items.map { ($0.data ?? []) }
+						.map { items -> [ListenCellViewModel] in
+							items.map { ListenCellViewModel(data: $0) }
+						}
 					self?.refreshView.onNext(())
 				}
 			})
@@ -72,6 +78,12 @@ extension ListenViewModel {
 		let section = indexPath.section
 		let itemIndex = indexPath.row
 		return self.dataSource.value[safe: section]?.data?[safe: itemIndex]
+	}
+	
+	func viewModel(indexPath: IndexPath) -> ListenCellViewModel? {
+		let section = indexPath.section
+		let itemIndex = indexPath.row
+		return self.cellViewModels[safe: section]?[safe: itemIndex]
 	}
 	
 	func headerViewModel(index: IndexPath) -> DefaultHeaderViewModel? {
