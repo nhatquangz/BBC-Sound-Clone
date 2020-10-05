@@ -52,6 +52,7 @@ class ListenCellViewModel: BaseViewModel {
 			.map { !$0 }
 			.subscribe(onNext: { [weak self] (isPlaying) in
 				guard let self = self else { return }
+				PlayingViewModel.shared.changePosition.onNext(.mini)
 				if isPlaying {
 					PlayingViewModel.shared.play.onNext(self.data)
 					self.playingState.accept(true)
@@ -61,15 +62,22 @@ class ListenCellViewModel: BaseViewModel {
 				}
 			})
 			.disposed(by: disposeBag)
+
 		
 		// Update playing state
-		PlayingViewModel.shared.playingState.asObservable()
+		PlayingViewModel.shared.playingStateObservable
 			.flatMapLatest { [weak self] currentItem -> Observable<Bool> in
-				// Only handle state of other items
-				guard let itemID = self?.data.id,
-					  itemID != currentItem.id,
-					  self?.playingState.value == true else { return Observable.empty() }
-				// Stop local item if other item is being played
+				guard let itemID = self?.data.id else {
+					return Observable.empty()
+				}
+				
+				/// state changes happening from playingview
+				if itemID == currentItem.id {
+					return Observable.just(currentItem.isPlay)
+				}
+				
+				/// State changes happening from another item
+				/// Update state current item to stop
 				return .just(false)
 			}
 			.bind(to: playingState)

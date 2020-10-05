@@ -8,13 +8,14 @@
 
 import Foundation
 import UIKit
-
+import RxCocoa
+import RxSwift
 
 
 class TabbarController: UITabBarController {
 	
 	private let playingView = PlayingView()
-
+	let disposeBag = DisposeBag()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -28,6 +29,14 @@ extension TabbarController {
 		self.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.font: AppConstants.Font.reithSans.size(12)], for: .normal)
 		self.tabBar.tintColor = AppConstants.Color.main
 		addPlayingView()
+		
+		// Update playingview when playing a item
+		PlayingViewModel.shared.changePosition.asObservable()
+			.distinctUntilChanged()
+			.subscribe(onNext: { [weak self] position in
+				self?.changePlayingViewState(position)
+			})
+		.disposed(by: disposeBag)
 	}
 }
 
@@ -50,7 +59,7 @@ extension TabbarController {
 
 // MARK: - Playing State
 extension TabbarController {
-	func changePlayingViewState(_ state: PlayingViewPosition) {
+	private func changePlayingViewState(_ state: PlayingViewPosition) {
 		var topConstant: CGFloat
 		let fullHeight = self.view.frame.height
 		let tabbarHeight = self.tabBar.frame.height

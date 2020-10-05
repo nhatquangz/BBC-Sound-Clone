@@ -36,6 +36,8 @@
                 <outletCollection property="songDescriptions" destination="1Rl-6j-JgG" collectionClass="NSMutableArray" id="eV0-v3-Z6s"/>
                 <outletCollection property="circleProgress" destination="0GJ-2H-xzh" collectionClass="NSMutableArray" id="kW0-s8-C8H"/>
                 <outletCollection property="circleProgress" destination="T66-1C-s7F" collectionClass="NSMutableArray" id="qab-dk-ISD"/>
+                <outletCollection property="playButtons" destination="Lcs-MT-X43" collectionClass="NSMutableArray" id="J5l-kw-N0z"/>
+                <outletCollection property="playButtons" destination="3mm-dR-5Tc" collectionClass="NSMutableArray" id="yfx-Ky-5ie"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -97,33 +99,33 @@
                             </subviews>
                         </stackView>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7hc-p1-Zdx" customClass="CustomSlider" customModule="SoundBBC" customModuleProvider="target">
-                            <rect key="frame" x="13" y="504.33333333333326" width="349" height="31"/>
+                            <rect key="frame" x="13" y="509.33333333333326" width="349" height="31"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="minimumTrackTintColor" systemColor="systemOrangeColor"/>
                             <color key="maximumTrackTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="thumbTintColor" systemColor="systemYellowColor"/>
                         </slider>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vS-yq-oGP">
-                            <rect key="frame" x="15.000000000000004" y="534.33333333333337" width="35.333333333333343" height="16.333333333333371"/>
+                            <rect key="frame" x="15.000000000000004" y="539.33333333333337" width="35.333333333333343" height="16.333333333333371"/>
                             <fontDescription key="fontDescription" name="BBCReithSans-Regular" family="BBC Reith Sans" pointSize="14"/>
                             <color key="textColor" systemColor="systemGray3Color"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOI-jw-Z7j">
-                            <rect key="frame" x="324.66666666666669" y="534.33333333333337" width="35.333333333333314" height="16.333333333333371"/>
+                            <rect key="frame" x="324.66666666666669" y="539.33333333333337" width="35.333333333333314" height="16.333333333333371"/>
                             <fontDescription key="fontDescription" name="BBCReithSans-Regular" family="BBC Reith Sans" pointSize="14"/>
                             <color key="textColor" systemColor="systemGray3Color"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T66-1C-s7F" customClass="CircleProgressView" customModule="SoundBBC" customModuleProvider="target">
-                            <rect key="frame" x="155" y="564.33333333333337" width="65" height="65"/>
+                            <rect key="frame" x="155" y="569.33333333333337" width="65" height="65"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="T66-1C-s7F" secondAttribute="height" multiplier="1:1" id="9EC-xw-iCC"/>
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="2AP-po-Rny">
-                            <rect key="frame" x="15" y="564.33333333333337" width="345" height="65"/>
+                            <rect key="frame" x="15" y="569.33333333333337" width="345" height="65"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2w-vf-MRf">
                                     <rect key="frame" x="0.0" y="0.0" width="62" height="65"/>
@@ -139,7 +141,6 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lcs-MT-X43">
                                     <rect key="frame" x="124.33333333333334" y="0.0" width="96.333333333333343" height="65"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" image="play-h20"/>
                                     <state key="selected" image="pause-h20"/>
                                 </button>
@@ -213,7 +214,7 @@
                         <constraint firstItem="T66-1C-s7F" firstAttribute="centerY" secondItem="2AP-po-Rny" secondAttribute="centerY" id="W2r-b4-loa"/>
                         <constraint firstItem="ZOI-jw-Z7j" firstAttribute="top" secondItem="7hc-p1-Zdx" secondAttribute="bottom" id="eWl-Vo-VPZ"/>
                         <constraint firstAttribute="trailing" secondItem="m8O-7U-UtI" secondAttribute="trailing" constant="10" id="my8-7z-yTh"/>
-                        <constraint firstItem="7hc-p1-Zdx" firstAttribute="top" secondItem="m8O-7U-UtI" secondAttribute="bottom" constant="25" id="rcZ-CG-xfu"/>
+                        <constraint firstItem="7hc-p1-Zdx" firstAttribute="top" secondItem="m8O-7U-UtI" secondAttribute="bottom" constant="30" id="rcZ-CG-xfu"/>
                         <constraint firstItem="T66-1C-s7F" firstAttribute="centerX" secondItem="2AP-po-Rny" secondAttribute="centerX" id="vNX-gb-kRy"/>
                         <constraint firstItem="T66-1C-s7F" firstAttribute="height" secondItem="2AP-po-Rny" secondAttribute="height" id="wKv-hj-dgo"/>
                         <constraint firstItem="2AP-po-Rny" firstAttribute="top" secondItem="7hc-p1-Zdx" secondAttribute="bottom" constant="30" id="yKX-DN-jGs"/>
@@ -295,7 +296,6 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mm-dR-5Tc">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <inset key="imageEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" image="play-small"/>
                                     <state key="selected" image="pause-small"/>
                                 </button>
