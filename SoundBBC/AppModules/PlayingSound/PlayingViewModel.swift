@@ -22,41 +22,63 @@ class PlayingViewModel {
 	
 	let position = BehaviorRelay<PlayingViewPosition>(value: .hide)
 	
+	typealias PlayingState = (id: String, isPlay: Bool)
+	let playingState = BehaviorRelay<PlayingState>(value: (id: "", isPlay: false))
+	
 	// Player
 	private var player: AVPlayer?
-	private let currentItem = BehaviorRelay<DisplayItemModel?>(value: nil)
-	private let playingState = BehaviorRelay<Bool>(value: false)
+	private var currentItem: DisplayItemModel?
+	
+	/// Control
+	let play = PublishSubject<DisplayItemModel>()
+	let pause = PublishSubject<Void>()
+	
 	
 	init() {
-		//		currentItem.asObservable()
-		//			.do(onNext: {
-		//
-		//			})
+		/// Handle playing request
+		play.asObserver()
+			.flatMapLatest { [weak self] item -> Observable<URL?> in
+				guard let itemID = item.id else { return .just(nil) }
+				// Play the same item
+				if itemID == self?.currentItem?.id {
+					self?.player?.play()
+					return .just(nil)
+				}
+				// Save new item
+				self?.currentItem = item
+				// Get new item's url
+				return 	AppRequest.get(.playmedia,
+										  childs: ["media"],
+										  placeholders: [.vipd: itemID])
+					.map { (result: Result<[MediaModel], RequestError>) -> URL? in
+						return try? result.get().first?.connection?.first?.href?.urlEncoded
+					}
+			}
+			.subscribe(onNext: { [weak self] (mediaURL: URL?) in
+				if let url = mediaURL {
+					self?.play(url: url)
+				}
+			})
+			.disposed(by: disposeBag)
+		
+		/// Handle pause request
+		pause.asObserver()
+			.do(onNext: { [weak self] in self?.player?.pause() })
+			.map { [weak self] _ -> String in self?.currentItem?.id ?? "" }
+			.map { (id: $0, isPlay: false) }
+			.bind(to: playingState)
+			.disposed(by: disposeBag)
+		
 	}
 }
 
 
-// MARK: - Playable items
+// MARK: - Control
 extension PlayingViewModel {
-	func play(item: DisplayItemModel) {
-		guard let itemID = item.id else { return }
-		AppRequest.get(.playmedia,
-					   childs: ["media"],
-					   placeholders: [.vipd: itemID])
-			.map { (result: Result<[MediaModel], RequestError>) -> URL? in
-				return try? result.get().first?.connection?.first?.href?.urlEncoded
-			}
-			.subscribe(onNext: { [weak self] (mediaURL: URL?) in
-				if let url = mediaURL {
-					self?.player = AVPlayer(url: url)
-					self?.player?.play()
-				}
-			})
-			.disposed(by: disposeBag)
-	}
-	
-	func pause() {
-		self.player?.pause()
+	private func play(url: URL) {
+		self.player = AVPlayer(url: url)
+		self.player?.play()
+		self.playingState.accept((id: self.currentItem?.id ?? "", isPlay: true))
 	}
 }
 

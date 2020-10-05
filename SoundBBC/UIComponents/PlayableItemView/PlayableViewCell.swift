@@ -48,7 +48,9 @@ extension PlayableViewCell: DisplayableItemView {
 		viewModel.showProgressBar.bind(to: progressBar.rx.isHidden).disposed(by: disposeBag)
 		viewModel.currentProgress.bind(to: progressBar.rx.value).disposed(by: disposeBag)
 		viewModel.dateTimeText.bind(to: timeLabel.rx.text).disposed(by: disposeBag)
-		viewModel.playingState.bind(to: playButton.rx.isSelected).disposed(by: disposeBag)
+		viewModel.playingState.distinctUntilChanged()
+			.bind(to: playButton.rx.isSelected)
+			.disposed(by: disposeBag)
 		
 		playButton.rx.tap.asObservable()
 			.throttle(.seconds(1), scheduler: MainScheduler.instance)

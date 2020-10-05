@@ -9,12 +9,13 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import RxSwiftExt
 
 
 class ListenCellViewModel: BaseViewModel {
 	
 	// Output
-//	let imageURL = BehaviorRelay<URL?>(value: nil)
+	//	let imageURL = BehaviorRelay<URL?>(value: nil)
 	let title = BehaviorRelay<String>(value: "")
 	let synopses = BehaviorRelay<String>(value: "")
 	let descriptionText = BehaviorRelay<String>(value: "")
@@ -48,25 +49,35 @@ class ListenCellViewModel: BaseViewModel {
 		/// Playing
 		playItem.withLatestFrom(playingState)
 			.throttle(.seconds(1), scheduler: MainScheduler.instance)
+			.map { !$0 }
 			.subscribe(onNext: { [weak self] (isPlaying) in
 				guard let self = self else { return }
-				if !isPlaying {
-					PlayingViewModel.shared.play(item: self.data)
+				if isPlaying {
+					PlayingViewModel.shared.play.onNext(self.data)
 					self.playingState.accept(true)
 				} else {
 					self.playingState.accept(false)
-					PlayingViewModel.shared.pause()
+					PlayingViewModel.shared.pause.onNext(())
 				}
 			})
+			.disposed(by: disposeBag)
+		
+		// Update playing state
+		PlayingViewModel.shared.playingState.asObservable()
+			.flatMapLatest { [weak self] currentItem -> Observable<Bool> in
+				// Only handle state of other items
+				guard let itemID = self?.data.id,
+					  itemID != currentItem.id,
+					  self?.playingState.value == true else { return Observable.empty() }
+				// Stop local item if other item is being played
+				return .just(false)
+			}
+			.bind(to: playingState)
 			.disposed(by: disposeBag)
 	}
 	
 	func imageURL(placeholders: String.Placeholder) -> URL? {
 		return data.imageUrl?.bbc.replace(placeholders).urlEncoded
-	}
-	
-	func play() {
-		PlayingViewModel.shared.play(item: data)
 	}
 }
 
