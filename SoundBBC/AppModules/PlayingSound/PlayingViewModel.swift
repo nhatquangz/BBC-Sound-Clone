@@ -54,10 +54,10 @@ class PlayingViewModel {
 	let isSeeking = PublishSubject<Bool>()
 	let seekTime = PublishSubject<Double>()
 	
-	/// Control
+	/// Playback
 	let play = PublishSubject<DisplayItemModel?>()
 	let pause = PublishSubject<Void>()
-	
+	let seekValue = PublishSubject<Double>()
 	
 	init() {
 		playingStateObservable = playingState.asObservable().share(replay: 1)
@@ -95,23 +95,20 @@ class PlayingViewModel {
 			.map { (id: $0, isPlay: false) }
 			.bind(to: playingState)
 		
-		/// Update UIs(slider + circle progress) value depend on current time
-		_ = currentTime.asObserver()
-			.map { Float($0) }
-			.bind(to: playingTrackValue)
-		
 		let seekTimeObservable = seekTime.asObserver().share()
 		
-		/// Update current time label depend on both currentTime and seekTime
+		/// Using seekTime + currentTime to update slider + circle progress's value
+		let currentTimeObservable = seekTimeObservable.merge(with: self.currentTime.asObserver())
+		
 		/// Using currentTime value in normaly playing state
 		/// Using seekTime value in seeking state
 		/// There is only one observable emitting values at a time because we stop update currentTime when user changes slider's value.
-		_ = seekTimeObservable.merge(with: self.currentTime.asObserver())
-			.map { $0.asString(style: .positional) }
-			.bind(to: currentTimeString)
+		_ = currentTimeObservable.map { Float($0) }.bind(to: playingTrackValue)
+		_ = currentTimeObservable.debug().map { $0.asString(style: .positional) }.bind(to: currentTimeString)
 		
+		/// Handle seeking request from slider
 		_ = Observable.combineLatest(seekTimeObservable, isSeeking.asObservable())
-			/// Stop update current time when seeking
+			/// User is seeking, stop updating current time
 			.do(onNext: { [weak self] _ in self?.removePeriodicTimeObserver() })
 			.debounce(.milliseconds(500), scheduler: MainScheduler.instance)
 			.subscribe(onNext: { [weak self] seekTime, isSeeking in
@@ -120,6 +117,22 @@ class PlayingViewModel {
 					self?.seek(to: seekTime)
 				}
 			})
+		
+		/// Handle seeking from buttons
+		_ = seekValue.asObserver()
+			/// User is seeking, stop updating current time
+			.do(onNext: { [weak self] _ in self?.removePeriodicTimeObserver() })
+			/// Calculate target value to seek
+			.withLatestFrom(self.currentTime.asObserver()) { [weak self] (seekValue, currentTime) -> Double in
+				guard let self = self else { return 0 }
+				let duration = self.duration.value
+				var targetTime = currentTime + seekValue
+				if targetTime < 0 { targetTime = 0 }
+				if targetTime > duration { targetTime = duration }
+				return targetTime
+			}
+			.bind(to: seekTime)
+		
 	}
 }
 
@@ -175,7 +188,6 @@ extension PlayingViewModel {
 		timeObserverToken = player.addPeriodicTimeObserver(forInterval: time,
 														   queue: .main) {
 			[weak self] time in
-			// update player transport UI
 			self?.currentTime.onNext(time.seconds)
 			print("Update time: \(time.seconds)")
 		}

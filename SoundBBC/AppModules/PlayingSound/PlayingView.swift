@@ -129,5 +129,11 @@ class PlayingView: UIView {
 			.map { Double($0) }
 			.bind(to: viewModel.seekTime)
 			.disposed(by: disposeBag)
+		
+		let seekBackward = rewindBack.rx.tap.asDriver().map { -20.0 }
+		let seekForward = rewindForward.rx.tap.asDriver().map { 20.0 }
+		seekBackward.asObservable().merge(with: seekForward.asObservable())
+			.bind(to: viewModel.seekValue)
+			.disposed(by: disposeBag)
 	}
 }
