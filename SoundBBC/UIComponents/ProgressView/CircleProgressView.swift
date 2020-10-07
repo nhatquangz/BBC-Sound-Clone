@@ -30,6 +30,7 @@ class CircleProgressView: UIView {
 	
 	private var currentProgress: CGFloat = 0
 	private var preloadProgress: CGFloat = 0
+	var maxValue: Float = 1
 	
 	private let trackLayer = CAShapeLayer()
 	

@@ -32,7 +32,7 @@ struct DisplayItemModel: Decodable {
 	
 	struct KeyValueModel: Decodable {
 		let label: String?
-		let value: Float?
+		let value: Double?
 	}
 	
 	struct TitleModel: Decodable {
@@ -81,7 +81,7 @@ struct DisplayItemModel: Decodable {
 	func currentProgress() -> Float? {
 		guard let progress = self.progress?.value, let duration = self.duration?.value else { return nil }
 		if duration > 0 {
-			return progress / duration
+			return Float(progress / duration)
 		}
 		return nil
 	}

@@ -70,12 +70,10 @@ class ListenCellViewModel: BaseViewModel {
 				guard let itemID = self?.data.id else {
 					return Observable.empty()
 				}
-				
 				/// state changes happening from playingview
 				if itemID == currentItem.id {
 					return Observable.just(currentItem.isPlay)
 				}
-				
 				/// State changes happening from another item
 				/// Update state current item to stop
 				return .just(false)

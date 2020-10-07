@@ -60,7 +60,6 @@ class PlayingView: UIView {
 		
 		airplayConnectButton.setAttributedTitle(airplayTitle, for: .normal)
 		airplayConnectButton.titleLabel?.textAlignment = .center
-		
 		bindData()
 	}
 	
@@ -87,6 +86,37 @@ class PlayingView: UIView {
 			.bind(to: playButtons[0].rx.isSelected, playButtons[1].rx.isSelected)
 			.disposed(by: disposeBag)
 		
+		viewModel.playingTrackValue.asObservable()
+			.subscribe(onNext: { [weak self] value in
+				guard let self = self else { return }
+				self.playingTrack.value = value
+				let maxValue = self.circleProgress[0].maxValue
+				let currentPercent = CGFloat(value / maxValue)
+				self.circleProgress.forEach {
+					$0.setProgress(current: currentPercent)
+				}
+			})
+		.disposed(by: disposeBag)
+		
+		viewModel.duration.asObservable()
+			.subscribe(onNext: { [weak self] duration in
+				self?.durationLabel.text = duration.asString(style: .positional)
+				self?.playingTrack.maximumValue = Float(duration)
+				self?.circleProgress.forEach { $0.maxValue = Float(duration) }
+			})
+			.disposed(by: disposeBag)
+		
+		viewModel.currentTimeString.asObservable()
+			.bind(to: currentTimeLabel.rx.text)
+			.disposed(by: disposeBag)
+		
+		playingTrack.rx.observeWeakly(Bool.self, #keyPath(UISlider.isTracking))
+			.unwrap()
+			.distinctUntilChanged()
+			.debug("is tracking")
+			.bind(to: viewModel.isSeeking)
+			.disposed(by: disposeBag)
+		
 		playButtons.forEach { (button) in
 			button.rx.tap.asDriver()
 				.throttle(.seconds(1))
@@ -94,5 +124,10 @@ class PlayingView: UIView {
 				.drive(viewModel.play)
 				.disposed(by: disposeBag)
 		}
+		
+		playingTrack.rx.value
+			.map { Double($0) }
+			.bind(to: viewModel.seekTime)
+			.disposed(by: disposeBag)
 	}
 }
