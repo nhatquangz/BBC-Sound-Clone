@@ -27,6 +27,8 @@ class PlayingView: UIView {
 	@IBOutlet weak var nextSong: UIButton!
 	@IBOutlet var playButtons: [UIButton]!
 	
+	@IBOutlet weak var fullScreenButton: UIButton!
+	
 	@IBOutlet var circleProgress: [CircleProgressView]!
 	
 	@IBOutlet weak var airplayConnectButton: UIButton!
@@ -50,7 +52,6 @@ class PlayingView: UIView {
 		contentView.frame = self.bounds
 		
 		playingTrack.minimumTrackTintColor = AppConstants.Color.main
-//		playingTrack.thumbTintColor = AppConstants.Color.main
 		playingTrack.setThumbImage(UIImage(named: "thumb-small"), for: .normal)
 		playingTrack.setThumbImage(UIImage(named: "thumb-large"), for: .highlighted)
 		
@@ -138,6 +139,12 @@ class PlayingView: UIView {
 		let seekForward = rewindForward.rx.tap.asDriver().map { 20.0 }
 		seekBackward.asObservable().merge(with: seekForward.asObservable())
 			.bind(to: viewModel.seekValue)
+			.disposed(by: disposeBag)
+		
+		fullScreenButton.rx.tap.asDriver()
+			.throttle(.seconds(1))
+			.map { PlayingViewPosition.full }
+			.drive(viewModel.position)
 			.disposed(by: disposeBag)
 	}
 }

@@ -29,7 +29,6 @@ class PlayingViewModel {
 	let playingTrackValue = PublishSubject<Float>()
 	
 	////
-	let changePosition = PublishSubject<PlayingViewPosition>()
 	let position = BehaviorRelay<PlayingViewPosition>(value: .hide)
 	
 	// Observer state of playingview
@@ -180,6 +179,8 @@ extension PlayingViewModel {
 		songTitle.accept(item.titles?.primary ?? "")
 		songDescription.accept("\(item.titles?.secondary ?? "")\n\(item.titles?.tertiary ?? "")")
 		duration.accept(self.currentItem?.duration?.value ?? 0)
+		/// Save the last item's id to show playbar for the next time opening app
+		UserDefaults.standard.setValue(item.id, forKey: "lastItem")
 	}
 }
 

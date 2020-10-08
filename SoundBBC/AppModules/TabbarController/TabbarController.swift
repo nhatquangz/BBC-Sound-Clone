@@ -31,18 +31,26 @@ extension TabbarController {
 		addPlayingView()
 		
 		/// Handle request changing playingview's position
-		PlayingViewModel.shared.changePosition.asObservable()
-			.distinctUntilChanged()
+		PlayingViewModel.shared.position.asObservable()
+			.skip(1)
 			.subscribe(onNext: { [weak self] position in
 				self?.changePlayingViewState(position)
 			})
-		.disposed(by: disposeBag)
+			.disposed(by: disposeBag)
+		
+		NotificationCenter.default.rx.notification(UIApplication.willEnterForegroundNotification)
+			.debug()
+			.subscribe(onNext: { [weak self] _ in
+				let position = PlayingViewModel.shared.position.value
+				self?.changePlayingViewState(position, withAnimation: false)
+			})
+			.disposed(by: disposeBag)
 	}
 }
 
 // MARK: - Playing View Controller
 extension TabbarController {
-	func addPlayingView() {
+	private func addPlayingView() {
 		view.addSubview(playingView)
 		view.bringSubviewToFront(self.tabBar)
 		playingView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +67,7 @@ extension TabbarController {
 
 // MARK: - Playing State
 extension TabbarController {
-	private func changePlayingViewState(_ state: PlayingViewPosition) {
+	private func changePlayingViewState(_ state: PlayingViewPosition, withAnimation: Bool = true) {
 		var topConstant: CGFloat
 		let fullHeight = self.view.frame.height
 		let tabbarHeight = self.tabBar.frame.height
@@ -73,12 +81,20 @@ extension TabbarController {
 		case .hide:
 			topConstant = fullHeight - tabbarHeight
 		}
-		PlayingViewModel.shared.position.accept(state)
-		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.curveEaseInOut], animations: {
-			self.view.layoutIfNeeded()
+		func changingProcess() {
 			self.playingView.frame.origin.y = topConstant
+			self.showTabbar(percentage: state == .full ? 0 : 1)
+			self.showSmallPlayBar(percentage: state == .full ? 0 : 1)
 			self.setNeedsStatusBarAppearanceUpdate()
-		})
+		}
+		if withAnimation {
+			UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.curveEaseInOut], animations: {
+				self.view.layoutIfNeeded()
+				changingProcess()
+			})
+		} else {
+			changingProcess()
+		}
 	}
 	
 	@objc func handlePan(recognizer: UIPanGestureRecognizer) {
@@ -99,13 +115,9 @@ extension TabbarController {
 		if recognizer.state == .ended {
 			let yVelocity = recognizer.velocity(in: self.view).y
 			if yVelocity <= 0 {
-				self.changePlayingViewState(.full)
-				self.showTabbar(percentage: 0, animation: true)
-				self.showSmallPlayBar(percentage: 0)
+				PlayingViewModel.shared.position.accept(.full)
 			} else {
-				self.changePlayingViewState(.mini)
-				self.showTabbar(percentage: 1, animation: true)
-				self.showSmallPlayBar(percentage: 1)
+				PlayingViewModel.shared.position.accept(.mini)
 			}
 		}
 	}

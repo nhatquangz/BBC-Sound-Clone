@@ -74,6 +74,7 @@ extension ListenViewController {
 		/// Add botton insect to collectionview when showing mini playing bar
 		PlayingViewModel.shared.position.asObservable()
 			.distinctUntilChanged()
+			.debounce(.seconds(2), scheduler: MainScheduler.instance)
 			.subscribe(onNext: { [weak self] state in
 				let bottomInset: CGFloat = state == .hide ? 0 : 50
 				self?.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
