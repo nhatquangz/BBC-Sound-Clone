@@ -51,9 +51,10 @@ class ListenViewModel: BaseViewModel {
 // MARK: - CollectionView
 extension ListenViewModel {
 	func theme(forSection index: Int) -> LayoutProvider.AppElementTheme {
-		guard let id = dataSource.value[safe: index]?.id else {
-			return .unknown
+		if let style = dataSource.value[safe: index]?.style {
+			return LayoutProvider.AppElementTheme(rawValue: style) ?? .unknown
 		}
+		guard let id = dataSource.value[safe: index]?.id else { return .unknown }
 		return AppConfiguration.shared.theme(id: id)
 	}
 	

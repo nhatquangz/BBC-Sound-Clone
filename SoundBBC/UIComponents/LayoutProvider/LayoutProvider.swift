@@ -23,7 +23,7 @@ extension LayoutProvider {
 		case impactLarge = "impact_large"
 		case schedule = "schdule"
 		case index = "index"
-		case spotlight_curation_unfamiliar
+		case spotlight = "spotlight_curation_unfamiliar"
 		case unknown
 	}
 }
@@ -59,6 +59,10 @@ class LayoutProvider {
 		case .dial:
 			sectionLayout = listenLive()
 			itemViewType = ListenLiveView.self
+			
+		case .spotlight:
+			sectionLayout = spotlight()
+			itemViewType = SinglePromotionCell.self
 			
 		default:
 			sectionLayout = basicLayout()
@@ -174,6 +178,23 @@ extension LayoutProvider {
 		let group = NSCollectionLayoutGroup.horizontal(layoutSize: size,
 													   subitems: [item])
 		let section = NSCollectionLayoutSection(group: group)
+		return section
+	}
+	
+	private func spotlight() -> NSCollectionLayoutSection {
+		let itemHeight = AppConstants.Dimension.playableItemHeight * 2
+		let itemWidth = AppConstants.Dimension.spotlightWidth
+		let itemSpace = AppConstants.Dimension.itemSpace - 5
+		let sectionPadding = AppConstants.Dimension.contenPadding
+		let size = NSCollectionLayoutSize(widthDimension: .absolute(itemWidth),
+										  heightDimension: .absolute(itemHeight))
+		let item = NSCollectionLayoutItem(layoutSize: size)
+		let group = NSCollectionLayoutGroup.horizontal(layoutSize: size,
+													   subitems: [item])
+		let section = NSCollectionLayoutSection(group: group)
+		section.orthogonalScrollingBehavior = .continuous
+		section.interGroupSpacing = itemSpace
+		section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: sectionPadding, bottom: sectionPadding, trailing: sectionPadding)
 		return section
 	}
 	

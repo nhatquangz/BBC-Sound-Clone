@@ -17,6 +17,8 @@ class ListenCellViewModel: BaseViewModel {
 	// Output
 	//	let imageURL = BehaviorRelay<URL?>(value: nil)
 	let title = BehaviorRelay<String>(value: "")
+	let secondaryTitle = BehaviorRelay<String>(value: "")
+	let tertiaryTitle = BehaviorRelay<String>(value: "")
 	let synopses = BehaviorRelay<String>(value: "")
 	let descriptionText = BehaviorRelay<String>(value: "")
 	let dateTimeText = BehaviorRelay<String>(value: "")
@@ -27,13 +29,14 @@ class ListenCellViewModel: BaseViewModel {
 	// Input
 	let playItem = PublishSubject<Void>()
 	
-	
 	private let data: DisplayItemModel
 	
 	init(data: DisplayItemModel) {
 		self.data = data
 		super.init()
 		title.accept(data.titles?.primary ?? "")
+		secondaryTitle.accept(data.titles?.secondary ?? "")
+		tertiaryTitle.accept(data.titles?.tertiary ?? "")
 		descriptionText.accept("\(data.titles?.secondary ?? "")\n\(data.titles?.tertiary ?? "")")
 		synopses.accept(data.synopses?.short ?? "")
 		

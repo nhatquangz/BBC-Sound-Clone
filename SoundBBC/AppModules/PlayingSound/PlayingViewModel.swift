@@ -67,7 +67,7 @@ class PlayingViewModel {
 				// Play current item if the same item was passed
 				// Try to play current item if no item was passed
 				if (item == nil) || (item?.id == self?.currentItem?.id) {
-					self?.play()
+//					self?.play()
 					return .just(nil)
 				}
 				guard let itemID = item?.id else { return .just(nil) }
@@ -82,9 +82,7 @@ class PlayingViewModel {
 					}
 			}
 			.subscribe(onNext: { [weak self] (mediaURL: URL?) in
-				if let url = mediaURL {
-					self?.play(url)
-				}
+				self?.play(mediaURL)
 			})
 		
 		/// Handle pause request
@@ -104,7 +102,7 @@ class PlayingViewModel {
 		/// Using seekTime value in seeking state
 		/// There is only one observable emitting values at a time because we stop update currentTime when user changes slider's value.
 		_ = currentTimeObservable.map { Float($0) }.bind(to: playingTrackValue)
-		_ = currentTimeObservable.debug().map { $0.asString(style: .positional) }.bind(to: currentTimeString)
+		_ = currentTimeObservable.map { $0.asString(style: .positional) }.bind(to: currentTimeString)
 		
 		/// Handle seeking request from slider
 		_ = Observable.combineLatest(seekTimeObservable, isSeeking.asObservable())

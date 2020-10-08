@@ -46,6 +46,7 @@ extension ListenViewController {
 													  ImpactSmallViewCell.self,
 													  ContainerViewCell.self,
 													  CircleViewCell.self,
+													  SinglePromotionCell.self,
 													  ListenLiveView.self]
 		
 		collectionView.register(viewCells)

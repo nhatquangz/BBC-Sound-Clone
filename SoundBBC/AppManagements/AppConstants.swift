@@ -47,6 +47,7 @@ enum AppConstants {
 		// 15: Leading offset
 		// 10: Trailing offset
 		static let playableItemWidth: CGFloat = UIScreen.main.bounds.width - 15 - 10
+		static let spotlightWidth: CGFloat = UIScreen.main.bounds.width - 15 * 2
 		static let dialItemHeight: CGFloat = UIScreen.main.bounds.width / 4
 		static let categoryItemHeight: CGFloat = 70
 		

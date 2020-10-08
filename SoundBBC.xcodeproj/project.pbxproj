@@ -66,6 +66,8 @@
 		23C87E5C24AE3D9D00239A60 /* DefaultHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C87E5B24AE3D9D00239A60 /* DefaultHeaderViewModel.swift */; };
 		23C87E6524AE778100239A60 /* ImpactLargeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C87E6324AE778100239A60 /* ImpactLargeViewCell.swift */; };
 		23C87E6624AE778100239A60 /* ImpactLargeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C87E6424AE778100239A60 /* ImpactLargeViewCell.xib */; };
+		23D7EEFF252F2E6000733D37 /* SinglePromotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D7EEFD252F2E6000733D37 /* SinglePromotionCell.swift */; };
+		23D7EF00252F2E6000733D37 /* SinglePromotionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D7EEFE252F2E6000733D37 /* SinglePromotionCell.xib */; };
 		23E90F3824AF44E700D630F5 /* CircleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F3724AF44E700D630F5 /* CircleViewCell.swift */; };
 		23E90F4324AFF1F900D630F5 /* ListenLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F4124AFF1F900D630F5 /* ListenLiveView.swift */; };
 		23E90F4624B088C400D630F5 /* SnapCenterItemCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F4524B088C400D630F5 /* SnapCenterItemCollectionViewLayout.swift */; };
@@ -142,6 +144,8 @@
 		23C87E5B24AE3D9D00239A60 /* DefaultHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHeaderViewModel.swift; sourceTree = "<group>"; };
 		23C87E6324AE778100239A60 /* ImpactLargeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactLargeViewCell.swift; sourceTree = "<group>"; };
 		23C87E6424AE778100239A60 /* ImpactLargeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImpactLargeViewCell.xib; sourceTree = "<group>"; };
+		23D7EEFD252F2E6000733D37 /* SinglePromotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePromotionCell.swift; sourceTree = "<group>"; };
+		23D7EEFE252F2E6000733D37 /* SinglePromotionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SinglePromotionCell.xib; sourceTree = "<group>"; };
 		23E90F3724AF44E700D630F5 /* CircleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewCell.swift; sourceTree = "<group>"; };
 		23E90F4124AFF1F900D630F5 /* ListenLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenLiveView.swift; sourceTree = "<group>"; };
 		23E90F4524B088C400D630F5 /* SnapCenterItemCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCenterItemCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 		2309CDE92450834E00620475 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				23D7EEFC252F2E2D00733D37 /* SinglePromotionView */,
 				2343478A2527CEF90011CAC9 /* TransparentGradientView */,
 				232F746424B1D5AC0057A580 /* ProgressView */,
 				23E90F4024AFF1EA00D630F5 /* ListenLiveView */,
@@ -470,6 +475,15 @@
 			path = ImpactLargeView;
 			sourceTree = "<group>";
 		};
+		23D7EEFC252F2E2D00733D37 /* SinglePromotionView */ = {
+			isa = PBXGroup;
+			children = (
+				23D7EEFD252F2E6000733D37 /* SinglePromotionCell.swift */,
+				23D7EEFE252F2E6000733D37 /* SinglePromotionCell.xib */,
+			);
+			path = SinglePromotionView;
+			sourceTree = "<group>";
+		};
 		23E90F3624AF447A00D630F5 /* CircleViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,6 +600,7 @@
 				23898F992528D56200C2D94D /* PlayingView.xib in Resources */,
 				2309CE122450F94900620475 /* BBCReithSerif_Md.ttf in Resources */,
 				2309CDE0245081ED00620475 /* LaunchScreen.storyboard in Resources */,
+				23D7EF00252F2E6000733D37 /* SinglePromotionCell.xib in Resources */,
 				2309CE112450F94900620475 /* BBCReithSans_Md.ttf in Resources */,
 				2309CDDD245081ED00620475 /* Assets.xcassets in Resources */,
 			);
@@ -661,6 +676,7 @@
 				23E90F3824AF44E700D630F5 /* CircleViewCell.swift in Sources */,
 				23FECE1D24AC7E9900F906DE /* ArrayExtension.swift in Sources */,
 				23328C01245474B0005E2C5F /* AppRequest.swift in Sources */,
+				23D7EEFF252F2E6000733D37 /* SinglePromotionCell.swift in Sources */,
 				2343478C2527CF2F0011CAC9 /* TransparentGradientView.swift in Sources */,
 				23C87E6524AE778100239A60 /* ImpactLargeViewCell.swift in Sources */,
 				2309CDD4245081E800620475 /* AppDelegate.swift in Sources */,
