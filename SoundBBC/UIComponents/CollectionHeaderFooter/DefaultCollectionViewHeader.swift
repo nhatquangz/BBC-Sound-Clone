@@ -71,8 +71,13 @@ class DefaultCollectionViewHeader: UICollectionReusableView {
 	func config(viewModel: DefaultHeaderViewModel) {
 		self.viewModel = viewModel
 		
-		viewModel.observableSectionTitle
+		viewModel.sectionTitle
 			.bind(to: sectionTitle.rx.text)
+			.disposed(by: disposeBag)
+		
+		viewModel.isShowButton
+			.map { !$0 }
+			.bind(to: seeMoreButton.rx.isHidden)
 			.disposed(by: disposeBag)
 		
 		self.seeMoreButton.rx.tap

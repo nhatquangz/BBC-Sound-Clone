@@ -14,13 +14,15 @@ import RxSwift
 class DefaultHeaderViewModel {
 	
 	// Output
-	let observableSectionTitle = BehaviorRelay<String>(value: "")
+	let sectionTitle = BehaviorRelay<String>(value: "")
+	let isShowButton = BehaviorRelay<Bool>(value: false)
 	
 	// Input
-	let seeMoreAction = PublishRelay<Void>()
+	let seeMoreAction = PublishSubject<Void>()
 	
 	
 	init(section: DisplayModuleModel) {
-		observableSectionTitle.accept(section.title ?? "")
+		sectionTitle.accept(section.title ?? "")
+		isShowButton.accept(section.id == "categories")
 	}
 }

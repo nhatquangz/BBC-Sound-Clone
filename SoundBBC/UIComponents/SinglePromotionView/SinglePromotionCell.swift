@@ -38,8 +38,9 @@ class SinglePromotionCell: UICollectionViewCell {
 extension SinglePromotionCell: DisplayableItemView {
 	func configure<T>(data: T) {
 		viewModel = data as? ListenCellViewModel
-		// 736x736 - 432x432 - 192x192 - 320x180
-		let imageURL = viewModel?.imageURL(placeholders: [.recipe: "736x736"])
+		// 736x736 - 432x432 - 192x192 - 320x180 - 672x378
+		// 320x180 - 256x144
+		let imageURL = viewModel?.imageURL(placeholders: [.recipe: "672x378"])
 		imageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.4))])
 		viewModel?.title.bind(to: primaryLabel.rx.text).disposed(by: disposeBag)
 		viewModel?.secondaryTitle.bind(to: secondaryLabel.rx.text).disposed(by: disposeBag)

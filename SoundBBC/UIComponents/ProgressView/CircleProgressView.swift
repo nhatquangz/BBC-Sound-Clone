@@ -75,7 +75,8 @@ class CircleProgressView: UIView {
 			let value = (p >= 0 && p <= 1) ? p : (p > 1 ? 1 : 0)
 			self.preloadProgress = value
 		}
-		draw()
+		self.currentLayer.strokeEnd = currentProgress
+		self.preloadLayer.strokeEnd = preloadProgress
 	}
 	
 	private func draw() {

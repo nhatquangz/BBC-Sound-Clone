@@ -51,6 +51,7 @@ class PlayingViewModel {
 	private var timeObserverToken: Any?
 	private let itemState = PublishSubject<AVPlayerItem.Status>()
 	private let currentTime = PublishSubject<Double>()
+	private var preSeekValue: Double?
 	let isSeeking = PublishSubject<Bool>()
 	let seekTime = PublishSubject<Double>()
 	
@@ -129,7 +130,7 @@ class PlayingViewModel {
 				if targetTime > duration { targetTime = duration }
 				return targetTime
 			}
-			.bind(to: seekTime)
+			.bind(to: seekTime, currentTime)
 		
 	}
 }
@@ -158,6 +159,10 @@ extension PlayingViewModel {
 				print("☀️ Item State: \(status)")
 				if status == 1 {
 					self?.duration.accept(playerItem.duration.seconds)
+					if let preSeekValue = self?.preSeekValue {
+						self?.preSeekValue = nil
+						self?.seekTime.onNext(preSeekValue)
+					}
 				}
 			})
 			.disposed(by: disposeBag)
@@ -166,6 +171,10 @@ extension PlayingViewModel {
 	
 	private func updateItemDetail(_ item: DisplayItemModel?) {
 		guard let item = item else { return }
+		self.preSeekValue = item.progress?.value
+		if item.currentProgress() == 1 {
+			self.preSeekValue = nil
+		}
 		let imageURL = item.imageUrl?.bbc.replace([.recipe: "432x432"]).urlEncoded
 		songImage.accept(imageURL)
 		songTitle.accept(item.titles?.primary ?? "")

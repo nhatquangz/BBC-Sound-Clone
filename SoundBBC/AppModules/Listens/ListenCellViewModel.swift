@@ -56,11 +56,10 @@ class ListenCellViewModel: BaseViewModel {
 		/// Playing
 		playItem.withLatestFrom(playingState)
 			.throttle(.seconds(1), scheduler: MainScheduler.instance)
-			.map { !$0 }
 			.subscribe(onNext: { [weak self] (isPlaying) in
 				guard let self = self else { return }
 				PlayingViewModel.shared.changePosition.onNext(.mini)
-				if isPlaying {
+				if !isPlaying {
 					PlayingViewModel.shared.play.onNext(self.data)
 					self.playingState.accept(true)
 				} else {
@@ -82,7 +81,7 @@ class ListenCellViewModel: BaseViewModel {
 					return Observable.just(currentItem.isPlay)
 				}
 				/// State changes happening from another item
-				/// Update state current item to stop
+				/// Change state of current item to stop
 				return .just(false)
 			}
 			.bind(to: playingState)
