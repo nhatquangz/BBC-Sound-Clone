@@ -46,12 +46,22 @@ extension PlayableViewCell: DisplayableItemView {
 		itemImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.4))])
 		
 		viewModel.title.bind(to: titleLabel.rx.text).disposed(by: disposeBag)
+		
 		viewModel.descriptionText.bind(to: descriptionLabel.rx.text).disposed(by: disposeBag)
-		viewModel.showProgressBar.bind(to: progressBar.rx.isHidden).disposed(by: disposeBag)
+		
+		viewModel.showProgressBar
+			.map { !$0 }
+			.bind(to: progressBar.rx.isHidden)
+			.disposed(by: disposeBag)
+		
 		viewModel.currentProgress
 			.bind(to: progressBar.rx.progress)
 			.disposed(by: disposeBag)
-		viewModel.dateTimeText.bind(to: timeLabel.rx.text).disposed(by: disposeBag)
+		
+		viewModel.dateTimeText
+			.bind(to: timeLabel.rx.text)
+			.disposed(by: disposeBag)
+		
 		viewModel.playingState.distinctUntilChanged()
 			.bind(to: playButton.rx.isSelected)
 			.disposed(by: disposeBag)

@@ -30,7 +30,7 @@ enum AppConstants {
 	Definition of color
 	**/
 	enum Color {
-		static let main = UIColor(hexString: "#1cb955")
+		static let main = UIColor(named: "primary")!
 		static let preloadProgress = UIColor(hexString: "#F2F2F7")
 		static let progressTrack = UIColor(hexString: "#D3D3D3")
 	}

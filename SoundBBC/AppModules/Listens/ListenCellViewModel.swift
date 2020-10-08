@@ -41,12 +41,16 @@ class ListenCellViewModel: BaseViewModel {
 		synopses.accept(data.synopses?.short ?? "")
 		
 		if let progress = data.currentProgress() {
-			dateTimeText.accept(data.progress?.label ?? "")
-			showProgressBar.accept(false)
+			if progress != 1 {
+				dateTimeText.accept(data.progress?.label ?? "")
+			} else {
+				dateTimeText.accept("Listened")
+			}
+			showProgressBar.accept(true)
 			currentProgress.accept(progress)
 		} else {
 			dateTimeText.accept(data.duration?.label ?? "")
-			showProgressBar.accept(true)
+			showProgressBar.accept(false)
 		}
 		
 		/// Playing
