@@ -69,6 +69,7 @@
 		23D7EEFF252F2E6000733D37 /* SinglePromotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D7EEFD252F2E6000733D37 /* SinglePromotionCell.swift */; };
 		23D7EF00252F2E6000733D37 /* SinglePromotionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D7EEFE252F2E6000733D37 /* SinglePromotionCell.xib */; };
 		23D7EF04252F3F2600733D37 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23D7EF03252F3F2600733D37 /* Colors.xcassets */; };
+		23D7EF07252F924200733D37 /* StatusBarStyleNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D7EF06252F924200733D37 /* StatusBarStyleNavigationController.swift */; };
 		23E90F3824AF44E700D630F5 /* CircleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F3724AF44E700D630F5 /* CircleViewCell.swift */; };
 		23E90F4324AFF1F900D630F5 /* ListenLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F4124AFF1F900D630F5 /* ListenLiveView.swift */; };
 		23E90F4624B088C400D630F5 /* SnapCenterItemCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F4524B088C400D630F5 /* SnapCenterItemCollectionViewLayout.swift */; };
@@ -148,6 +149,7 @@
 		23D7EEFD252F2E6000733D37 /* SinglePromotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePromotionCell.swift; sourceTree = "<group>"; };
 		23D7EEFE252F2E6000733D37 /* SinglePromotionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SinglePromotionCell.xib; sourceTree = "<group>"; };
 		23D7EF03252F3F2600733D37 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		23D7EF06252F924200733D37 /* StatusBarStyleNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarStyleNavigationController.swift; sourceTree = "<group>"; };
 		23E90F3724AF44E700D630F5 /* CircleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewCell.swift; sourceTree = "<group>"; };
 		23E90F4124AFF1F900D630F5 /* ListenLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenLiveView.swift; sourceTree = "<group>"; };
 		23E90F4524B088C400D630F5 /* SnapCenterItemCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCenterItemCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -511,6 +513,7 @@
 			children = (
 				23FECE2624ACF1B500F906DE /* BaseViewModel.swift */,
 				237126E824B3646A00D9CF34 /* AppExtensionNamespace.swift */,
+				23D7EF06252F924200733D37 /* StatusBarStyleNavigationController.swift */,
 			);
 			path = BaseClasses;
 			sourceTree = "<group>";
@@ -679,6 +682,7 @@
 				23898F9D2528E2D600C2D94D /* CircleProgressView.swift in Sources */,
 				23E90F3824AF44E700D630F5 /* CircleViewCell.swift in Sources */,
 				23FECE1D24AC7E9900F906DE /* ArrayExtension.swift in Sources */,
+				23D7EF07252F924200733D37 /* StatusBarStyleNavigationController.swift in Sources */,
 				23328C01245474B0005E2C5F /* AppRequest.swift in Sources */,
 				23D7EEFF252F2E6000733D37 /* SinglePromotionCell.swift in Sources */,
 				2343478C2527CF2F0011CAC9 /* TransparentGradientView.swift in Sources */,

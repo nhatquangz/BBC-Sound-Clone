@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,12 +23,14 @@
                 <outlet property="airplayConnectButton" destination="zds-97-Xsv" id="6V5-wg-4gY"/>
                 <outlet property="contentView" destination="slm-Gi-th3" id="WHh-6O-Xtx"/>
                 <outlet property="currentTimeLabel" destination="5vS-yq-oGP" id="dFw-7w-c14"/>
+                <outlet property="dropdownImage" destination="ylt-j1-ojY" id="Bnr-Ns-pPf"/>
                 <outlet property="durationLabel" destination="ZOI-jw-Z7j" id="jLF-RT-6t6"/>
                 <outlet property="nextSong" destination="ocP-HE-dEb" id="wQX-Ao-bA9"/>
                 <outlet property="playingTrack" destination="7hc-p1-Zdx" id="7J1-OK-aMx"/>
                 <outlet property="previousSong" destination="Z2w-vf-MRf" id="zqy-4D-dsG"/>
                 <outlet property="rewindBack" destination="Gz8-6R-TGO" id="bXO-ZZ-XG5"/>
                 <outlet property="rewindForward" destination="Hdf-z9-6xj" id="WFG-8F-iWh"/>
+                <outlet property="smallPlayBar" destination="iL9-8J-Qtv" id="RiV-D8-Zns"/>
                 <outletCollection property="images" destination="apm-Ad-r7m" collectionClass="NSMutableArray" id="FaO-QD-YLg"/>
                 <outletCollection property="images" destination="fIa-tN-SP2" collectionClass="NSMutableArray" id="vXM-2b-mpb"/>
                 <outletCollection property="songTitles" destination="aFS-NH-9Wm" collectionClass="NSMutableArray" id="zT4-aG-ncK"/>
@@ -49,7 +52,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="apm-Ad-r7m">
-                            <rect key="frame" x="30" y="70" width="315" height="335.33333333333331"/>
+                            <rect key="frame" x="30" y="80" width="315" height="325.33333333333331"/>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="m8O-7U-UtI">
                             <rect key="frame" x="10" y="430.33333333333331" width="355" height="51.666666666666686"/>
@@ -100,32 +103,32 @@
                         </stackView>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7hc-p1-Zdx" customClass="CustomSlider" customModule="SoundBBC" customModuleProvider="target">
                             <rect key="frame" x="13" y="512" width="349" height="31"/>
-                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="minimumTrackTintColor" systemColor="systemOrangeColor"/>
+                            <color key="tintColor" name="primary"/>
+                            <color key="minimumTrackTintColor" name="primary"/>
                             <color key="maximumTrackTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="thumbTintColor" systemColor="systemYellowColor"/>
+                            <color key="thumbTintColor" name="primary"/>
                         </slider>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vS-yq-oGP">
-                            <rect key="frame" x="15.000000000000004" y="542" width="35.333333333333343" height="16.333333333333371"/>
-                            <fontDescription key="fontDescription" name="BBCReithSans-Regular" family="BBC Reith Sans" pointSize="14"/>
+                            <rect key="frame" x="15" y="552" width="32.666666666666664" height="15.333333333333371"/>
+                            <fontDescription key="fontDescription" name="BBCReithSans-Regular" family="BBC Reith Sans" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOI-jw-Z7j">
-                            <rect key="frame" x="324.66666666666669" y="542" width="35.333333333333314" height="16.333333333333371"/>
-                            <fontDescription key="fontDescription" name="BBCReithSans-Regular" family="BBC Reith Sans" pointSize="14"/>
+                            <rect key="frame" x="327.33333333333331" y="552" width="32.666666666666686" height="15.333333333333371"/>
+                            <fontDescription key="fontDescription" name="BBCReithSans-Regular" family="BBC Reith Sans" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T66-1C-s7F" customClass="CircleProgressView" customModule="SoundBBC" customModuleProvider="target">
-                            <rect key="frame" x="157.66666666666666" y="572" width="60" height="60"/>
+                            <rect key="frame" x="157.66666666666666" y="587.33333333333337" width="60" height="60"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="T66-1C-s7F" secondAttribute="height" multiplier="1:1" id="9EC-xw-iCC"/>
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="2AP-po-Rny">
-                            <rect key="frame" x="15" y="572" width="345" height="60"/>
+                            <rect key="frame" x="15" y="587.33333333333337" width="345" height="60"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2w-vf-MRf">
                                     <rect key="frame" x="0.0" y="0.0" width="62" height="60"/>
@@ -201,7 +204,7 @@
                         <constraint firstItem="2AP-po-Rny" firstAttribute="leading" secondItem="7hc-p1-Zdx" secondAttribute="leading" id="32l-h9-oRc"/>
                         <constraint firstItem="m8O-7U-UtI" firstAttribute="centerY" secondItem="Bs3-Ue-7vh" secondAttribute="centerY" constant="50" id="4cj-Ld-653"/>
                         <constraint firstItem="5Vp-I3-YLj" firstAttribute="leading" secondItem="7hc-p1-Zdx" secondAttribute="leading" id="4lg-fh-nzd"/>
-                        <constraint firstItem="apm-Ad-r7m" firstAttribute="top" secondItem="Bs3-Ue-7vh" secondAttribute="top" constant="70" id="7qV-bB-eVD"/>
+                        <constraint firstItem="apm-Ad-r7m" firstAttribute="top" secondItem="Bs3-Ue-7vh" secondAttribute="top" constant="80" id="7qV-bB-eVD"/>
                         <constraint firstItem="apm-Ad-r7m" firstAttribute="leading" secondItem="Bs3-Ue-7vh" secondAttribute="leading" constant="30" id="8Uw-GY-dPR"/>
                         <constraint firstItem="m8O-7U-UtI" firstAttribute="leading" secondItem="Bs3-Ue-7vh" secondAttribute="leading" constant="10" id="Acl-Dc-Yyy"/>
                         <constraint firstItem="2AP-po-Rny" firstAttribute="trailing" secondItem="7hc-p1-Zdx" secondAttribute="trailing" id="Exe-VY-kMo"/>
@@ -209,15 +212,15 @@
                         <constraint firstItem="m8O-7U-UtI" firstAttribute="top" secondItem="apm-Ad-r7m" secondAttribute="bottom" constant="25" id="GIa-gE-xBn"/>
                         <constraint firstAttribute="trailing" secondItem="7hc-p1-Zdx" secondAttribute="trailing" constant="15" id="HD4-vj-yCw"/>
                         <constraint firstItem="7hc-p1-Zdx" firstAttribute="leading" secondItem="Bs3-Ue-7vh" secondAttribute="leading" constant="15" id="J8n-ah-Zjc"/>
-                        <constraint firstItem="5vS-yq-oGP" firstAttribute="top" secondItem="7hc-p1-Zdx" secondAttribute="bottom" id="KJM-cX-SzV"/>
+                        <constraint firstItem="5vS-yq-oGP" firstAttribute="top" secondItem="7hc-p1-Zdx" secondAttribute="bottom" constant="10" id="KJM-cX-SzV"/>
                         <constraint firstItem="5vS-yq-oGP" firstAttribute="leading" secondItem="7hc-p1-Zdx" secondAttribute="leading" id="PQX-uj-Vge"/>
+                        <constraint firstItem="2AP-po-Rny" firstAttribute="top" secondItem="5vS-yq-oGP" secondAttribute="bottom" constant="20" id="Uc5-gL-GlZ"/>
                         <constraint firstItem="T66-1C-s7F" firstAttribute="centerY" secondItem="2AP-po-Rny" secondAttribute="centerY" id="W2r-b4-loa"/>
-                        <constraint firstItem="ZOI-jw-Z7j" firstAttribute="top" secondItem="7hc-p1-Zdx" secondAttribute="bottom" id="eWl-Vo-VPZ"/>
                         <constraint firstAttribute="trailing" secondItem="m8O-7U-UtI" secondAttribute="trailing" constant="10" id="my8-7z-yTh"/>
                         <constraint firstItem="7hc-p1-Zdx" firstAttribute="top" secondItem="m8O-7U-UtI" secondAttribute="bottom" constant="30" id="rcZ-CG-xfu"/>
                         <constraint firstItem="T66-1C-s7F" firstAttribute="centerX" secondItem="2AP-po-Rny" secondAttribute="centerX" id="vNX-gb-kRy"/>
                         <constraint firstItem="T66-1C-s7F" firstAttribute="height" secondItem="2AP-po-Rny" secondAttribute="height" id="wKv-hj-dgo"/>
-                        <constraint firstItem="2AP-po-Rny" firstAttribute="top" secondItem="7hc-p1-Zdx" secondAttribute="bottom" constant="30" id="yKX-DN-jGs"/>
+                        <constraint firstItem="ZOI-jw-Z7j" firstAttribute="centerY" secondItem="5vS-yq-oGP" secondAttribute="centerY" id="x30-T4-FmO"/>
                         <constraint firstAttribute="trailing" secondItem="apm-Ad-r7m" secondAttribute="trailing" constant="30" id="zNC-3i-7Gw"/>
                     </constraints>
                 </view>
@@ -327,12 +330,18 @@
                         <constraint firstItem="Uup-41-J2G" firstAttribute="leading" secondItem="sOk-td-i1E" secondAttribute="trailing" id="oc5-95-uF9"/>
                     </constraints>
                 </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop-down" translatesAutoresizingMaskIntoConstraints="NO" id="ylt-j1-ojY">
+                    <rect key="frame" x="174.33333333333334" y="50" width="26.333333333333343" height="7.3333333333333357"/>
+                    <color key="tintColor" systemColor="systemGray2Color"/>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="TBA-CW-uAR"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="iL9-8J-Qtv" secondAttribute="trailing" id="2LN-qA-e5F"/>
+                <constraint firstItem="ylt-j1-ojY" firstAttribute="centerX" secondItem="slm-Gi-th3" secondAttribute="centerX" id="3oS-DX-LRy"/>
                 <constraint firstItem="iL9-8J-Qtv" firstAttribute="top" secondItem="slm-Gi-th3" secondAttribute="top" id="6F6-6M-8j6"/>
+                <constraint firstItem="ylt-j1-ojY" firstAttribute="top" secondItem="iL9-8J-Qtv" secondAttribute="bottom" id="IgP-c2-omz"/>
                 <constraint firstItem="Bs3-Ue-7vh" firstAttribute="leading" secondItem="slm-Gi-th3" secondAttribute="leading" id="Kco-nu-QGa"/>
                 <constraint firstAttribute="bottom" secondItem="Bs3-Ue-7vh" secondAttribute="bottom" id="TYn-Fq-H7t"/>
                 <constraint firstItem="Bs3-Ue-7vh" firstAttribute="top" secondItem="slm-Gi-th3" secondAttribute="top" id="YKZ-uO-lUD"/>
@@ -359,6 +368,7 @@
     </designables>
     <resources>
         <image name="alert" width="15.666666984558105" height="18.666666030883789"/>
+        <image name="drop-down" width="26.333333969116211" height="7.3333334922790527"/>
         <image name="next-rewind" width="26" height="30.666666030883789"/>
         <image name="next-song" width="15" height="15"/>
         <image name="pause-h20" width="16.333333969116211" height="20"/>
@@ -368,20 +378,20 @@
         <image name="previous-rewind" width="26" height="30.666666030883789"/>
         <image name="previous-song" width="15" height="15"/>
         <image name="queue" width="15.333333015441895" height="13"/>
+        <namedColor name="primary">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

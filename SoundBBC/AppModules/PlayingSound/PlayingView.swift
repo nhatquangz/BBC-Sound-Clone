@@ -10,6 +10,9 @@ class PlayingView: UIView {
 	let nibName = "PlayingView"
 	@IBOutlet weak var contentView: UIView!
 	
+	@IBOutlet weak var smallPlayBar: UIView!
+	@IBOutlet weak var dropdownImage: UIImageView!
+	
 	@IBOutlet var images: [UIImageView]!
 	@IBOutlet var songTitles: [MarqueeLabel]!
 	@IBOutlet var songDescriptions: [MarqueeLabel]!
@@ -23,7 +26,6 @@ class PlayingView: UIView {
 	@IBOutlet weak var rewindForward: UIButton!
 	@IBOutlet weak var nextSong: UIButton!
 	@IBOutlet var playButtons: [UIButton]!
-	
 	
 	@IBOutlet var circleProgress: [CircleProgressView]!
 	
@@ -48,7 +50,9 @@ class PlayingView: UIView {
 		contentView.frame = self.bounds
 		
 		playingTrack.minimumTrackTintColor = AppConstants.Color.main
-		playingTrack.thumbTintColor = AppConstants.Color.main
+//		playingTrack.thumbTintColor = AppConstants.Color.main
+		playingTrack.setThumbImage(UIImage(named: "thumb-small"), for: .normal)
+		playingTrack.setThumbImage(UIImage(named: "thumb-large"), for: .highlighted)
 		
 		/// Airplay connect button title
 		let airplayTitle = NSMutableAttributedString(string: "Available Devices\n", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])

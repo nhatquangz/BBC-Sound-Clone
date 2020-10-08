@@ -15,9 +15,8 @@ class AppCoordinator: BaseCoordinator {
 	var window = UIWindow(frame: UIScreen.main.bounds)
 	
 	override func start() {
-		self.navigationController.navigationBar.isHidden = true
+		self.navigationController.isNavigationBarHidden = true
 		self.window.rootViewController = self.navigationController
-//		self.window.rootViewController = PlayingViewController.shared
 		self.window.makeKeyAndVisible()
 		
 		let splashViewController = SplashViewController()

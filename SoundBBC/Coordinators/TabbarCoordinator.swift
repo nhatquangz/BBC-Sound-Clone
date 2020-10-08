@@ -14,17 +14,17 @@ class TabbarCoordinator: BaseCoordinator {
 	
 	override func start() {
 		// Listen
-		let listenNavigationController = UINavigationController()
+		let listenNavigationController = StatusBarStyleNavigationController()
 		listenNavigationController.tabBarItem = UITabBarItem(title: "Listen", image: UIImage(named: "listen")?.withRenderingMode(.alwaysTemplate), tag: 0)
 		let listenCoordinator = ListenCoordinator(navigation: listenNavigationController)
 		
 		// My Sound
-		let mySoundNavigationController = UINavigationController()
+		let mySoundNavigationController = StatusBarStyleNavigationController()
 		mySoundNavigationController.tabBarItem = UITabBarItem(title: "My Sounds", image: UIImage(named: "mysound")?.withRenderingMode(.alwaysTemplate), tag: 1)
 		let mySoundCoordinator = MySoundCoordinator(navigation: mySoundNavigationController)
 		
 		// Search
-		let searchNavigationController = UINavigationController()
+		let searchNavigationController = StatusBarStyleNavigationController()
 		searchNavigationController.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "search")?.withRenderingMode(.alwaysTemplate), tag: 2)
 		let searchCoordinator = SearchCoordinator(navigation: searchNavigationController)
 		

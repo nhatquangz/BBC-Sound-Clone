@@ -30,7 +30,7 @@ extension TabbarController {
 		self.tabBar.tintColor = AppConstants.Color.main
 		addPlayingView()
 		
-		// Update playingview when playing a item
+		/// Handle request changing playingview's position
 		PlayingViewModel.shared.changePosition.asObservable()
 			.distinctUntilChanged()
 			.subscribe(onNext: { [weak self] position in
@@ -73,13 +73,11 @@ extension TabbarController {
 		case .hide:
 			topConstant = fullHeight - tabbarHeight
 		}
+		PlayingViewModel.shared.position.accept(state)
 		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.curveEaseInOut], animations: {
 			self.view.layoutIfNeeded()
 			self.playingView.frame.origin.y = topConstant
-		}, completion: { result in
-			if result {
-				PlayingViewModel.shared.position.accept(state)
-			}
+			self.setNeedsStatusBarAppearanceUpdate()
 		})
 	}
 	
@@ -88,12 +86,13 @@ extension TabbarController {
 		guard let playingView = recognizer.view else { return }
 		
 		// Max distance that playing view can move down from the full state
-		let maxDistance = self.tabBar.frame.origin.y + AppConstants.Dimension.playingBarHeight
+		let maxDistance = self.tabBar.frame.origin.y - AppConstants.Dimension.playingBarHeight
 		
 		let newY = playingView.frame.origin.y + translation.y
 		if newY <= maxDistance && newY >= 0 {
 			playingView.frame.origin.y = newY
 			self.showTabbar(percentage: newY / maxDistance)
+			self.showSmallPlayBar(percentage: 1 - ((maxDistance - newY) / 50))
 		}
 		recognizer.setTranslation(CGPoint.zero, in: self.view)
 		
@@ -102,9 +101,11 @@ extension TabbarController {
 			if yVelocity <= 0 {
 				self.changePlayingViewState(.full)
 				self.showTabbar(percentage: 0, animation: true)
+				self.showSmallPlayBar(percentage: 0)
 			} else {
 				self.changePlayingViewState(.mini)
 				self.showTabbar(percentage: 1, animation: true)
+				self.showSmallPlayBar(percentage: 1)
 			}
 		}
 	}
@@ -122,6 +123,11 @@ extension TabbarController {
 		} else {
 			self.tabBar.frame.origin.y = newY
 		}
+	}
+	
+	private func showSmallPlayBar(percentage: CGFloat) {
+		self.playingView.smallPlayBar.alpha = percentage
+		self.playingView.dropdownImage.alpha = 1 - percentage * 3
 	}
 }
 
