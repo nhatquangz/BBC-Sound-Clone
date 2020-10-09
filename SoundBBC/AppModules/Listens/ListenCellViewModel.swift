@@ -58,7 +58,7 @@ class ListenCellViewModel: BaseViewModel {
 			.throttle(.seconds(1), scheduler: MainScheduler.instance)
 			.subscribe(onNext: { [weak self] (isPlaying) in
 				guard let self = self else { return }
-				PlayingViewModel.shared.position.accept(.mini)
+//				PlayingViewModel.shared.position.accept(.mini)
 				if !isPlaying {
 					PlayingViewModel.shared.play.onNext(self.data)
 				} else {
@@ -69,7 +69,7 @@ class ListenCellViewModel: BaseViewModel {
 
 		
 		// Update playing state
-		PlayingViewModel.shared.playingStateObservable
+		PlayingViewModel.shared.playingState
 			.flatMapLatest { [weak self] playingItem -> Observable<Bool> in
 				guard let itemID = self?.data.id else {
 					return Observable.empty()
@@ -85,12 +85,13 @@ class ListenCellViewModel: BaseViewModel {
 			.bind(to: playingState)
 			.disposed(by: disposeBag)
 		
-		/// Play last item if need be
-		if let lastItemId = UserDefaults.standard.string(forKey: "lastItem"),
-		   lastItemId == data.id, lastItemId != "" {
-			
+		/// Setup the last item if there are no item playing
+		let lastItemID = UserDefaults.standard.string(forKey: "lastItem")
+		let playingViewPosition = PlayingViewModel.shared.position.value
+		if lastItemID == self.data.id, playingViewPosition == .hide {
+			PlayingViewModel.shared.load(self.data, playAfterLoading: false)
+			PlayingViewModel.shared.position.accept(.mini)
 		}
-		
 	}
 	
 	func imageURL(placeholders: String.Placeholder) -> URL? {

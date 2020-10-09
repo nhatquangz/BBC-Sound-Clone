@@ -86,7 +86,7 @@ class PlayingView: UIView {
 			.bind(to: songTitles[0].rx.text, songTitles[1].rx.text)
 			.disposed(by: disposeBag)
 		
-		viewModel.playingStateObservable
+		viewModel.playingState
 			.map { $0.isPlay }
 			.bind(to: playButtons[0].rx.isSelected, playButtons[1].rx.isSelected)
 			.disposed(by: disposeBag)
@@ -138,7 +138,7 @@ class PlayingView: UIView {
 		let seekBackward = rewindBack.rx.tap.asDriver().map { -20.0 }
 		let seekForward = rewindForward.rx.tap.asDriver().map { 20.0 }
 		seekBackward.asObservable().merge(with: seekForward.asObservable())
-			.bind(to: viewModel.seekValue)
+			.bind(to: viewModel.rewindAmount)
 			.disposed(by: disposeBag)
 		
 		fullScreenButton.rx.tap.asDriver()
