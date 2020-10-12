@@ -58,7 +58,6 @@ class ListenCellViewModel: BaseViewModel {
 			.throttle(.seconds(1), scheduler: MainScheduler.instance)
 			.subscribe(onNext: { [weak self] (isPlaying) in
 				guard let self = self else { return }
-//				PlayingViewModel.shared.position.accept(.mini)
 				if !isPlaying {
 					PlayingViewModel.shared.play.onNext(self.data)
 				} else {
@@ -84,6 +83,27 @@ class ListenCellViewModel: BaseViewModel {
 			}
 			.bind(to: playingState)
 			.disposed(by: disposeBag)
+		
+		/// Update process from playingview if need be
+		let timeObserver = PlayingViewModel.shared.timeObservable.asObserver()
+		let playingItem = PlayingViewModel.shared.playingState.asObservable()
+		Observable<Float>.combineLatest(timeObserver, playingItem) { [weak self] (time, item) -> Float in
+			/// Make sure that playing item is local item
+			guard let self = self,
+				  let itemID = self.data.id,
+				  itemID == item.id,
+				  let duration = self.data.duration?.value else { return -1 }
+			let percentage = Float(time/duration)
+			let remainTime = duration - time
+			if percentage >= 1 {
+				self.dateTimeText.accept("Listened")
+			} else {
+				self.dateTimeText.accept(remainTime.minuteRemain())
+			}
+			return percentage
+		}
+		.bind(to: currentProgress)
+		.disposed(by: disposeBag)
 		
 		/// Setup the last item if there are no item playing
 		let lastItemID = UserDefaults.standard.string(forKey: "lastItem")

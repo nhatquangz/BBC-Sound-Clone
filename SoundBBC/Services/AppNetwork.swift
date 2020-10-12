@@ -41,7 +41,7 @@ extension Networking {
 	func request(method: HTTPMethod,
 				 url: String,
 				 parameters: [String : Any]? = nil,
-				 encoding: ParameterEncoding = URLEncoding.default,
+				 encoding: ParameterEncoding = JSONEncoding.default,
 				 session: Session? = nil,
 				 retryCount: Int = 1) -> Observable<Result<Any, RequestError>> {
 		print("\(method.rawValue): \(url)")

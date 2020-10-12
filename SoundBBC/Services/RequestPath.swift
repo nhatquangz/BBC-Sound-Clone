@@ -69,7 +69,7 @@ extension RequestPath {
 		var fullpath = ""
 		switch self {
 		case .config:
-			let currentVersion = "1.20.0"
+			let currentVersion = "1.21.0"
 			let path = self.rawValue.replacingOccurrences(of: "{version}", with: currentVersion)
 			fullpath = RequestPath.createURL(destination: .config, path: path)
 			

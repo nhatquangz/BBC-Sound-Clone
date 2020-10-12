@@ -34,7 +34,7 @@ class PlayerController {
 	/// Value to update UIs
 	let timeObservable = BehaviorRelay<Double>(value: 0)
 	let duration = BehaviorRelay<Double>(value: 0)
-	
+	let playActions = PublishSubject<PlayActions>()
 	
 	init() {
 		let seekTimeObservable = seekTime.asObserver().share()
@@ -72,6 +72,21 @@ class PlayerController {
 				return targetTime
 			}
 			.bind(to: seekTime, currentTime)
+		
+		/// Update play actions
+		_ = self.currentTime.asObservable()
+			.throttle(.seconds(60), scheduler: MainScheduler.instance)
+			.map { PlayActions.heartbeat(elapsedTime: $0) }
+			.bind(to: playActions)
+		
+		_ = self.playingState.asObservable()
+			.map { [weak self] item -> PlayActions in
+				let elapsedTime = self?.player?.currentTime().seconds ?? 0
+				return item.isPlay ? PlayActions.started(elapsedTime: elapsedTime) :
+					PlayActions.paused(elapsedTime: elapsedTime)
+				
+			}
+			.bind(to: playActions)
 	}
 }
 
@@ -91,7 +106,7 @@ extension PlayerController {
 		self.currentItemID = itemID
 		self.preSeekValue = seekTime
 		// Get new item's url
-		AppRequest.get(.playmedia,
+		AppRequest.request(.playmedia,
 					   childs: ["media"],
 					   placeholders: [.vipd: itemID])
 			.map { (result: Result<[MediaModel], RequestError>) -> URL? in
@@ -107,15 +122,15 @@ extension PlayerController {
 	/// Update state and pause player
 	func pause() {
 		guard let player = self.player else { return }
-		player.pause()
 		self.playingState.accept((id: currentItemID, isPlay: false))
+		player.pause()
 	}
 	
 	/// Play current item if any
 	func play() {
 		guard let player = self.player else { return }
-		player.play()
 		self.playingState.accept((id: currentItemID, isPlay: true))
+		player.play()
 	}
 	
 	// Play/Pause current item
@@ -196,7 +211,41 @@ extension PlayerController {
 				let isPlay = self?.playingState.value.isPlay ?? false
 				/// Play again if player was paused by seeking pre-value
 				if isPlay { self?.player?.play() }
+				/// Update play actions after seeking
+				let currentTime = self?.player?.currentTime().seconds ?? 0
+				let action: PlayActions = isPlay ? .started(elapsedTime: currentTime) : .paused(elapsedTime: currentTime)
+				self?.playActions.onNext(action)
 			}
 		})
 	}
 }
+
+
+// MARK: - Play actions
+extension PlayerController {
+	enum PlayActions {
+		case started(elapsedTime: Double)
+		case paused(elapsedTime: Double)
+		case heartbeat(elapsedTime: Double)
+		
+		var key: String {
+			switch self {
+			case .started(_): return "started"
+			case .heartbeat(_): return "heartbeat"
+			case .paused(_): return "paused"
+			}
+		}
+		
+		var value: Double {
+			switch self {
+			case .started(elapsedTime: let elapsedTime):
+				return elapsedTime
+			case .paused(elapsedTime: let elapsedTime):
+				return elapsedTime
+			case .heartbeat(elapsedTime: let elapsedTime):
+				return elapsedTime
+			}
+		}
+	}
+}
+

@@ -31,6 +31,7 @@ class RequestInterceptor: Alamofire.RequestInterceptor {
 		if needToken(for: urlRequest.url) {
 			urlRequest.setValue("Bearer " + storage.accessToken, forHTTPHeaderField: "Authorization")
 		}
+		urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
 		completion(.success(urlRequest))
 	}
 	

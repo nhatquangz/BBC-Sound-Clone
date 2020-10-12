@@ -41,11 +41,16 @@ class AppRequest {
 	///   - childs: get data's child path
 	///   - placeholders: placeholder to be replaced in url
 	/// - Returns: Object of expected data model
-	static func get<T>(_ path: RequestPath,
+	static func request<T>(_ path: RequestPath,
+					   method: HTTPMethod = .get,
+					   parameters: [String : Any]? = nil,
 					   retryCount: Int = 2,
 					   childs: [JSONSubscriptType] = ["data"],
 					   placeholders: String.Placeholder = [:]) -> Observable<Result<T?, RequestError>> where T: Decodable {
-		return Networking.shared.request(method: .get, url: path.url(), retryCount: retryCount)
+		return Networking.shared.request(method: method,
+										 url: path.url(),
+										 parameters: parameters,
+										 retryCount: retryCount)
 			.map { result -> Result<T?, RequestError> in
 				return result.map { data -> T? in
 					let jsonData = try? JSON(data)[childs].rawData()
@@ -61,11 +66,16 @@ class AppRequest {
 	///   - retryCount: number of retring the request
 	///   - childs: get data's child path
 	/// - Returns: Array of expected data model
-	static func get<T>(_ path: RequestPath,
+	static func request<T>(_ path: RequestPath,
+					   method: HTTPMethod = .get,
+					   parameters: [String : Any]? = nil,
 					   retryCount: Int = 2,
 					   childs: [JSONSubscriptType] = ["data"],
 					   placeholders: String.Placeholder = [:]) -> Observable<Result<[T], RequestError>> where T: Decodable {
-		return Networking.shared.request(method: .get, url: path.url(placeholders), retryCount: retryCount)
+		return Networking.shared.request(method: method,
+										 url: path.url(placeholders),
+										 parameters: parameters,
+										 retryCount: retryCount)
 			.map { result -> Result<[T], RequestError> in
 				return result.map { data -> [T] in
 					let jsonData = try? JSON(data)[childs].rawData()

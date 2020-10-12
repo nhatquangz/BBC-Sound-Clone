@@ -28,7 +28,7 @@ class ListenViewModel: BaseViewModel {
 		reloadData.asObservable()
 			.throttle(.seconds(5), scheduler: MainScheduler.instance)
 			.flatMapLatest { _ -> Observable<Result<[DisplayModuleModel], RequestError>> in
-				return AppRequest.get(.listen)
+				return AppRequest.request(.listen)
 			}
 			.subscribe(onNext: { [weak self] result in
 				if let data = try? result.get() {

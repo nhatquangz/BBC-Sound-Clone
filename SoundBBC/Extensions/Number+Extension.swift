@@ -21,4 +21,8 @@ extension Double {
 	guard let formattedString = formatter.string(from: TimeInterval(self)) else { return "" }
 	return formattedString
   }
+	
+	func minuteRemain() -> String {
+		return String(format: "%d mins left", Int(self / 60))
+	}
 }
