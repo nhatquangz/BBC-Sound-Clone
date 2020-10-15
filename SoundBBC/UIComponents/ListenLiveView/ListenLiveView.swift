@@ -77,7 +77,6 @@ extension ListenLiveView: DisplayableItemView {
 			.drive(channelDescriptionLabel.rx.text)
 			.disposed(by: disposeBag)
 	}
-	
 }
 
 

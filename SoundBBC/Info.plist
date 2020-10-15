@@ -46,6 +46,10 @@
 		<string>BBCReithSans_Rg.ttf</string>
 		<string>BBCReithSans_Md.ttf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

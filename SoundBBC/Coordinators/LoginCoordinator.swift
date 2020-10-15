@@ -12,6 +12,10 @@ import SafariServices
 
 class LoginCoordinator: BaseCoordinator {
 	
+	enum Action {
+		case login, register
+	}
+	
 	override func start() {
 		let loginViewController = LoginViewController()
 		loginViewController.coordinator = self
@@ -24,10 +28,14 @@ class LoginCoordinator: BaseCoordinator {
 		start(coordinator: tabCooridinator)
 	}
 	
-	func login(challengeCode: String) {
-		guard let url = AppConfiguration.shared.idctaConfig(["federated","signInUrl"]),
-			  var loginURL = URLComponents(string: url) else { return }
-		
+	func request(_ action: Action, challengeCode: String) {
+		var key = ""
+		switch action {
+		case .login: key = "signInUrl"
+		case .register: key = "registerUrl"
+		}
+		guard let url = AppConfiguration.shared.idctaConfig(["federated", key]),
+			  var requestURL = URLComponents(string: url) else { return }
 		let param: [String: String] = [
 			"tld": "co.uk",
 			"thirdPartyRedirectUri": "uk.co.bbc.sound://oauth.callback",
@@ -38,21 +46,10 @@ class LoginCoordinator: BaseCoordinator {
 			"context": "default",
 			"codeChallenge": challengeCode]
 		let queries = param.map { URLQueryItem(name: $0.key, value: $0.value) }
-		loginURL.queryItems = queries
+		requestURL.queryItems = queries
 		
-		if let loginURL = loginURL.url {
-			let sf = SFSafariViewController(url: loginURL)
-			self.navigationController.present(sf, animated: true)
-		}
-	}
-	
-	func register() {
-		guard let url = AppConfiguration.shared.idctaConfig(["federated","registerUrl"]),
-			  var loginURL = URLComponents(string: url) else { return }
-		
-		loginURL.queryItems = [URLQueryItem(name: "thirdPartyRedirectUri", value: "uk.co.bbc.sounds://oauth.callback")]
-		if let loginURL = loginURL.url {
-			let sf = SFSafariViewController(url: loginURL)
+		if let url = requestURL.url {
+			let sf = SFSafariViewController(url: url)
 			self.navigationController.present(sf, animated: true)
 		}
 	}

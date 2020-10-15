@@ -26,11 +26,12 @@ class LoginViewController: UIViewController {
 	
 	@IBAction func signInAction(_ sender: Any) {
 		guard let challengeCode = self.challengeCode else { return }
-		self.coordinator?.login(challengeCode: challengeCode)
+		self.coordinator?.request(.login, challengeCode: challengeCode)
 	}
 	
 	@IBAction func registerAction(_ sender: Any) {
-		self.coordinator?.register()
+		guard let challengeCode = self.challengeCode else { return }
+		self.coordinator?.request(.register, challengeCode: challengeCode)
 	}
 	
 	override func viewDidLoad() {

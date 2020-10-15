@@ -21,7 +21,7 @@ target 'SoundBBC' do
 	
 	#Services & Network
 	pod 'Alamofire', '5.1'
-	pod 'Kingfisher', '5.3.1'
+	pod 'Kingfisher', '5.15.6'
 	
 	#Database
 	pod 'SwiftyJSON', '5.0.0'

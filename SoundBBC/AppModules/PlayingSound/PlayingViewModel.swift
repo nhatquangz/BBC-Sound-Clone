@@ -10,6 +10,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 import MediaPlayer
+import Kingfisher
 
 enum PlayingViewPosition {
 	case full, mini, hide
@@ -66,6 +67,10 @@ class PlayingViewModel {
 				}
 			})
 		
+		_ = pause.asObserver().subscribe(onNext: { [weak self] in
+			self?.player.pause()
+		})
+		
 		_ = player.playActions.asObservable()
 			.flatMap { [weak self] (action) -> Observable<Result<String?, RequestError>> in
 				guard let self = self,
@@ -108,13 +113,30 @@ extension PlayingViewModel {
 	private func updateItem(_ item: DisplayItemModel?) {
 		guard let item = item else { return }
 		self.item = item
+		
 		let imageURL = item.imageUrl?.bbc.replace([.recipe: "432x432"]).urlEncoded
 		songImage.accept(imageURL)
-		songTitle.accept(item.titles?.primary ?? "")
-		songDescription.accept("\(item.titles?.secondary ?? "")\n\(item.titles?.tertiary ?? "")")
+		
+		let title = item.titles?.primary ?? ""
+		songTitle.accept(title)
+		
+		let description = "\(item.titles?.secondary ?? "")\n\(item.titles?.tertiary ?? "")"
+		songDescription.accept(description)
+		
 		duration.accept(item.duration?.value ?? 0)
+		
 		/// Save the last item's id to show playbar for the next time opening app
 		UserDefaults.standard.setValue(item.id, forKey: "lastItem")
+		
+		/// Update notification view
+		guard let url = imageURL else {
+			self.player.setupNowPlaying(title: title, description: description)
+			return
+		}
+		KingfisherManager.shared.retrieveImage(with: url) { result in
+			let image = try? result.get().image
+			self.player.setupNowPlaying(title: title, description: description, image: image)
+		}
 	}
 }
 

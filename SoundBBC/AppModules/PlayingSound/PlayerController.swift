@@ -10,6 +10,8 @@ import Foundation
 import AVFoundation
 import RxCocoa
 import RxSwift
+import MediaPlayer
+//import Kingfisher
 
 
 class PlayerController {
@@ -35,10 +37,11 @@ class PlayerController {
 	let timeObservable = BehaviorRelay<Double>(value: 0)
 	let duration = BehaviorRelay<Double>(value: 0)
 	let playActions = PublishSubject<PlayActions>()
+
 	
 	init() {
+		setupMediaPlayerNotificationView()
 		let seekTimeObservable = seekTime.asObserver().share()
-		
 		/// Using seekTime + currentTime to update slider + circle progress's value
 		/// Using currentTime value in normaly playing state
 		/// Using seekTime value in seeking state
@@ -87,6 +90,29 @@ class PlayerController {
 				
 			}
 			.bind(to: playActions)
+		
+		/// Notification playing view update
+		_ = duration.asObservable().subscribe(onNext: { [weak self] value in
+			self?.updateNowPlaying()
+		})
+		_ = timeObservable.asObservable().subscribe(onNext: { [weak self] value in
+			self?.updateNowPlaying()
+		})
+		
+		/// Handle interruption
+		_ = NotificationCenter.default.rx.notification(AVAudioSession.interruptionNotification)
+			.subscribe(onNext: { [weak self] notification in
+				guard let userInfo = notification.userInfo,
+					  let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+					  let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
+					return
+				}
+				if type == .began {
+					print("Interruption began")
+					self?.pause()
+				}
+			})
+		
 	}
 }
 
@@ -249,3 +275,58 @@ extension PlayerController {
 	}
 }
 
+
+// MARK: - Notification display
+extension PlayerController {
+	private func setupMediaPlayerNotificationView() {
+		// Get the shared MPRemoteCommandCenter
+		let commandCenter = MPRemoteCommandCenter.shared()
+		commandCenter.togglePlayPauseCommand.addTarget { [unowned self] event in
+			self.changePlayerState()
+			return .success
+		}
+		// Seek
+		commandCenter.skipForwardCommand.preferredIntervals = [20]
+		commandCenter.skipForwardCommand.addTarget { [unowned self] (event) in
+			self.rewindAmount.onNext(20)
+			return .success
+		}
+		commandCenter.skipBackwardCommand.preferredIntervals = [20]
+		commandCenter.skipBackwardCommand.addTarget { [unowned self] (event) in
+			self.rewindAmount.onNext(-20)
+			return .success
+		}
+
+		commandCenter.changePlaybackPositionCommand.addTarget { [unowned self] (event) in
+			if let event = event as? MPChangePlaybackPositionCommandEvent {
+				self.seek(to: event.positionTime)
+				return .success
+			}
+			return .commandFailed
+		}
+	}
+	
+	private func updateNowPlaying() {
+		guard var nowPlayingInfo = MPNowPlayingInfoCenter.default().nowPlayingInfo else { return }
+		nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player?.currentTime().seconds
+		nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = player?.currentItem?.duration.seconds
+		nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player?.rate
+		// Set the metadata
+		MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+	}
+	
+	func setupNowPlaying(title: String, description: String = "", image: UIImage? = nil) {
+		var nowPlayingInfo = [String : Any]()
+		nowPlayingInfo[MPMediaItemPropertyTitle] = title
+		nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = description.trimmingCharacters(in: .whitespacesAndNewlines)
+		if let image = image {
+			nowPlayingInfo[MPMediaItemPropertyArtwork] =
+				MPMediaItemArtwork(boundsSize: image.size) { size in
+					return image
+				}
+		}
+		nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player?.rate
+		// Set the metadata
+		MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+	}
+}

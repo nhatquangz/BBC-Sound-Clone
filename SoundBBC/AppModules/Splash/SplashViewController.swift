@@ -9,7 +9,8 @@
 import UIKit
 import SwiftyJSON
 import RxSwift
-import RxSwiftExt
+import AVFoundation
+
 
 class SplashViewController: UIViewController {
 
@@ -20,7 +21,6 @@ class SplashViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setup()
-		TokenManager.shared.accessToken = ""
 	}
 }
 
@@ -29,6 +29,7 @@ class SplashViewController: UIViewController {
 // MARK: - Init function
 extension SplashViewController {
 	func setup() {
+		/// Request config data
 		AppRequest.getJSON(.config, retryCount: 100)
 			.flatMapLatest { (result) -> Observable<Result<JSON, RequestError>> in
 				if let config = try? result.get() {
@@ -51,6 +52,15 @@ extension SplashViewController {
 			})
 		.disposed(by: disposeBag)
 		
+		/// Audio
+		do {
+			try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.allowAirPlay])
+			print("Playback OK")
+			try AVAudioSession.sharedInstance().setActive(true)
+			print("Session is Active")
+		} catch {
+			print(error)
+		}
 	}
 	
 	func isLogin() -> Bool {

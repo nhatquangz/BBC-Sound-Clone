@@ -92,7 +92,7 @@ extension AppRequest {
 	static func refreshToken(token: String, result: @escaping (Result<JSON, RequestError>) -> Void) {
 		let parameter = ["cassoClientId": "soundsNMA",
 						 "realm": "NMARealm",
-						 "clientId": "iPlayerNMA"]
+						 "clientId": "soundsNMA"]
 		let cookie = "ckns_rtkn=\(token)"
 		AF.request(RequestPath.refreshToken.url(), parameters: parameter, headers: ["Cookie": cookie])
 			.validate(statusCode: 200..<300)

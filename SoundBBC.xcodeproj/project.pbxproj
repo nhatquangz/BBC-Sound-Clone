@@ -49,6 +49,7 @@
 		23328C0824548A64005E2C5F /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23328C0724548A64005E2C5F /* JSONHelper.swift */; };
 		2343478C2527CF2F0011CAC9 /* TransparentGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2343478B2527CF2F0011CAC9 /* TransparentGradientView.swift */; };
 		2343478F2527E4310011CAC9 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2343478E2527E4310011CAC9 /* CustomSlider.swift */; };
+		23452A132538D5A100B24080 /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23452A122538D5A100B24080 /* HomeKit.framework */; };
 		237126E924B3646A00D9CF34 /* AppExtensionNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237126E824B3646A00D9CF34 /* AppExtensionNamespace.swift */; };
 		237126EB24B3761700D9CF34 /* BBCReithSans_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 237126EA24B3761700D9CF34 /* BBCReithSans_Bd.ttf */; };
 		23898F982528D56200C2D94D /* PlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23898F962528D56200C2D94D /* PlayingView.swift */; };
@@ -133,6 +134,8 @@
 		23328C0724548A64005E2C5F /* JSONHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
 		2343478B2527CF2F0011CAC9 /* TransparentGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentGradientView.swift; sourceTree = "<group>"; };
 		2343478E2527E4310011CAC9 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		23452A112538D5A100B24080 /* SoundBBC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SoundBBC.entitlements; sourceTree = "<group>"; };
+		23452A122538D5A100B24080 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
 		237126E824B3646A00D9CF34 /* AppExtensionNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensionNamespace.swift; sourceTree = "<group>"; };
 		237126EA24B3761700D9CF34 /* BBCReithSans_Bd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BBCReithSans_Bd.ttf; sourceTree = "<group>"; };
 		23898F962528D56200C2D94D /* PlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingView.swift; sourceTree = "<group>"; };
@@ -179,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23452A132538D5A100B24080 /* HomeKit.framework in Frameworks */,
 				5339A251A57DF94DD8D43682 /* Pods_SoundBBC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +225,7 @@
 		2309CDD2245081E800620475 /* SoundBBC */ = {
 			isa = PBXGroup;
 			children = (
+				23452A112538D5A100B24080 /* SoundBBC.entitlements */,
 				23FECE2524ACF1A700F906DE /* BaseClasses */,
 				23328BFD245472C2005E2C5F /* AppManagements */,
 				2304EA4024535B5A00A1B75C /* Models */,
@@ -550,6 +555,7 @@
 		74EDF12024828F5E3F490B5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				23452A122538D5A100B24080 /* HomeKit.framework */,
 				2B85F7AF4E13965A683CB656 /* Pods_SoundBBC.framework */,
 			);
 			name = Frameworks;
@@ -881,6 +887,7 @@
 			baseConfigurationReference = 3861E8562E46EE65FFA92F18 /* Pods-SoundBBC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SoundBBC/SoundBBC.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7YMMS76DWJ;
@@ -903,6 +910,7 @@
 			baseConfigurationReference = C72ADD3035029FC6DFAEFA48 /* Pods-SoundBBC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SoundBBC/SoundBBC.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7YMMS76DWJ;
