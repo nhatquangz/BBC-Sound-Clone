@@ -56,6 +56,7 @@
 		23898F9D2528E2D600C2D94D /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23898F9C2528E2D600C2D94D /* CircleProgressView.swift */; };
 		23898FA02528E37400C2D94D /* RxExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23898F9F2528E37400C2D94D /* RxExtension.swift */; };
 		23898FA3252922D400C2D94D /* PlayingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23898FA2252922D400C2D94D /* PlayingViewModel.swift */; };
+		239519B12537A21A0097C53D /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239519B02537A21A0097C53D /* LoginCoordinator.swift */; };
 		239AA998252B93C000E7896B /* Number+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AA997252B93C000E7896B /* Number+Extension.swift */; };
 		23AF5F3E2526349500BE471B /* CodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF5F3D2526349500BE471B /* CodableExtension.swift */; };
 		23AF5F4925263DDE00BE471B /* ListenCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF5F4825263DDE00BE471B /* ListenCellViewModel.swift */; };
@@ -77,6 +78,8 @@
 		23E90F4824B0E63700D630F5 /* ListenLiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F4724B0E63700D630F5 /* ListenLiveViewModel.swift */; };
 		23E90F4C24B10B1100D630F5 /* ListenLiveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23E90F4B24B10B1100D630F5 /* ListenLiveView.xib */; };
 		23E90F4E24B12CFE00D630F5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E90F4D24B12CFE00D630F5 /* StringExtension.swift */; };
+		23ED73B52536432B0035EB60 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED73B32536432B0035EB60 /* LoginViewController.swift */; };
+		23ED73B62536432B0035EB60 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23ED73B42536432B0035EB60 /* LoginViewController.xib */; };
 		23FECE1824ABD20000F906DE /* GuidanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FECE1724ABD20000F906DE /* GuidanceModel.swift */; };
 		23FECE1D24AC7E9900F906DE /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FECE1C24AC7E9900F906DE /* ArrayExtension.swift */; };
 		23FECE2024ACA43900F906DE /* RequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FECE1F24ACA43900F906DE /* RequestAdapter.swift */; };
@@ -137,6 +140,7 @@
 		23898F9C2528E2D600C2D94D /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		23898F9F2528E37400C2D94D /* RxExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtension.swift; sourceTree = "<group>"; };
 		23898FA2252922D400C2D94D /* PlayingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingViewModel.swift; sourceTree = "<group>"; };
+		239519B02537A21A0097C53D /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		239AA997252B93C000E7896B /* Number+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Extension.swift"; sourceTree = "<group>"; };
 		23AF5F3D2526349500BE471B /* CodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtension.swift; sourceTree = "<group>"; };
 		23AF5F4825263DDE00BE471B /* ListenCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenCellViewModel.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 		23E90F4724B0E63700D630F5 /* ListenLiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenLiveViewModel.swift; sourceTree = "<group>"; };
 		23E90F4B24B10B1100D630F5 /* ListenLiveView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenLiveView.xib; sourceTree = "<group>"; };
 		23E90F4D24B12CFE00D630F5 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		23ED73B32536432B0035EB60 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		23ED73B42536432B0035EB60 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		23FECE1724ABD20000F906DE /* GuidanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceModel.swift; sourceTree = "<group>"; };
 		23FECE1C24AC7E9900F906DE /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		23FECE1F24ACA43900F906DE /* RequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAdapter.swift; sourceTree = "<group>"; };
@@ -236,6 +242,7 @@
 		2309CDE72450833D00620475 /* AppModules */ = {
 			isa = PBXGroup;
 			children = (
+				23ED73B22536430B0035EB60 /* Login */,
 				23848D7A24B49E520085A3A0 /* PlayingSound */,
 				2309CDF824508BCF00620475 /* Search */,
 				2309CDF724508BC700620475 /* MySounds */,
@@ -294,6 +301,7 @@
 				2309CE012450998900620475 /* ListenCoordinator.swift */,
 				2309CE03245099D400620475 /* MySoundCoordinator.swift */,
 				2309CE0524509A0B00620475 /* SearchCoordinator.swift */,
+				239519B02537A21A0097C53D /* LoginCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -511,6 +519,15 @@
 			path = ListenLiveView;
 			sourceTree = "<group>";
 		};
+		23ED73B22536430B0035EB60 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				23ED73B32536432B0035EB60 /* LoginViewController.swift */,
+				23ED73B42536432B0035EB60 /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		23FECE2524ACF1A700F906DE /* BaseClasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -598,6 +615,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23ED73B62536432B0035EB60 /* LoginViewController.xib in Resources */,
 				23D7EF04252F3F2600733D37 /* Colors.xcassets in Resources */,
 				237126EB24B3761700D9CF34 /* BBCReithSans_Bd.ttf in Resources */,
 				2309CE092450F3E500620475 /* BBCReithSerif_Rg.ttf in Resources */,
@@ -689,6 +707,7 @@
 				23328C01245474B0005E2C5F /* AppRequest.swift in Sources */,
 				23D7EEFF252F2E6000733D37 /* SinglePromotionCell.swift in Sources */,
 				2343478C2527CF2F0011CAC9 /* TransparentGradientView.swift in Sources */,
+				23ED73B52536432B0035EB60 /* LoginViewController.swift in Sources */,
 				23C87E6524AE778100239A60 /* ImpactLargeViewCell.swift in Sources */,
 				2309CDD4245081E800620475 /* AppDelegate.swift in Sources */,
 				2304EA3D24532C6300A1B75C /* CollectionTableViewExtension.swift in Sources */,
@@ -710,6 +729,7 @@
 				2309CDED245083A300620475 /* BaseCoordinator.swift in Sources */,
 				23C87E5C24AE3D9D00239A60 /* DefaultHeaderViewModel.swift in Sources */,
 				232C60CC24AB410C0049A68A /* ListenViewModel.swift in Sources */,
+				239519B12537A21A0097C53D /* LoginCoordinator.swift in Sources */,
 				23C87E5824AE009600239A60 /* ContainerViewCell.swift in Sources */,
 				23FECE2224ACAF7000F906DE /* TokenManager.swift in Sources */,
 				23328C0624548220005E2C5F /* AppConfiguration.swift in Sources */,

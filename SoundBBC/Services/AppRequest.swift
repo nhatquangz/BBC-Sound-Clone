@@ -103,7 +103,19 @@ extension AppRequest {
 				case .failure(_):
 					result(.failure(RequestError.serverError(response.data)))
 				}
-		}
+			}
+	}
+	
+	static func getToken(code: String, verifyCode: String) -> Observable<Result<JSON, RequestError>> {
+		let callback = AppConfiguration.shared.idctaConfig(["federated", "callbackUrl"]) ?? ""
+		var callbackURL = URLComponents(string: callback)
+		callbackURL?.queryItems = [URLQueryItem(name: "clientId", value: "soundsNMA"),
+								   URLQueryItem(name: "realm", value: "NMARealm")]
+		guard let url = callbackURL?.url?.absoluteString else { return .empty() }
+		let param = ["code": code,
+					 "code_verifier": verifyCode]
+		return Networking.shared.request(method: .post, url: url, parameters: param)
+			.map { $0.map { JSON($0) } }
 	}
 }
 

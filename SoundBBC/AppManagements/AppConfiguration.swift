@@ -22,7 +22,7 @@ class AppConfiguration {
 	}
 	
 	func setup(idctaConfig: JSON) {
-		self.idctaConfig = config
+		self.idctaConfig = idctaConfig
 	}
 }
 
@@ -34,7 +34,7 @@ extension AppConfiguration {
 	}
 	
 	func idctaConfig(_ path: [JSONSubscriptType]) -> String? {
-		return self.idctaConfig?[path].stringValue
+		return self.idctaConfig?[path].string
 	}
 	
 	var playbackURL: String {

@@ -35,6 +35,10 @@ class BaseCoordinator: Coordinator {
 		fatalError("Start method must be implemented")
 	}
 	
+	func didFinish() {
+		self.parentCoordinator?.didFinish(coordinator: self)
+	}
+	
 	func start(coordinator: Coordinator) {
 		self.childCoordinators.append(coordinator)
 		coordinator.parentCoordinator = self

@@ -27,9 +27,14 @@ class AppCoordinator: BaseCoordinator {
 
 // MARK: - Navigation
 extension AppCoordinator {
-	func startTabbar() {
+	func tabbar() {
 		let tabCooridinator = TabbarCoordinator(navigation: self.navigationController)
-		tabCooridinator.start()
+		start(coordinator: tabCooridinator)
+	}
+	
+	func login() {
+		let loginCoordinator = LoginCoordinator(navigation: self.navigationController)
+		start(coordinator: loginCoordinator)
 	}
 }
 

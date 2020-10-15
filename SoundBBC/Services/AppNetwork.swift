@@ -31,7 +31,7 @@ class Networking: NSObject {
 		let configuration = URLSessionConfiguration.default
 		configuration.timeoutIntervalForRequest = TimeInterval(kTimeoutIntervalForRequest)
 		defaultSession = Session(configuration: configuration,
-								 interceptor: RequestInterceptor(storage: TokenManager()))
+								 interceptor: RequestInterceptor(storage: TokenManager.shared))
 	}
 }
 

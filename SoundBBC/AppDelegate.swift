@@ -18,6 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		setup()
 		return true
 	}
+	
+	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+		/// Handle login/register call back
+		if let code = URLComponents(string: url.absoluteString)?.queryItems?.filter { $0.name == "code" }.first?.value {
+			NotificationCenter.default.post(name: .callbackCode, object: nil, userInfo: ["code": code])
+		}
+		return true
+	}
 }
 
 

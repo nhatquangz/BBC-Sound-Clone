@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="BBCReithSans_Bd.ttf">
+            <string>BBCReithSans-Bold</string>
+        </array>
+        <array key="BBCReithSans_Md.ttf">
+            <string>BBCReithSans-Medium</string>
+        </array>
+        <array key="BBCReithSerif_Md.ttf">
+            <string>BBCReithSerif-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="SoundBBC" customModuleProvider="target">
+            <connections>
+                <outlet property="registerButton" destination="2aS-OB-HlV" id="JgG-e4-bRA"/>
+                <outlet property="signButton" destination="CXU-dm-Hro" id="Z1S-Fn-Gx7"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgW-0h-Uka">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-bbc" translatesAutoresizingMaskIntoConstraints="NO" id="oZK-Hf-gld">
+                            <rect key="frame" x="0.0" y="323" width="375" height="146"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your World of Sounds" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LwT-Bq-Dwn">
+                            <rect key="frame" x="62.666666666666657" y="503.99999999999994" width="249.99999999999997" height="88.333333333333314"/>
+                            <fontDescription key="fontDescription" name="BBCReithSerif-Medium" family="BBC Reith Serif" pointSize="33"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BE2-yO-isR">
+                            <rect key="frame" x="89.333333333333329" y="617.33333333333337" width="196.33333333333337" height="38"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXU-dm-Hro">
+                                    <rect key="frame" x="0.0" y="0.0" width="95" height="38"/>
+                                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                    <fontDescription key="fontDescription" name="BBCReithSans-Bold" family="BBC Reith Sans" pointSize="16"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="10" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="-12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="Sign in" image="user-icon">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" systemColor="systemGray2Color"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="signInAction:" destination="-1" eventType="touchUpInside" id="Tvf-XV-shf"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdD-0t-y5F">
+                                    <rect key="frame" x="103.00000000000001" y="0.0" width="16.333333333333329" height="38"/>
+                                    <fontDescription key="fontDescription" name="BBCReithSans-Medium" family="BBC Reith Sans" pointSize="16"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aS-OB-HlV">
+                                    <rect key="frame" x="127.33333333333331" y="0.0" width="69" height="38"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" name="BBCReithSans-Bold" family="BBC Reith Sans" pointSize="16"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                                    <state key="normal" title="Register">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" systemColor="systemGray2Color"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="registerAction:" destination="-1" eventType="touchUpInside" id="67W-DF-ySN"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="38" id="SOS-2e-pFd"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="LwT-Bq-Dwn" firstAttribute="centerY" secondItem="pgW-0h-Uka" secondAttribute="centerY" multiplier="1.35" priority="750" id="2fa-Vr-mrL"/>
+                        <constraint firstItem="LwT-Bq-Dwn" firstAttribute="width" secondItem="pgW-0h-Uka" secondAttribute="width" multiplier="2/3" id="4Ee-Hy-UBX"/>
+                        <constraint firstItem="oZK-Hf-gld" firstAttribute="centerY" secondItem="pgW-0h-Uka" secondAttribute="centerY" constant="-10" id="6cL-fd-jwT"/>
+                        <constraint firstItem="BE2-yO-isR" firstAttribute="top" secondItem="LwT-Bq-Dwn" secondAttribute="bottom" constant="25" id="B7f-i3-sQz"/>
+                        <constraint firstItem="BE2-yO-isR" firstAttribute="centerX" secondItem="pgW-0h-Uka" secondAttribute="centerX" id="QIY-jr-MPv"/>
+                        <constraint firstAttribute="trailing" secondItem="oZK-Hf-gld" secondAttribute="trailing" id="RiG-Jy-FAH"/>
+                        <constraint firstItem="oZK-Hf-gld" firstAttribute="leading" secondItem="pgW-0h-Uka" secondAttribute="leading" id="bLE-qp-C7D"/>
+                        <constraint firstItem="LwT-Bq-Dwn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oZK-Hf-gld" secondAttribute="bottom" constant="25" id="q8A-GM-FbW"/>
+                        <constraint firstItem="LwT-Bq-Dwn" firstAttribute="centerX" secondItem="pgW-0h-Uka" secondAttribute="centerX" id="rcE-Wg-x6K"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="pgW-0h-Uka" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Cb2-Qq-mbU"/>
+                <constraint firstAttribute="bottom" secondItem="pgW-0h-Uka" secondAttribute="bottom" id="CbB-Qw-9K5"/>
+                <constraint firstItem="pgW-0h-Uka" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gsC-a6-raS"/>
+                <constraint firstAttribute="trailing" secondItem="pgW-0h-Uka" secondAttribute="trailing" id="uSZ-XS-XN3"/>
+            </constraints>
+            <point key="canvasLocation" x="140.57971014492756" y="144.64285714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="logo-bbc" width="83" height="146"/>
+        <image name="user-icon" width="13" height="13"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

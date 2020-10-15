@@ -13,9 +13,6 @@ import RxSwiftExt
 
 class SplashViewController: UIViewController {
 
-	
-	// MARK: - Outlet
-
 	let disposeBag = DisposeBag()
 	weak var cooridinator: AppCoordinator?
 	
@@ -23,6 +20,7 @@ class SplashViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setup()
+		TokenManager.shared.accessToken = ""
 	}
 }
 
@@ -44,11 +42,20 @@ extension SplashViewController {
 			.subscribe(onNext: { result in
 				if let config = try? result.get() {
 					AppConfiguration.shared.setup(idctaConfig: config)
-					self.cooridinator?.startTabbar()
+					if self.isLogin() {
+						self.cooridinator?.tabbar()
+					} else {
+						self.cooridinator?.login()
+					}
 				}
 			})
 		.disposed(by: disposeBag)
 		
+	}
+	
+	func isLogin() -> Bool {
+		guard TokenManager.shared.accessToken != "", TokenManager.shared.refreshToken != "" else  { return false }
+		return true
 	}
 }
 
