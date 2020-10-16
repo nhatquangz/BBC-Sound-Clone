@@ -19,9 +19,3 @@ class CustomSlider: UISlider {
 	}
 	
 }
-
-class LineProgress: UISlider {
-	override func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
-		return .zero
-	}
-}
