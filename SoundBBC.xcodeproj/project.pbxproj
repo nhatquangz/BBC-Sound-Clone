@@ -52,6 +52,8 @@
 		23452A132538D5A100B24080 /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23452A122538D5A100B24080 /* HomeKit.framework */; };
 		237126E924B3646A00D9CF34 /* AppExtensionNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237126E824B3646A00D9CF34 /* AppExtensionNamespace.swift */; };
 		237126EB24B3761700D9CF34 /* BBCReithSans_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 237126EA24B3761700D9CF34 /* BBCReithSans_Bd.ttf */; };
+		237B8DC5253A3754000A1968 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B8DC4253A3754000A1968 /* MusicViewController.swift */; };
+		237B8DC9253A3772000A1968 /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B8DC8253A3772000A1968 /* MusicViewModel.swift */; };
 		23898F982528D56200C2D94D /* PlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23898F962528D56200C2D94D /* PlayingView.swift */; };
 		23898F992528D56200C2D94D /* PlayingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23898F972528D56200C2D94D /* PlayingView.xib */; };
 		23898F9D2528E2D600C2D94D /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23898F9C2528E2D600C2D94D /* CircleProgressView.swift */; };
@@ -138,6 +140,8 @@
 		23452A122538D5A100B24080 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
 		237126E824B3646A00D9CF34 /* AppExtensionNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensionNamespace.swift; sourceTree = "<group>"; };
 		237126EA24B3761700D9CF34 /* BBCReithSans_Bd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BBCReithSans_Bd.ttf; sourceTree = "<group>"; };
+		237B8DC4253A3754000A1968 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
+		237B8DC8253A3772000A1968 /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
 		23898F962528D56200C2D94D /* PlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingView.swift; sourceTree = "<group>"; };
 		23898F972528D56200C2D94D /* PlayingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayingView.xib; sourceTree = "<group>"; };
 		23898F9C2528E2D600C2D94D /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
@@ -247,6 +251,7 @@
 		2309CDE72450833D00620475 /* AppModules */ = {
 			isa = PBXGroup;
 			children = (
+				237B8DC3253A3735000A1968 /* Music */,
 				23ED73B22536430B0035EB60 /* Login */,
 				23848D7A24B49E520085A3A0 /* PlayingSound */,
 				2309CDF824508BCF00620475 /* Search */,
@@ -432,6 +437,15 @@
 				2343478B2527CF2F0011CAC9 /* TransparentGradientView.swift */,
 			);
 			path = TransparentGradientView;
+			sourceTree = "<group>";
+		};
+		237B8DC3253A3735000A1968 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				237B8DC4253A3754000A1968 /* MusicViewController.swift */,
+				237B8DC8253A3772000A1968 /* MusicViewModel.swift */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 		23848D7A24B49E520085A3A0 /* PlayingSound */ = {
@@ -704,6 +718,7 @@
 				23FECE1824ABD20000F906DE /* GuidanceModel.swift in Sources */,
 				23328BFF24547310005E2C5F /* AppEnvironment.swift in Sources */,
 				23E90F4824B0E63700D630F5 /* ListenLiveViewModel.swift in Sources */,
+				237B8DC5253A3754000A1968 /* MusicViewController.swift in Sources */,
 				23E90F4624B088C400D630F5 /* SnapCenterItemCollectionViewLayout.swift in Sources */,
 				2309CE0C2450F4AD00620475 /* AppConstants.swift in Sources */,
 				23898F9D2528E2D600C2D94D /* CircleProgressView.swift in Sources */,
@@ -748,6 +763,7 @@
 				23898FA3252922D400C2D94D /* PlayingViewModel.swift in Sources */,
 				23328BFC2454720E005E2C5F /* RequestPath.swift in Sources */,
 				2309CDFB24508C7200620475 /* ListenViewController.swift in Sources */,
+				237B8DC9253A3772000A1968 /* MusicViewModel.swift in Sources */,
 				239AA998252B93C000E7896B /* Number+Extension.swift in Sources */,
 				2309CE182450FEF600620475 /* ColorExtensions.swift in Sources */,
 				23B7C30A24AE898400539E6B /* ImpactSmallViewCell.swift in Sources */,

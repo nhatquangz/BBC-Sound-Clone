@@ -17,7 +17,16 @@ class ListenViewController: UIViewController {
 	var collectionView: UICollectionView!
 	let refreshControl = UIRefreshControl()
 	
-	let viewModel = ListenViewModel()
+	let viewModel: ListenViewModel
+	
+	init(viewModel: ListenViewModel) {
+		self.viewModel = viewModel
+		super.init(nibName: nil, bundle: nil)
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -30,7 +39,6 @@ class ListenViewController: UIViewController {
 // MARK: - Setup
 extension ListenViewController {
 	func setup() {
-		self.title = "Listen"
 		self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: AppConstants.Font.reithSerifMedium.size(20)]
 		
 		collectionView = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout())

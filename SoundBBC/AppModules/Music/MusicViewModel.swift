@@ -1,8 +1,8 @@
 //
-//  ListenViewModel.swift
+//  MusicViewModel.swift
 //  SoundBBC
 //
-//  Created by nhatquangz on 6/30/20.
+//  Created by nhatquangz on 10/16/20.
 //  Copyright © 2020 nhatquangz. All rights reserved.
 //
 
@@ -10,8 +10,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-
-class ListenViewModel: BaseViewModel {
+class MusicViewModel: BaseViewModel {
 	
 	private let dataSource = BehaviorRelay<[DisplayModuleModel]>(value: [])
 	private var cellViewModels: [[ListenCellViewModel]] = []
@@ -22,12 +21,13 @@ class ListenViewModel: BaseViewModel {
 	// Output
 	let refreshView = PublishSubject<Void>()
 	
-	init(dataObservable: Observable<Result<[DisplayModuleModel], RequestError>>) {
+	override init() {
 		super.init()
+		
 		reloadData.asObservable()
 			.throttle(.seconds(5), scheduler: MainScheduler.instance)
 			.flatMapLatest { _ -> Observable<Result<[DisplayModuleModel], RequestError>> in
-				return dataObservable
+				return AppRequest.request(.listen)
 			}
 			.subscribe(onNext: { [weak self] result in
 				if let data = try? result.get() {
@@ -47,8 +47,8 @@ class ListenViewModel: BaseViewModel {
 }
 
 
-// MARK: - CollectionView
-extension ListenViewModel {
+// MARK: - ColelctionView
+extension MusicViewModel {
 	func theme(forSection index: Int) -> LayoutProvider.AppElementTheme {
 		if let style = dataSource.value[safe: index]?.style {
 			return LayoutProvider.AppElementTheme(rawValue: style) ?? .unknown
@@ -68,27 +68,6 @@ extension ListenViewModel {
 		} else {
 			return dataSource.value[safe: index]?.data?.count ?? 0
 		}
-	}
-	
-	func items(section: Int) -> [DisplayItemModel] {
-		return self.dataSource.value[safe: section]?.data ?? []
-	}
-	
-	func item(indexPath: IndexPath) -> DisplayItemModel? {
-		let section = indexPath.section
-		let itemIndex = indexPath.row
-		return self.dataSource.value[safe: section]?.data?[safe: itemIndex]
-	}
-	
-	func viewModel(indexPath: IndexPath) -> ListenCellViewModel? {
-		let section = indexPath.section
-		let itemIndex = indexPath.row
-		return self.cellViewModels[safe: section]?[safe: itemIndex]
-	}
-	
-	func headerViewModel(index: IndexPath) -> DefaultHeaderViewModel? {
-		guard let itemData = dataSource.value[safe: index.section] else { return nil }
-		return DefaultHeaderViewModel(section: itemData)
 	}
 }
 

@@ -17,6 +17,15 @@ class TabbarCoordinator: BaseCoordinator {
 		let listenNavigationController = StatusBarStyleNavigationController()
 		listenNavigationController.tabBarItem = UITabBarItem(title: "Listen", image: UIImage(named: "listen")?.withRenderingMode(.alwaysTemplate), tag: 0)
 		let listenCoordinator = ListenCoordinator(navigation: listenNavigationController)
+		listenCoordinator.title = "Listen"
+		
+		// Music - Reuse listenviewcontroller
+		// Should be a separate viewcontroller in production
+		let musicNavigationController = StatusBarStyleNavigationController()
+		musicNavigationController.tabBarItem = UITabBarItem(title: "Music", image: UIImage(named: "music")?.withRenderingMode(.alwaysTemplate), tag: 0)
+		let musicCoordinator = ListenCoordinator(navigation: musicNavigationController)
+		musicCoordinator.title = "Music"
+		musicCoordinator.dataObservable = AppRequest.request(.containerTemplateInLine, placeholders: [.urn: "urn:bbc:radio:category:mixes"])
 		
 		// My Sound
 		let mySoundNavigationController = StatusBarStyleNavigationController()
@@ -30,11 +39,13 @@ class TabbarCoordinator: BaseCoordinator {
 		
 		let tabbarViewController = TabbarController()
 		tabbarViewController.viewControllers = [listenNavigationController,
+												musicNavigationController,
 												mySoundNavigationController,
 												searchNavigationController]
 		self.navigationController.viewControllers = [tabbarViewController]
 		
 		start(coordinator: listenCoordinator)
+		start(coordinator: musicCoordinator)
 		start(coordinator: mySoundCoordinator)
 		start(coordinator: searchCoordinator)
 	}

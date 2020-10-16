@@ -48,7 +48,7 @@ class AppRequest {
 					   childs: [JSONSubscriptType] = ["data"],
 					   placeholders: String.Placeholder = [:]) -> Observable<Result<T?, RequestError>> where T: Decodable {
 		return Networking.shared.request(method: method,
-										 url: path.url(),
+										 url: path.url(placeholders),
 										 parameters: parameters,
 										 retryCount: retryCount)
 			.map { result -> Result<T?, RequestError> in

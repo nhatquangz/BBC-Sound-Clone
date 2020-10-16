@@ -17,6 +17,7 @@ extension String {
 		case type = "{type}"
 		case format = "{format}"
 		case vipd = "{vpid}"
+		case urn = "{urn}"
 	}
 	
 	var urlEncoded: URL? {

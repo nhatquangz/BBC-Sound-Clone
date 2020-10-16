@@ -8,12 +8,20 @@
 
 import Foundation
 import UIKit
+import RxCocoa
+import RxSwift
 
 
 class ListenCoordinator: BaseCoordinator {
 	
+	/// Service to use for listen / music screen
+	var dataObservable: Observable<Result<[DisplayModuleModel], RequestError>> = AppRequest.request(.listen)
+	var title: String = ""
+	
 	override func start() {
-		let listenVC = ListenViewController()
+		let viewModel = ListenViewModel(dataObservable: dataObservable)
+		let listenVC = ListenViewController(viewModel: viewModel)
+		listenVC.title = title
 		self.navigationController.viewControllers = [listenVC]
 	}
 	

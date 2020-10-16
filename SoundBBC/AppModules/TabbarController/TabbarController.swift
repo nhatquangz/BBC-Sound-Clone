@@ -32,7 +32,7 @@ class TabbarController: UITabBarController {
 // MARK: - Setup
 extension TabbarController {
 	func setup() {
-		self.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.font: AppConstants.Font.reithSans.size(12)], for: .normal)
+//		UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: AppConstants.Font.reithSans.size(10)], for: .normal)
 		self.tabBar.tintColor = AppConstants.Color.main
 		self.tabBar.barTintColor = AppConstants.Color.tabbar
 		self.tabBar.isTranslucent = false
