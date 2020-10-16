@@ -65,6 +65,7 @@ class PlayingView: UIView {
 		
 		airplayConnectButton.setAttributedTitle(airplayTitle, for: .normal)
 		airplayConnectButton.titleLabel?.textAlignment = .center
+		
 		bindData()
 	}
 	

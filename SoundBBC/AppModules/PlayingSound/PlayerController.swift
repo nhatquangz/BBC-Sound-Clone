@@ -11,7 +11,7 @@ import AVFoundation
 import RxCocoa
 import RxSwift
 import MediaPlayer
-//import Kingfisher
+
 
 
 class PlayerController {
@@ -41,12 +41,12 @@ class PlayerController {
 	
 	init() {
 		setupMediaPlayerNotificationView()
-		let seekTimeObservable = seekTime.asObserver().share()
+		let seekTimeObservable = seekTime.asObservable().share()
 		/// Using seekTime + currentTime to update slider + circle progress's value
 		/// Using currentTime value in normaly playing state
 		/// Using seekTime value in seeking state
 		/// There is only one observable emitting values at a time because we stop update currentTime when there are seeking events
-		let currentTimeObservable = seekTimeObservable.merge(with: self.currentTime.asObserver())
+		let currentTimeObservable = seekTimeObservable.merge(with: self.currentTime.asObservable())
 		_ = currentTimeObservable.bind(to: timeObservable)
 		
 		/// Handle seeking request from slider
@@ -62,11 +62,11 @@ class PlayerController {
 			})
 		
 		/// Handle seeking from buttons
-		_ = rewindAmount.asObserver()
+		_ = rewindAmount.asObservable()
 			/// User is seeking, stop updating current time
 			.do(onNext: { [weak self] _ in self?.removePeriodicTimeObserver() })
 			/// Calculate target value to seek
-			.withLatestFrom(self.currentTime.asObserver()) { [weak self] (seekValue, currentTime) -> Double in
+			.withLatestFrom(self.currentTime.asObservable()) { [weak self] (seekValue, currentTime) -> Double in
 				guard let self = self else { return 0 }
 				let duration = self.duration.value
 				var targetTime = currentTime + seekValue
@@ -124,7 +124,7 @@ extension PlayerController {
 	///   - seekTime: seek to specific value
 	///   - shouldPlay: whether player should play after loading
 	func load(_ itemID: String, seekTo seekTime: Double? = nil, shouldPlay: Bool = true) {
-		/// If the same item was passed, play if need be
+		/// If the same item was passed, play current item if need be
 		guard itemID != currentItemID else {
 			if shouldPlay { self.play() }
 			return
@@ -177,7 +177,7 @@ extension PlayerController {
 		/// Observe player item status
 		playerItem.rx.observeWeakly(Int.self, #keyPath(AVPlayerItem.status))
 			.subscribe(onNext: { [weak self] status in
-				print("☀️ Item State: \(status)")
+				print("☀️ Item State: \(String(describing: status))")
 				if status == 1 {
 					self?.duration.accept(playerItem.duration.seconds)
 					if let preSeekValue = self?.preSeekValue {
@@ -197,6 +197,8 @@ extension PlayerController {
 		}
 		if shouldPlay {
 			self.play()
+		} else {
+			self.pause()
 		}
 	}
 }

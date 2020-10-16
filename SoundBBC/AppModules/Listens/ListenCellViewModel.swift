@@ -85,25 +85,27 @@ class ListenCellViewModel: BaseViewModel {
 			.disposed(by: disposeBag)
 		
 		/// Update process from playingview if need be
-		let timeObserver = PlayingViewModel.shared.timeObservable.asObserver()
-		let playingItem = PlayingViewModel.shared.playingState.asObservable()
-		Observable<Float>.combineLatest(timeObserver, playingItem) { [weak self] (time, item) -> Float in
-			/// Make sure that playing item is local item
-			guard let self = self,
-				  let itemID = self.data.id,
-				  itemID == item.id,
-				  let duration = self.data.duration?.value else { return -1 }
-			let percentage = Float(time/duration)
-			let remainTime = duration - time
-			if percentage >= 1 {
-				self.dateTimeText.accept("Listened")
-			} else {
-				self.dateTimeText.accept(remainTime.minuteRemain())
+		let playingState = PlayingViewModel.shared.playingState
+		PlayingViewModel.shared.playingTrackValue.asObservable()
+			.withLatestFrom(playingState.asObservable()) { [weak self] (time, item) -> Float in
+				guard let self = self, item.id == self.data.id else { return -1 }
+				return time
 			}
-			return percentage
-		}
-		.bind(to: currentProgress)
-		.disposed(by: disposeBag)
+			.ignoreWhen { $0 < 0 }
+			.map { [weak self] time -> Float in
+				guard let duration = self?.data.duration?.value else { return -1 }
+				let percentage = time/Float(duration)
+				let remainTime = duration - Double(time)
+				if percentage >= 1 {
+					self?.dateTimeText.accept("Listened")
+				} else {
+					self?.dateTimeText.accept(remainTime.minuteRemain())
+				}
+				return percentage
+			}
+			.ignoreWhen { $0 < 0 }
+			.bind(to: currentProgress)
+			.disposed(by: disposeBag)
 		
 		/// Setup the last item if there are no item playing
 		let lastItemID = UserDefaults.standard.string(forKey: "lastItem")

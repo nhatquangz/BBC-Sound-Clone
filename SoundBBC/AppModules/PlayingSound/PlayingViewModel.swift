@@ -55,7 +55,7 @@ class PlayingViewModel {
 			.bind(to: currentTimeString)
 		_ = player.playingState.bind(to: playingState)
 		
-		_ = play.asObserver()
+		_ = play.asObservable()
 			.subscribe(onNext: { [weak self] item in
 				if let item = item {
 					self?.load(item)
@@ -67,7 +67,7 @@ class PlayingViewModel {
 				}
 			})
 		
-		_ = pause.asObserver().subscribe(onNext: { [weak self] in
+		_ = pause.asObservable().subscribe(onNext: { [weak self] in
 			self?.player.pause()
 		})
 		
