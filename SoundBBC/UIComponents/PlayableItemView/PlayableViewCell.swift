@@ -26,7 +26,6 @@ class PlayableViewCell: UICollectionViewCell {
 	
     override func awakeFromNib() {
         super.awakeFromNib()
-		self.backgroundColor = .random
 		progressBar.transform = CGAffineTransform.init(scaleX: 1, y: 3.2)
 		progressBar.progressTintColor = AppConstants.Color.main
     }
@@ -51,6 +50,7 @@ extension PlayableViewCell: DisplayableItemView {
 		
 		viewModel.showProgressBar
 			.map { !$0 }
+			.distinctUntilChanged()
 			.bind(to: progressBar.rx.isHidden)
 			.disposed(by: disposeBag)
 		

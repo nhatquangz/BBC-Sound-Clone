@@ -33,29 +33,38 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Rfs-YY-JnG">
                                 <rect key="frame" x="5" y="0.0" width="404" height="70"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  LIVE  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OX0-ok-oDM">
-                                        <rect key="frame" x="180" y="0.0" width="44.5" height="20"/>
-                                        <color key="backgroundColor" systemColor="labelColor"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yNP-7F-6Yl">
+                                        <rect key="frame" x="160" y="0.0" width="84.5" height="22"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  LIVE  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OX0-ok-oDM">
+                                                <rect key="frame" x="2" y="2" width="80.5" height="18"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="BBCReithSans-Bold" family="BBC Reith Sans" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="rOG-yW-yx9"/>
+                                            <constraint firstItem="OX0-ok-oDM" firstAttribute="top" secondItem="yNP-7F-6Yl" secondAttribute="top" constant="2" id="Ksn-W6-4ZG"/>
+                                            <constraint firstAttribute="trailing" secondItem="OX0-ok-oDM" secondAttribute="trailing" constant="2" id="Tmr-tI-Nuj"/>
+                                            <constraint firstItem="OX0-ok-oDM" firstAttribute="leading" secondItem="yNP-7F-6Yl" secondAttribute="leading" constant="2" id="bha-No-rW7"/>
+                                            <constraint firstAttribute="height" constant="22" id="c1U-jD-IXr"/>
+                                            <constraint firstAttribute="bottom" secondItem="OX0-ok-oDM" secondAttribute="bottom" constant="2" id="e4g-Wv-39Y"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="BBCReithSans-Bold" family="BBC Reith Sans" pointSize="14"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Tailenders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wp6-jO-oRx">
-                                        <rect key="frame" x="163.5" y="27" width="77" height="20"/>
+                                        <rect key="frame" x="160" y="26.5" width="84" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="FUw-Ue-j4W"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="BBCReithSans-Bold" family="BBC Reith Sans" pointSize="17"/>
-                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Felix White picks the songs that are best to clean to" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaE-Wr-RSE">
-                                        <rect key="frame" x="40" y="53.5" width="324" height="16.5"/>
+                                        <rect key="frame" x="35.5" y="51" width="333" height="19"/>
                                         <fontDescription key="fontDescription" name="BBCReithSans-Regular" family="BBC Reith Sans" pointSize="14"/>
-                                        <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" name="secondary-title"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -63,9 +72,9 @@
                                     <constraint firstAttribute="height" constant="70" id="tmo-jy-BAY"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jil-Qu-MwN">
+                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jil-Qu-MwN">
                                 <rect key="frame" x="107" y="85" width="200" height="40"/>
-                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <color key="backgroundColor" name="button-color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="GHi-jI-BRS"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="XuZ-tj-ldS"/>
@@ -74,7 +83,10 @@
                                 <color key="tintColor" name="primary"/>
                                 <inset key="imageEdgeInsets" minX="16" minY="2" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Stations &amp; Schedules" image="small-arrow">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" systemColor="systemGray2Color"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -83,7 +95,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Rfs-YY-JnG" secondAttribute="trailing" constant="5" id="IfP-CR-l90"/>
                             <constraint firstAttribute="bottom" secondItem="Jil-Qu-MwN" secondAttribute="bottom" constant="20" id="OCe-p2-qGX"/>
@@ -102,6 +114,7 @@
                         <collectionViewLayout key="collectionViewLayout" id="Vuc-QU-PR4"/>
                     </collectionView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="0vC-X2-i16" firstAttribute="leading" secondItem="RHx-dp-h3F" secondAttribute="leading" id="Ho4-2G-rfl"/>
                     <constraint firstAttribute="trailing" secondItem="0vC-X2-i16" secondAttribute="trailing" id="MAh-Pp-zJx"/>
@@ -123,15 +136,21 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="small-arrow" width="10" height="10"/>
+        <image name="small-arrow" width="11.5" height="12"/>
+        <namedColor name="button-color">
+            <color red="0.89800000190734863" green="0.89800000190734863" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="primary">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondary-title">
+            <color red="0.43529411759999997" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

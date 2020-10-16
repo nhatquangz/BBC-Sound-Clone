@@ -100,6 +100,7 @@ class ListenCellViewModel: BaseViewModel {
 					self?.dateTimeText.accept("Listened")
 				} else {
 					self?.dateTimeText.accept(remainTime.minuteRemain())
+					self?.showProgressBar.accept(true)
 				}
 				return percentage
 			}

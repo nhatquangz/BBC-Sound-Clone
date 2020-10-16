@@ -21,6 +21,12 @@ class TabbarController: UITabBarController {
 		super.viewDidLoad()
 		setup()
 	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		let position = PlayingViewModel.shared.position.value
+		self.changePlayingViewState(position, withAnimation: false)
+	}
 }
 
 // MARK: - Setup
@@ -28,6 +34,13 @@ extension TabbarController {
 	func setup() {
 		self.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.font: AppConstants.Font.reithSans.size(12)], for: .normal)
 		self.tabBar.tintColor = AppConstants.Color.main
+		self.tabBar.barTintColor = AppConstants.Color.tabbar
+		self.tabBar.isTranslucent = false
+		self.viewControllers?.compactMap { $0 as? UINavigationController }
+			.forEach {
+				$0.navigationBar.barTintColor = AppConstants.Color.navigationBar
+			}
+		
 		addPlayingView()
 		
 		/// Handle request changing playingview's position
@@ -35,14 +48,6 @@ extension TabbarController {
 			.skip(1)
 			.subscribe(onNext: { [weak self] position in
 				self?.changePlayingViewState(position)
-			})
-			.disposed(by: disposeBag)
-		
-		NotificationCenter.default.rx.notification(UIApplication.willEnterForegroundNotification)
-			.debug()
-			.subscribe(onNext: { [weak self] _ in
-				let position = PlayingViewModel.shared.position.value
-				self?.changePlayingViewState(position, withAnimation: false)
 			})
 			.disposed(by: disposeBag)
 	}

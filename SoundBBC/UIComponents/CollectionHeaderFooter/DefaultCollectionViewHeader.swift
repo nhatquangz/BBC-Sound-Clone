@@ -25,7 +25,7 @@ class DefaultCollectionViewHeader: UICollectionReusableView {
 		let button = UIButton()
 		button.setTitle("View All", for: .normal)
 		button.titleLabel?.font = AppConstants.Font.reithSans.size(15)
-		button.setTitleColor(.black, for: .normal)
+		button.setTitleColor(.label, for: .normal)
 		button.setTitleColor(.gray, for: .highlighted)
 		return button
 	}()

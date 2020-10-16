@@ -32,7 +32,9 @@ enum AppConstants {
 	enum Color {
 		static let main = UIColor(named: "primary")!
 		static let preloadProgress = UIColor(hexString: "#F2F2F7")
-		static let progressTrack = UIColor(hexString: "#D3D3D3")
+		static let progressTrack = UIColor(named: "progress-background")!
+		static let tabbar = UIColor(named: "tabbar-background")
+		static let navigationBar = UIColor(named: "navigation-background")
 	}
 	
 	

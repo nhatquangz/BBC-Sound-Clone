@@ -36,7 +36,7 @@ extension ListenViewController {
 		collectionView = UICollectionView(frame: .zero, collectionViewLayout: compositionalLayout())
 		view.addSubview(collectionView)
 		collectionView.insertSubview(refreshControl, at: 0)
-		collectionView.backgroundColor = .white
+		collectionView.backgroundColor = AppConstants.Color.tabbar
 		collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
 		collectionView.snp.makeConstraints { constraint in
 			constraint.edges.equalToSuperview()

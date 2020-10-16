@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -43,33 +44,32 @@
                                         <rect key="frame" x="103" y="0.0" width="386" height="103"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImT-Vg-21y">
-                                                <rect key="frame" x="10" y="0.0" width="376" height="43"/>
+                                                <rect key="frame" x="10" y="0.0" width="376" height="37.5"/>
                                                 <string key="text">he songs that are best to clean to Felix White picks the songs that are best to clean toFelix White picks the songs that are best to clean to the songs that are best to clean to</string>
                                                 <fontDescription key="fontDescription" name="BBCReithSans-Bold" family="BBC Reith Sans" pointSize="16"/>
-                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbq-bv-cUa">
-                                                <rect key="frame" x="10" y="43" width="376" height="56"/>
+                                                <rect key="frame" x="10" y="37.5" width="376" height="49"/>
                                                 <string key="text">he songs that are best to clean to Felix White picks the songs that are best to clean toFelix White picks the songs that are best to clean to the songs that are best to clean to</string>
                                                 <fontDescription key="fontDescription" name="BBCReithSans-Regular" family="BBC Reith Sans" pointSize="14"/>
-                                                <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" name="secondary-title"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GuZ-fe-XUf">
-                                                <rect key="frame" x="10" y="99" width="376" height="4"/>
+                                                <rect key="frame" x="10" y="86.5" width="376" height="16.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WA0-6Z-ihe">
-                                                        <rect key="frame" x="0.0" y="-6" width="376" height="10"/>
+                                                        <rect key="frame" x="0.0" y="6.5" width="376" height="10"/>
                                                         <subviews>
                                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="hWq-z7-bJx">
-                                                                <rect key="frame" x="0.0" y="8.5" width="300" height="2.5"/>
-                                                                <color key="trackTintColor" systemColor="systemGray3Color"/>
+                                                                <rect key="frame" x="0.0" y="8.5" width="303.5" height="2.5"/>
+                                                                <color key="trackTintColor" name="progress-background"/>
                                                             </progressView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17 mins left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="8cY-ro-SCv">
-                                                                <rect key="frame" x="305" y="0.0" width="71" height="10"/>
+                                                                <rect key="frame" x="308.5" y="0.0" width="67.5" height="10"/>
                                                                 <fontDescription key="fontDescription" name="BBCReithSans-Regular" family="BBC Reith Sans" pointSize="13"/>
-                                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="textColor" name="secondary-title"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
@@ -78,7 +78,7 @@
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="WA0-6Z-ihe" secondAttribute="bottom" id="7kr-td-4BT"/>
                                                     <constraint firstItem="WA0-6Z-ihe" firstAttribute="leading" secondItem="GuZ-fe-XUf" secondAttribute="leading" id="TNF-eH-eZ2"/>
@@ -86,7 +86,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="ImT-Vg-21y" firstAttribute="top" secondItem="Xoe-Xj-iKm" secondAttribute="top" id="0Ff-Jo-Pp6"/>
                                             <constraint firstItem="GuZ-fe-XUf" firstAttribute="leading" secondItem="ImT-Vg-21y" secondAttribute="leading" id="1ac-65-FDo"/>
@@ -105,13 +105,14 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="dgK-Do-NOU"/>
                                         </constraints>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" image="ic_play"/>
                                         <state key="selected" image="ic_pause"/>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="k1F-JC-2Mv" firstAttribute="top" secondItem="xrt-Aq-Dhm" secondAttribute="top" id="DSi-e3-meQ"/>
                             <constraint firstAttribute="trailing" secondItem="k1F-JC-2Mv" secondAttribute="trailing" id="Rgj-hF-vC9"/>
@@ -143,11 +144,14 @@
     <resources>
         <image name="ic_pause" width="23" height="23"/>
         <image name="ic_play" width="23" height="23"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="progress-background">
+            <color red="0.76862745098039209" green="0.77254901960784317" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondary-title">
+            <color red="0.43529411759999997" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

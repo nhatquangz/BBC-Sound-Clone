@@ -22,7 +22,7 @@ class ImpactLargeViewCell: UICollectionViewCell {
 	
     override func awakeFromNib() {
         super.awakeFromNib()
-		backgroundColor = .random
+
     }
 	
 	override func prepareForReuse() {
