@@ -30,12 +30,12 @@ class SplashViewController: UIViewController {
 extension SplashViewController {
 	func setup() {
 		/// Request config data
-		AppRequest.getJSON(.config, retryCount: 100)
+		AppRequest(.config).setRetry(100).request(JSON.self)
 			.flatMapLatest { (result) -> Observable<Result<JSON, RequestError>> in
 				if let config = try? result.get() {
 					AppConfiguration.shared.setup(config: config)
 					let idctaURL = config["idv5Config"]["idctaConfigURL"].stringValue
-					return AppRequest.getJSON(idctaURL)
+					return AppRequest(idctaURL).setRetry(100).request()
 				} else {
 					return Observable.empty()
 				}
@@ -50,7 +50,7 @@ extension SplashViewController {
 					}
 				}
 			})
-		.disposed(by: disposeBag)
+			.disposed(by: disposeBag)
 		
 		/// Audio
 		do {

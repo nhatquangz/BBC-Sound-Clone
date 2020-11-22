@@ -15,18 +15,6 @@ extension Encodable {
 }
 
 extension Data {
-	func decodedArray<T: Decodable>() -> [T] {
-		let decoder = JSONDecoder()
-		decoder.keyDecodingStrategy = .convertFromSnakeCase
-		do {
-			return try decoder.decode([T].self, from: self)
-		} catch {
-			print(error)
-			return []
-		}
-//		return (try? decoder.decode([T].self, from: self)) ?? []
-	}
-	
 	func decoded<T: Decodable>() throws -> T {
 		let decoder = JSONDecoder()
 		decoder.keyDecodingStrategy = .convertFromSnakeCase

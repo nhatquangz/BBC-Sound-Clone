@@ -72,7 +72,7 @@ class PlayingViewModel {
 		})
 		
 		_ = player.playActions.asObservable()
-			.flatMap { [weak self] (action) -> Observable<Result<String?, RequestError>> in
+			.flatMap { [weak self] (action) -> Observable<Result<String, RequestError>> in
 				guard let self = self,
 					  let itemID = self.item?.id,
 					  itemID != ""
@@ -83,7 +83,11 @@ class PlayingViewModel {
 				param["action"] = action.key
 				param["elapsed_time"] = action.value
 				param["resource_type"] = "episode"
-				return AppRequest.request(.plays, method: .post, parameters: param, retryCount: 0)
+				return AppRequest(.plays)
+					.setMethod(.post)
+					.setParameters(param)
+					.setRetry(0)
+					.request()
 			}
 			.subscribe(onNext: { result in
 				print("Actions: \(result)")

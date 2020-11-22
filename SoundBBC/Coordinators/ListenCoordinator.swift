@@ -15,7 +15,7 @@ import RxSwift
 class ListenCoordinator: BaseCoordinator {
 	
 	/// Service to use for listen / music screen
-	var dataObservable: Observable<Result<[DisplayModuleModel], RequestError>> = AppRequest.request(.listen)
+	var dataObservable = AppRequest(.listen).request([DisplayModuleModel].self)
 	var title: String = ""
 	
 	override func start() {
@@ -24,5 +24,4 @@ class ListenCoordinator: BaseCoordinator {
 		listenVC.title = title
 		self.navigationController.viewControllers = [listenVC]
 	}
-	
 }

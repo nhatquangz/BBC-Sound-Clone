@@ -42,12 +42,13 @@ extension Networking {
 				 url: String,
 				 parameters: [String : Any]? = nil,
 				 encoding: ParameterEncoding = JSONEncoding.default,
+				 header: HTTPHeaders? = nil,
 				 session: Session? = nil,
 				 retryCount: Int = 1) -> Observable<Result<Any, RequestError>> {
 		print("\(method.rawValue): \(url)")
 		let session: Session = session ?? self.defaultSession
 		return Observable<Result<Any, RequestError>>.create { observer -> Disposable in
-			session.request(url, method: method, parameters: parameters, encoding: encoding)
+			session.request(url, method: method, parameters: parameters, encoding: encoding, headers: header)
 				.validate(statusCode: 200..<300)
 				.responseJSON { response in
 					switch response.result {

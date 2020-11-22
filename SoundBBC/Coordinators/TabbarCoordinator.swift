@@ -25,7 +25,7 @@ class TabbarCoordinator: BaseCoordinator {
 		musicNavigationController.tabBarItem = UITabBarItem(title: "Music", image: UIImage(named: "music")?.withRenderingMode(.alwaysTemplate), tag: 0)
 		let musicCoordinator = ListenCoordinator(navigation: musicNavigationController)
 		musicCoordinator.title = "Music"
-		musicCoordinator.dataObservable = AppRequest.request(.containerTemplateInLine, placeholders: [.urn: "urn:bbc:radio:category:mixes"])
+		musicCoordinator.dataObservable = AppRequest(.containerTemplateInLine, placeholders: [.urn: "urn:bbc:radio:category:mixes"]).request([DisplayModuleModel].self)
 		
 		// My Sound
 		let mySoundNavigationController = StatusBarStyleNavigationController()

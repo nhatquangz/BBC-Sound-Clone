@@ -7,17 +7,13 @@ target 'SoundBBC' do
 
   # Pods for SoundBBC
    #UI
-	pod 'IQKeyboardManagerSwift', '6.5.0'
 	pod 'SnapKit', '5.0.1'
-	pod 'NVActivityIndicatorView', '4.8.0'
 	pod 'MarqueeLabel', '4.0.2'
 	
 	#Extension
-	pod 'SwiftDate', '6.1.0'
 	pod 'RxSwift', '5.1.1'
 	pod 'RxCocoa', '5.1.1'
 	pod 'RxSwiftExt', '5.2.0'
-	# pod 'RxGesture', '2.2.0'
 	
 	#Services & Network
 	pod 'Alamofire', '5.1'

@@ -26,8 +26,8 @@ class MusicViewModel: BaseViewModel {
 		
 		reloadData.asObservable()
 			.throttle(.seconds(5), scheduler: MainScheduler.instance)
-			.flatMapLatest { _ -> Observable<Result<[DisplayModuleModel], RequestError>> in
-				return AppRequest.request(.listen)
+			.flatMapLatest {
+				return AppRequest(.listen).request([DisplayModuleModel].self)
 			}
 			.subscribe(onNext: { [weak self] result in
 				if let data = try? result.get() {

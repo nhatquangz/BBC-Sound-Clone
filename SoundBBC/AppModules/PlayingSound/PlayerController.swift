@@ -132,11 +132,11 @@ extension PlayerController {
 		self.currentItemID = itemID
 		self.preSeekValue = seekTime
 		// Get new item's url
-		AppRequest.request(.playmedia,
-					   childs: ["media"],
-					   placeholders: [.vipd: itemID])
-			.map { (result: Result<[MediaModel], RequestError>) -> URL? in
-				return try? result.get().first?.connection?.first?.href?.urlEncoded
+		AppRequest(.playmedia, placeholders: [.vipd: itemID])
+			.setDataPath(["media"])
+			.request()
+			.map { (result: Result<[MediaModel]?, RequestError>) -> URL? in
+				return try? result.get()?.first?.connection?.first?.href?.urlEncoded
 			}
 			.subscribe(onNext: { [weak self] mediaURL in
 				self?.setupPlayer(mediaURL, shouldPlay: shouldPlay)

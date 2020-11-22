@@ -15,74 +15,72 @@ import Alamofire
 
 class AppRequest {
 	
-	static func getJSON(_ path: RequestPath, retryCount: Int = 2) -> Observable<Result<JSON, RequestError>> {
-		return Networking.shared.request(method: .get, url: path.url(), retryCount: retryCount)
-			.map { result -> Result<JSON, RequestError> in
-				return result.map { data -> JSON in
-					return JSON(data)
+	private(set) var url: String
+	private(set) var method: HTTPMethod = .get
+	private(set) var parameters: [String: Any]?
+	private(set) var childs: [JSONSubscriptType] = ["data"]
+	private(set) var retryCount: Int = 2
+	private(set) var header: HTTPHeaders?
+	
+	init(_ url: String) {
+		self.url = url
+	}
+	
+	init(_ requestPath: RequestPath, placeholders: String.Placeholder = [:]) {
+		self.url = requestPath.url(placeholders)
+	}
+	
+	func setURL(_ url: String) -> AppRequest {
+		self.url = url
+		return self
+	}
+	
+	func setMethod(_ method: HTTPMethod) -> AppRequest {
+		self.method = method
+		return self
+	}
+	
+	func setParameters(_ param: [String: Any]) -> AppRequest {
+		self.parameters = param
+		return self
+	}
+	
+	func setDataPath(_ path: [JSONSubscriptType]) -> AppRequest {
+		self.childs = path
+		return self
+	}
+	
+	func setRetry(_ count: Int) -> AppRequest {
+		self.retryCount = count
+		return self
+	}
+	
+	func setHeader(header: HTTPHeaders) -> AppRequest {
+		self.header = header
+		return self
+	}
+	
+	func request<T>(_ type: T.Type? = nil) -> Observable<Result<T, RequestError>> where T: Decodable {
+		return Networking.shared.request(method: method,
+										 url: url,
+										 parameters: parameters,
+										 header: header,
+										 retryCount: retryCount)
+			.flatMapLatest { result -> Observable<Result<T, RequestError>> in
+				switch result {
+				case .success(let data):
+					if let object: T = try? JSON(data)[self.childs].rawData().decoded() {
+						return .just(.success(object))
+					} else if T.self == JSON.self {
+						return .just(.success(JSON(data) as! T))
+					} else {
+						debugPrint("Wrong data type")
+						return .empty()
+					}
+				case .failure(let error):
+					return .just(.failure(error))
 				}
 			}
-	}
-	
-	static func getJSON(_ path: String, retryCount: Int = 2) -> Observable<Result<JSON, RequestError>> {
-		return Networking.shared.request(method: .get, url: path, retryCount: retryCount)
-			.map { result -> Result<JSON, RequestError> in
-				return result.map { data -> JSON in
-					return JSON(data)
-				}
-			}
-	}
-
-	
-	/// Get object data from returned json
-	/// - Parameters:
-	///   - path: request path
-	///   - retryCount: number of retring the request
-	///   - childs: get data's child path
-	///   - placeholders: placeholder to be replaced in url
-	/// - Returns: Object of expected data model
-	static func request<T>(_ path: RequestPath,
-					   method: HTTPMethod = .get,
-					   parameters: [String : Any]? = nil,
-					   retryCount: Int = 2,
-					   childs: [JSONSubscriptType] = ["data"],
-					   placeholders: String.Placeholder = [:]) -> Observable<Result<T?, RequestError>> where T: Decodable {
-		return Networking.shared.request(method: method,
-										 url: path.url(placeholders),
-										 parameters: parameters,
-										 retryCount: retryCount)
-			.map { result -> Result<T?, RequestError> in
-				return result.map { data -> T? in
-					let jsonData = try? JSON(data)[childs].rawData()
-					let object: T? = try? jsonData?.decoded()
-					return object
-				}
-		}
-	}
-	
-	/// Get array data from returned json
-	/// - Parameters:
-	///   - path: request path
-	///   - retryCount: number of retring the request
-	///   - childs: get data's child path
-	/// - Returns: Array of expected data model
-	static func request<T>(_ path: RequestPath,
-					   method: HTTPMethod = .get,
-					   parameters: [String : Any]? = nil,
-					   retryCount: Int = 2,
-					   childs: [JSONSubscriptType] = ["data"],
-					   placeholders: String.Placeholder = [:]) -> Observable<Result<[T], RequestError>> where T: Decodable {
-		return Networking.shared.request(method: method,
-										 url: path.url(placeholders),
-										 parameters: parameters,
-										 retryCount: retryCount)
-			.map { result -> Result<[T], RequestError> in
-				return result.map { data -> [T] in
-					let jsonData = try? JSON(data)[childs].rawData()
-					let arrayData: [T] = jsonData?.decodedArray() ?? []
-					return arrayData
-				}
-		}
 	}
 }
 
@@ -114,8 +112,9 @@ extension AppRequest {
 		guard let url = callbackURL?.url?.absoluteString else { return .empty() }
 		let param = ["code": code,
 					 "code_verifier": verifyCode]
-		return Networking.shared.request(method: .post, url: url, parameters: param)
-			.map { $0.map { JSON($0) } }
+		return AppRequest(url).setMethod(.post)
+			.setParameters(param)
+			.request()
 	}
 }
 
